@@ -51,8 +51,8 @@ function renderLine(lineText: string) {
 
 export function Statement() {
   const sectionRef = useRef<HTMLElement>(null);
-  const text0Ref = useRef<HTMLParagraphElement>(null);
-  const text1Ref = useRef<HTMLParagraphElement>(null);
+  const text0Ref = useRef<HTMLDivElement>(null);
+  const text1Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -128,7 +128,7 @@ export function Statement() {
         replacing a tired site, one team takes it from sketch to live build.
       </h2>
       <div className="Statement-module__6Nrrla__stack" aria-hidden="true">
-        <p
+        <div
           ref={text0Ref}
           className="Statement-module__6Nrrla__text"
           data-node-id="1:134"
@@ -151,8 +151,8 @@ export function Statement() {
               {renderLine(line)}
             </div>
           ))}
-        </p>
-        <p
+        </div>
+        <div
           ref={text1Ref}
           className="Statement-module__6Nrrla__text"
           data-node-id="1:134"
@@ -175,7 +175,7 @@ export function Statement() {
               {renderLine(line)}
             </div>
           ))}
-        </p>
+        </div>
       </div>
     </section>
   );

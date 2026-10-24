@@ -369,7 +369,7 @@ export function initHeroCoins({
       rimMat.dispose();
       shadowMat.dispose();
       if (renderer.domElement.parentElement) {
-        renderer.domElement.parentElement.removeChild(renderer.domElement.parentElement);
+        renderer.domElement.parentElement.removeChild(renderer.domElement);
       }
     },
     toss() {
