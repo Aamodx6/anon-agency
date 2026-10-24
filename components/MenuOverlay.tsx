@@ -1,15 +1,38 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useMenu } from '../context/MenuContext';
 import { Navbar } from './Navbar';
+import { animateMenuOverlay } from '@/src/animations/menu';
 
 export function MenuOverlay() {
   const { isOpen, close } = useMenu();
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+
+    const navLinks = Array.from(overlay.querySelectorAll<HTMLElement>('.MenuOverlay-module__wz4T_a__navLink'));
+    const ribbonSvg = overlay.querySelector<SVGElement>('.GlyphRibbon-module___k1tSG__svg');
+
+    const anim = animateMenuOverlay({
+      overlayEl: overlay,
+      navLinks,
+      ribbonSvg,
+      isOpen,
+    });
+
+    return () => {
+      anim.kill();
+    };
+  }, [isOpen]);
 
   return (
     <div
+      ref={overlayRef}
       id="site-menu"
       className="MenuOverlay-module__wz4T_a__overlay"
       role="dialog"
@@ -20,8 +43,11 @@ export function MenuOverlay() {
       data-open={isOpen ? 'true' : 'false'}
       data-visible={isOpen ? 'true' : 'false'}
       data-node-id="55:247"
+      style={{
+        display: isOpen ? 'block' : 'none',
+      }}
     >
-      <div className="MenuOverlay-module__wz4T_a__stage">
+      <div ref={stageRef} className="MenuOverlay-module__wz4T_a__stage">
         <svg
           className="GlyphRibbon-module___k1tSG__svg"
           aria-hidden="true"
@@ -83,35 +109,7 @@ export function MenuOverlay() {
             </li>
           </ul>
         </nav>
-
-        <div className="MenuOverlay-module__wz4T_a__meta">
-          <p className="MenuOverlay-module__wz4T_a__sayHello">
-            <span className="MenuOverlay-module__wz4T_a__sayHelloLabel">Say hello:</span>
-            <a href="mailto:contact@anonagency.dev" className="MenuOverlay-module__wz4T_a__metaLink">
-              contact@anonagency.dev
-            </a>
-          </p>
-          <div className="MenuOverlay-module__wz4T_a__socials">
-            <a
-              href="https://www.upwork.com/agencies/1654808563442126848/"
-              className="MenuOverlay-module__wz4T_a__metaLink"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              UPWORK
-            </a>
-            <a
-              href="https://www.linkedin.com/company/awakeagency/"
-              className="MenuOverlay-module__wz4T_a__metaLink"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              LINKEDIN
-            </a>
-          </div>
-        </div>
       </div>
-      <div className="MenuOverlay-module__wz4T_a__gutter" aria-hidden="true" />
     </div>
   );
 }

@@ -97,7 +97,7 @@ export function Statement() {
             start: 'center center',
             end: () => `+=${scrollDistance}`,
             pin: true,
-            scrub: 0.6,
+            scrub: 0.8,
             invalidateOnRefresh: true,
           },
         });

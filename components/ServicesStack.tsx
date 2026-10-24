@@ -85,7 +85,7 @@ export function ServicesStack() {
           start: 'top top+=20px',
           end: `+=${totalScroll}`,
           pin: true,
-          scrub: 0.6,
+          scrub: 0.8,
           invalidateOnRefresh: true,
         },
       });
@@ -120,8 +120,8 @@ export function ServicesStack() {
             {
               scaleX: 1,
               scaleY: 1,
-              duration: 0.3,
-              ease: 'elastic.out(1, 0.5)',
+              duration: 1.0,
+              ease: 'elastic.out(1, 0.3)',
             },
             cardStartTime + 1.05
           );
