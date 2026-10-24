@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface CtaBandProps {
@@ -8,18 +8,71 @@ interface CtaBandProps {
 }
 
 const NEEDS = ['development', 'web design', 'branding'];
+const REEL_COPIES = 7;
+const REEL_MIDDLE_START = Math.floor(REEL_COPIES / 2) * NEEDS.length;
 
 export function CtaBand({ spacing = 'home' }: CtaBandProps) {
   const router = useRouter();
   const [step, setStep] = useState<1 | 2>(1);
   const [need, setNeed] = useState<string>('development');
+  const [activeIndex, setActiveIndex] = useState(REEL_MIDDLE_START);
+  const [isJumping, setIsJumping] = useState(false);
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [triedSubmit, setTriedSubmit] = useState<boolean>(false);
+  const activeIndexRef = useRef(activeIndex);
+  const hoverBlockedUntilRef = useRef(0);
+  const pointerMovedRef = useRef(true);
 
   const isNameValid = name.trim().length > 0;
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   const isValid = isNameValid && isEmailValid;
+
+  const moveToIndex = (index: number) => {
+    const nextIndex = Math.max(0, Math.min(REEL_COPIES * NEEDS.length - 1, index));
+    activeIndexRef.current = nextIndex;
+    hoverBlockedUntilRef.current = Date.now() + 100;
+    setIsJumping(false);
+    setActiveIndex(nextIndex);
+    setNeed(NEEDS[nextIndex % NEEDS.length]);
+  };
+
+  const moveToNeed = (word: string) => {
+    const currentIndex = activeIndexRef.current;
+    const matchingIndexes = Array.from({ length: REEL_COPIES * NEEDS.length }, (_, index) => index)
+      .filter(index => NEEDS[index % NEEDS.length] === word);
+    const targetIndex = matchingIndexes.reduce((closest, index) =>
+      Math.abs(index - currentIndex) < Math.abs(closest - currentIndex) ? index : closest
+    );
+    moveToIndex(targetIndex);
+  };
+
+  const handleReelTransitionEnd = (event: React.TransitionEvent<HTMLUListElement>) => {
+    if (event.propertyName !== 'transform') return;
+
+    const currentIndex = activeIndexRef.current;
+    if (currentIndex > NEEDS.length && currentIndex < (REEL_COPIES - 2) * NEEDS.length) return;
+
+    const normalizedIndex =
+      REEL_MIDDLE_START + ((currentIndex % NEEDS.length) + NEEDS.length) % NEEDS.length;
+    setIsJumping(true);
+    activeIndexRef.current = normalizedIndex;
+    setActiveIndex(normalizedIndex);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setIsJumping(false));
+    });
+  };
+
+  const handleReelKeyDown = (event: React.KeyboardEvent<HTMLUListElement>) => {
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
+    event.preventDefault();
+    moveToIndex(activeIndexRef.current + (event.key === 'ArrowDown' ? 1 : -1));
+  };
+
+  const handleReelWheel = (event: React.WheelEvent<HTMLUListElement>) => {
+    event.preventDefault();
+    moveToIndex(activeIndexRef.current + (event.deltaY > 0 ? 1 : -1));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,27 +134,52 @@ export function CtaBand({ spacing = 'home' }: CtaBandProps) {
             className="CtaBand-module__4ELZEW__reel"
             role="radiogroup"
             aria-labelledby="cta-band-label"
+            aria-live="polite"
+            tabIndex={0}
+            onKeyDown={handleReelKeyDown}
+            onWheel={handleReelWheel}
+            onTransitionEnd={handleReelTransitionEnd}
+            style={
+              {
+                '--active-index': activeIndex,
+                transition: isJumping ? 'none' : undefined,
+              } as React.CSSProperties
+            }
           >
             {/* Repetitions for visual reel flow */}
-            {Array.from({ length: 4 * NEEDS.length }).map((_, idx) => {
+            {Array.from({ length: REEL_COPIES * NEEDS.length }).map((_, idx) => {
               const word = NEEDS[idx % NEEDS.length];
-              const isMainSlot = idx >= NEEDS.length && idx < 2 * NEEDS.length;
               return (
                 <li
                   key={idx}
                   role="presentation"
                   className="CtaBand-module__4ELZEW__pillSlot"
-                  aria-hidden={isMainSlot ? undefined : true}
+                  aria-hidden={idx === activeIndex ? undefined : true}
                 >
                   <button
                     type="button"
                     className="CtaBand-module__4ELZEW__pill"
                     data-word={word}
-                    data-selected={need === word ? '' : undefined}
-                    tabIndex={isMainSlot ? 0 : -1}
-                    role={isMainSlot ? 'radio' : undefined}
-                    aria-checked={isMainSlot ? need === word : undefined}
-                    onClick={() => setNeed(word)}
+                    data-selected={idx === activeIndex ? '' : undefined}
+                    tabIndex={idx === activeIndex ? 0 : -1}
+                    role={idx === activeIndex ? 'radio' : undefined}
+                    aria-checked={idx === activeIndex}
+                    onMouseEnter={() => {
+                      if (
+                        pointerMovedRef.current &&
+                        Date.now() >= hoverBlockedUntilRef.current
+                      ) {
+                        moveToNeed(word);
+                      }
+                      pointerMovedRef.current = false;
+                    }}
+                    onPointerMove={() => {
+                      pointerMovedRef.current = true;
+                    }}
+                    onPointerDown={event => {
+                      if (event.pointerType !== 'mouse') moveToNeed(word);
+                    }}
+                    onClick={() => moveToNeed(word)}
                   >
                     {word}
                   </button>

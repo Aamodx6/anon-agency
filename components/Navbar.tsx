@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Logo } from './Logo';
 import { useMenu } from '../context/MenuContext';
 
 interface NavbarProps {
@@ -18,9 +17,6 @@ export function Navbar({ variant = 'dev' }: NavbarProps) {
       data-node-id="45:284"
       data-site-nav={variant}
     >
-      <Link href="/" className="Navbar-module__O8Na-a__logoLink" aria-label="Anon, home">
-        <Logo />
-      </Link>
       <div className="Navbar-module__O8Na-a__actions">
         <Link href="/contacts" className="Navbar-module__O8Na-a__contactPill">
           get in touch.
