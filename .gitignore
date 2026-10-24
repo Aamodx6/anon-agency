@@ -31,6 +31,10 @@ yarn-error.log*
 # vercel
 .vercel
 scripts/*.png
+scripts/*.json
+scripts/herocoins*.js
+scripts/hero_coins_chunk.js
+scripts/extracted_herocoins_raw.js
 
 # typescript
 *.tsbuildinfo
@@ -38,3 +42,7 @@ next-env.d.ts
 
 .vercel
 scripts/*.png
+scripts/*.json
+scripts/herocoins*.js
+scripts/hero_coins_chunk.js
+scripts/extracted_herocoins_raw.js
