@@ -129,73 +129,20 @@ export function initHeroText({
     return { kill: () => swap.detach(), swapInstance: swap };
   }
 
-  let swapInstance: LetterSwapInstance | undefined;
-
-  const ctx = gsap.context(() => {
-    // Initial states
-    chars.forEach((c) => {
-      const startX = Math.random() > 0.5 ? -100 : 100;
-      gsap.set(c, { xPercent: startX, opacity: 0 });
-    });
-
-    if (ruleEl) gsap.set(ruleEl, { scaleX: 0, transformOrigin: '0% 50%' });
-    if (metaEls.length > 0) gsap.set(metaEls, { opacity: 0, y: 12 });
-    if (kickerEl) gsap.set(kickerEl, { opacity: 0, y: 12 });
-
-    const tl = gsap.timeline({
-      delay: 0.1,
-      onComplete: () => {
-        swapInstance = attachLetterSwap(headingEl, chars);
-        onLettersSettled?.();
-      },
-    });
-
-    // Rule line draws out
-    if (ruleEl) {
-      tl.to(ruleEl, {
-        scaleX: 1,
-        duration: DURATIONS.heroRule,
-        ease: EASE.out,
-      }, 0);
-    }
-
-    // Letters enter with elastic landing
-    tl.to(chars, {
-      xPercent: 0,
-      opacity: 1,
-      duration: DURATIONS.heroLetters,
-      ease: EASE.landing,
-      stagger: {
-        amount: 0.4,
-        from: 'random',
-      },
-    }, 0.25);
-
-    // Supporting metadata & kicker
-    if (metaEls.length > 0) {
-      tl.to(metaEls, {
-        opacity: 1,
-        y: 0,
-        duration: DURATIONS.heroMeta,
-        stagger: 0.06,
-        ease: 'power2.out',
-      }, 0.5);
-    }
-
-    if (kickerEl) {
-      tl.to(kickerEl, {
-        opacity: 1,
-        y: 0,
-        duration: DURATIONS.heroMeta,
-        ease: 'power2.out',
-      }, 0.55);
-    }
+  chars.forEach((char) => {
+    gsap.set(char, { xPercent: 0, opacity: 1 });
   });
+  if (ruleEl) gsap.set(ruleEl, { scaleX: 1, transformOrigin: '0% 50%' });
+  metaEls.forEach((meta) => gsap.set(meta, { opacity: 1, y: 0 }));
+  if (kickerEl) gsap.set(kickerEl, { opacity: 1, y: 0 });
+
+  const swapInstance = attachLetterSwap(headingEl, chars);
+  onLettersSettled?.();
 
   return {
     kill: () => {
-      swapInstance?.detach();
-      ctx.revert();
+      swapInstance.detach();
+      chars.forEach((char) => gsap.killTweensOf(char));
     },
     swapInstance,
   };

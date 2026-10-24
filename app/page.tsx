@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { CtaBand } from '@/components/CtaBand';
@@ -10,42 +10,15 @@ import { CaseGrid } from '@/components/CaseGrid';
 import { ArchiveSection } from '@/components/ArchiveSection';
 import { ServicesStack } from '@/components/ServicesStack';
 import { StickyNav } from '@/components/StickyNav';
-import { initPreloader } from '@/src/animations/preloader';
 import { initHeroText } from '@/src/animations/heroText';
 
 export default function HomePage() {
-  const [counter, setCounter] = useState(0);
-  const [introState, setIntroState] = useState<'pending' | 'done'>('pending');
-
   const heroRef = useRef<HTMLElement>(null);
-  const loaderRef = useRef<HTMLDivElement>(null);
-  const counterRef = useRef<HTMLSpanElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const ruleRef = useRef<HTMLSpanElement>(null);
   const kickerRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    const loaderEl = loaderRef.current;
-    const counterEl = counterRef.current;
-    const heroContainer = heroRef.current;
-
-    const preloader = initPreloader({
-      loaderEl,
-      counterEl,
-      heroContainer,
-      onComplete: () => {
-        setIntroState('done');
-      },
-    });
-
-    return () => {
-      preloader.kill();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (introState !== 'done') return;
-
     const headingEl = headlineRef.current;
     const ruleEl = ruleRef.current;
     const kickerEl = kickerRef.current;
@@ -64,53 +37,19 @@ export default function HomePage() {
     return () => {
       heroAnim.kill();
     };
-  }, [introState]);
+  }, []);
 
   return (
     <main id="main">
       {/* 1. HERO SECTION */}
       <div className="Hero-module__KTD73a__frame">
-        {/* Loader Element morphing into hero frame border */}
-        <div
-          ref={loaderRef}
-          className="Hero-module__KTD73a__loader"
-          data-hero-loader=""
-          aria-hidden="true"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            borderRadius: 0,
-            backgroundColor: 'var(--c-red, #ff003d)',
-            zIndex: 99,
-            display: 'grid',
-            placeItems: 'center',
-            pointerEvents: 'none',
-          }}
-        >
-          <span
-            ref={counterRef}
-            className="Hero-module__KTD73a__loaderCounter"
-            style={{
-              fontSize: '48px',
-              fontWeight: 700,
-              color: '#ffffff',
-              fontVariantNumeric: 'tabular-nums',
-            }}
-          >
-            0%
-          </span>
-        </div>
-
         <section
           ref={heroRef}
           className="Hero-module__KTD73a__hero"
-          data-intro={introState}
+          data-intro="done"
           data-node-id="1:129"
         >
-          {/* Interactive 3D Physics Coins */}
+          {/* Flat 2D physics coins */}
           <HeroCoins />
 
           <div className="Hero-module__KTD73a__inner">
