@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollRibbon } from '@/components/ScrollRibbon';
+import { ServiceDiagram } from '@/components/ServiceDiagram';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +23,7 @@ const SERVICES_DATA = [
     figure: '02',
     title: 'UX/UI design',
     summary:
-      'Every design project begins with understanding your audience, brand personality, and business goals. We create intuitive wireframes, polished visual concepts, and complete design systems that turn visitors into loyal customers.',
+      "Join our UX/UI Design Workshop to kickstart your design journey. We'll analyze user experiences, pinpoint issues, and create a strategic vision for an engaging interface that aligns with business goals and user needs.",
   },
   {
     slug: 'branding',
@@ -31,7 +31,7 @@ const SERVICES_DATA = [
     figure: '03',
     title: 'Branding',
     summary:
-      'We shape memorable brand identities from the ground up: logos, type hierarchies, color palettes, tone of voice, and comprehensive brand books that set you apart in crowded markets.',
+      'By partnering with us for your branding needs, you receive a step-by-step, personalized experience that results in a compelling and memorable brand identity, ready to make its mark in your industry and beyond.',
   },
   {
     slug: 'webflow-maintains-support',
@@ -39,7 +39,7 @@ const SERVICES_DATA = [
     figure: '04',
     title: 'Webflow maintenance & support',
     summary:
-      'Keep your digital product fast, secure, and modern with ongoing Webflow support. We provide technical maintenance, performance audits, CMS improvements, and regular feature updates.',
+      'In the last phase, Webflow Site Launch & Training, we make your site live and provide comprehensive training. This includes a CMS walkthrough, content management best practices, and tips for ongoing maintenance.',
   },
 ];
 
@@ -154,8 +154,10 @@ export function ServicesStack() {
             }}
             className="ServicesStack-module__QW-zbq__item"
           >
-            <article className="ServicesStack-module__QW-zbq__card">
-              <ScrollRibbon figure={service.figure} />
+            <article
+              className={`ServicesStack-module__QW-zbq__card ServicesStack-module__QW-zbq__card--${service.figure}`}
+            >
+              <ServiceDiagram figure={service.figure} />
               <span className="ServicesStack-module__QW-zbq__number">
                 {service.number}
               </span>
