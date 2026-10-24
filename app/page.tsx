@@ -145,10 +145,11 @@ export default function HomePage() {
 
 /**
  * Split word into individual animated letter slots with clipping, staggered entrance, and magnetic directional swap
+ * Reference: <div aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;" data-swap-char=""><div aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">char</div></div>
  */
 function renderSplitWord(word: string) {
   return (
-    <span
+    <div
       aria-hidden="true"
       style={{
         position: 'relative',
@@ -156,31 +157,29 @@ function renderSplitWord(word: string) {
       }}
     >
       {word.split('').map((char, cIdx) => (
-        <span
+        <div
           key={cIdx}
-          data-swap-char=""
           aria-hidden="true"
+          data-swap-char=""
           style={{
             position: 'relative',
             display: 'inline-block',
             overflow: 'clip',
-            verticalAlign: 'top',
-            cursor: 'default',
           }}
         >
-          <span
-            data-split-char=""
-            data-swap-inner=""
+          <div
             aria-hidden="true"
+            data-split-char=""
             style={{
               position: 'relative',
               display: 'inline-block',
+              transform: 'translate(0px, 0px)',
             }}
           >
             {char}
-          </span>
-        </span>
+          </div>
+        </div>
       ))}
-    </span>
+    </div>
   );
 }

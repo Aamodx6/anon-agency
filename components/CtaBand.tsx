@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface CtaBandProps {
@@ -23,6 +23,7 @@ export function CtaBand({ spacing = 'home' }: CtaBandProps) {
   const activeIndexRef = useRef(activeIndex);
   const hoverBlockedUntilRef = useRef(0);
   const pointerMovedRef = useRef(true);
+  const reelWindowRef = useRef<HTMLDivElement>(null);
 
   const isNameValid = name.trim().length > 0;
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
@@ -69,10 +70,85 @@ export function CtaBand({ spacing = 'home' }: CtaBandProps) {
     moveToIndex(activeIndexRef.current + (event.key === 'ArrowDown' ? 1 : -1));
   };
 
-  const handleReelWheel = (event: React.WheelEvent<HTMLUListElement>) => {
-    event.preventDefault();
-    moveToIndex(activeIndexRef.current + (event.deltaY > 0 ? 1 : -1));
-  };
+  useEffect(() => {
+    const el = reelWindowRef.current;
+    if (!el) return;
+
+    let accumulatedDelta = 0;
+    let resetTimer: ReturnType<typeof setTimeout> | undefined;
+    let isThrottled = false;
+
+    const onWheel = (e: WheelEvent) => {
+      // Prevent browser default scroll and stop propagation so only the reel moves
+      e.preventDefault();
+      e.stopPropagation();
+
+      accumulatedDelta += e.deltaY;
+
+      if (resetTimer) clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => {
+        accumulatedDelta = 0;
+      }, 200);
+
+      const THRESHOLD = 30;
+      if (Math.abs(accumulatedDelta) >= THRESHOLD && !isThrottled) {
+        const direction = accumulatedDelta > 0 ? 1 : -1;
+        moveToIndex(activeIndexRef.current + direction);
+        accumulatedDelta = 0;
+        isThrottled = true;
+        setTimeout(() => {
+          isThrottled = false;
+        }, 120);
+      }
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+
+    // Touch support for touch devices/tablets
+    let touchStartY = 0;
+    let touchMoved = false;
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        touchStartY = e.touches[0].clientY;
+        touchMoved = false;
+      }
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        const currentY = e.touches[0].clientY;
+        const diff = touchStartY - currentY;
+        if (Math.abs(diff) > 8) {
+          e.preventDefault();
+          e.stopPropagation();
+          touchMoved = true;
+        }
+      }
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      if (touchMoved && e.changedTouches.length === 1) {
+        const currentY = e.changedTouches[0].clientY;
+        const diff = touchStartY - currentY;
+        if (Math.abs(diff) > 25) {
+          moveToIndex(activeIndexRef.current + (diff > 0 ? 1 : -1));
+        }
+      }
+    };
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchmove', onTouchMove, { passive: false });
+    el.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener('wheel', onWheel);
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
+      el.removeEventListener('touchend', onTouchEnd);
+      if (resetTimer) clearTimeout(resetTimer);
+    };
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -129,7 +205,13 @@ export function CtaBand({ spacing = 'home' }: CtaBandProps) {
         <p className="CtaBand-module__4ELZEW__label" data-node-id="1:380" id="cta-band-label">
           I need
         </p>
-        <div className="CtaBand-module__4ELZEW__reelWindow">
+        <div
+          ref={reelWindowRef}
+          className="CtaBand-module__4ELZEW__reelWindow"
+          data-lenis-prevent=""
+          data-lenis-prevent-wheel=""
+          data-lenis-prevent-touch=""
+        >
           <ul
             className="CtaBand-module__4ELZEW__reel"
             role="radiogroup"
@@ -137,7 +219,6 @@ export function CtaBand({ spacing = 'home' }: CtaBandProps) {
             aria-live="polite"
             tabIndex={0}
             onKeyDown={handleReelKeyDown}
-            onWheel={handleReelWheel}
             onTransitionEnd={handleReelTransitionEnd}
             style={
               {

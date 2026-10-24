@@ -121,7 +121,7 @@ export function Statement() {
       ref={sectionRef}
       data-node-id="1:130"
     >
-      <ScrollRibbon figure="statement" />
+      <ScrollRibbon figure="form" stage="full" avoid="soft" start="top 85%" end="+=150%" />
       <h2 className="sr-only">
         We design and build websites, brand systems, and digital products that work as
         hard as they look. Whether you&apos;re launching a product, rebuilding a brand, or
