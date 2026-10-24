@@ -148,7 +148,7 @@ export default function HomePage() {
  */
 function renderSplitWord(word: string) {
   return (
-    <div
+    <span
       aria-hidden="true"
       style={{
         position: 'relative',
@@ -156,7 +156,7 @@ function renderSplitWord(word: string) {
       }}
     >
       {word.split('').map((char, cIdx) => (
-        <div
+        <span
           key={cIdx}
           data-swap-char=""
           aria-hidden="true"
@@ -168,7 +168,7 @@ function renderSplitWord(word: string) {
             cursor: 'default',
           }}
         >
-          <div
+          <span
             data-split-char=""
             data-swap-inner=""
             aria-hidden="true"
@@ -178,9 +178,9 @@ function renderSplitWord(word: string) {
             }}
           >
             {char}
-          </div>
-        </div>
+          </span>
+        </span>
       ))}
-    </div>
+    </span>
   );
 }

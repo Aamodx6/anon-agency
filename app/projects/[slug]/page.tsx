@@ -8,8 +8,17 @@ import { PROJECTS } from '@/data/projects';
 
 export const dynamicParams = false;
 
+const PROJECT_ALIASES: Record<string, string> = {
+  'solvo': 'frame',
+  'better-sleep': 'portfolio-ventures',
+};
+
 export function generateStaticParams() {
-  return PROJECTS.map(p => ({ slug: p.slug }));
+  const base = PROJECTS.map(p => ({ slug: p.slug }));
+  Object.keys(PROJECT_ALIASES).forEach(alias => {
+    base.push({ slug: alias });
+  });
+  return base;
 }
 
 export default async function ProjectDetailPage({
@@ -18,7 +27,8 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const projectIndex = PROJECTS.findIndex(p => p.slug === slug);
+  const targetSlug = PROJECT_ALIASES[slug] || slug;
+  const projectIndex = PROJECTS.findIndex(p => p.slug === targetSlug);
   if (projectIndex === -1) {
     notFound();
   }
@@ -77,48 +87,50 @@ export default async function ProjectDetailPage({
         </div>
 
         {/* Gallery Screens */}
-        <section
-          className="CaseGallery-module__TMT3wW__section"
-          aria-label="Project screens"
-          aria-describedby="case-summary"
-        >
-          <ol className="CaseGallery-module__TMT3wW__track">
-            {project.images.map((img, idx) => (
-              <li
-                key={idx}
-                className="CaseGallery-module__TMT3wW__slide"
-                data-slide={idx}
-                data-kind="media"
-              >
-                <div className="CaseGallery-module__TMT3wW__mediaRow" data-layout="full">
-                  <div className="CaseGallery-module__TMT3wW__mediaSlot">
-                    <div
-                      className="CaseMedia-module__eCldSG__frame"
-                      style={{ aspectRatio: '1.7811', position: 'relative' }}
-                    >
-                      <img
-                        alt={img.alt || `${project.title} screen ${idx + 1}`}
-                        loading="lazy"
-                        className="CaseImage-module__P9a4vW__image CaseImage-module__P9a4vW__fill"
-                        style={{
-                          position: 'absolute',
-                          height: '100%',
-                          width: '100%',
-                          left: 0,
-                          top: 0,
-                          right: 0,
-                          bottom: 0,
-                          objectFit: 'cover'
-                        }}
-                        src={img.src}
-                      />
+        {project.images && project.images.length > 0 && (
+          <section
+            className="CaseGallery-module__TMT3wW__section"
+            aria-label="Project screens"
+            aria-describedby="case-summary"
+          >
+            <ol className="CaseGallery-module__TMT3wW__track">
+              {project.images.map((img, idx) => (
+                <li
+                  key={idx}
+                  className="CaseGallery-module__TMT3wW__slide"
+                  data-slide={idx}
+                  data-kind="media"
+                >
+                  <div className="CaseGallery-module__TMT3wW__mediaRow" data-layout="full">
+                    <div className="CaseGallery-module__TMT3wW__mediaSlot">
+                      <div
+                        className="CaseMedia-module__eCldSG__frame"
+                        style={{ aspectRatio: '1.7811', position: 'relative' }}
+                      >
+                        <img
+                          alt={img.alt || `${project.title} screen ${idx + 1}`}
+                          loading="lazy"
+                          className="CaseImage-module__P9a4vW__image CaseImage-module__P9a4vW__fill"
+                          style={{
+                            position: 'absolute',
+                            height: '100%',
+                            width: '100%',
+                            left: 0,
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            objectFit: 'cover'
+                          }}
+                          src={img.src}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
 
         {/* Next Case Section */}
         {nextProject && (

@@ -130,6 +130,7 @@ export function Statement() {
       <div className="Statement-module__6Nrrla__stack" aria-hidden="true">
         <div
           ref={text0Ref}
+          role="paragraph"
           className="Statement-module__6Nrrla__text"
           data-node-id="1:134"
           aria-label="We design and build websites, brand systems, and digital products that work as hard as they look."
@@ -154,6 +155,7 @@ export function Statement() {
         </div>
         <div
           ref={text1Ref}
+          role="paragraph"
           className="Statement-module__6Nrrla__text"
           data-node-id="1:134"
           aria-label="Whether you're launching a product, rebuilding a brand, or replacing a tired site, one team takes it from sketch to live build."

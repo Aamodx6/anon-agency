@@ -23,9 +23,9 @@ const FEATURED_CASES = [
     parallax: 14,
   },
   {
-    slug: 'solvo',
-    title: 'Solvo',
-    discipline: 'Development',
+    slug: 'frame',
+    title: 'Frame',
+    discipline: 'Development & Web design',
     baseImg:
       'https://cdn.sanity.io/images/pka0c0l0/production/7f9817871110af85ee68826e2c402c8534b4cc03-1440x1698.png',
     hoverImg:
@@ -35,13 +35,13 @@ const FEATURED_CASES = [
     parallax: -10,
   },
   {
-    slug: 'better-sleep',
-    title: 'Better Sleep',
-    discipline: 'Development',
+    slug: 'portfolio-ventures',
+    title: 'Portfolio Ventures',
+    discipline: 'Web design & Development',
     baseImg:
-      'https://cdn.sanity.io/images/pka0c0l0/production/87e8346123497a9f82637a7833215286d9ee76ca-1440x1698.png',
+      'https://cdn.sanity.io/images/pka0c0l0/production/d542e0740df5e6200eb1b958674f0bc141b83237-1440x1698.png',
     hoverImg:
-      'https://cdn.sanity.io/images/pka0c0l0/production/ff95573ee16b49298dfcefd5bf3ee79bf39db7cb-2400x1306.png',
+      'https://cdn.sanity.io/images/pka0c0l0/production/513093ecae0df5f3582a328ade77575913405d26-2400x1306.png',
     x: '15.3472vw',
     y: '56.3194vw',
     parallax: 20,
@@ -51,9 +51,9 @@ const FEATURED_CASES = [
     title: 'Manypixels',
     discipline: 'Development',
     baseImg:
-      'https://cdn.sanity.io/images/pka0c0l0/production/04113e313c0ebc1682f6f4faea123ecf5fbe183c-1440x1698.png',
+      'https://cdn.sanity.io/images/pka0c0l0/production/73a5abc6bbeacc8a8380ce43b2fa889b256ebde6-1080x1320.jpg',
     hoverImg:
-      'https://cdn.sanity.io/images/pka0c0l0/production/b2ca12534f311df90e3d2319c5c2fc93297a7d45-2400x1306.png',
+      'https://cdn.sanity.io/images/pka0c0l0/production/fdd04734314f16dcd5c06b4d002a64b81d93d18e-1080x1320.jpg',
     x: '57.0833vw',
     y: '85.9028vw',
     parallax: -16,
