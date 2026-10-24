@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { gsap } from 'gsap';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { CtaBand } from '@/components/CtaBand';
@@ -30,6 +31,7 @@ export default function HomePage() {
 
   const heroRef = useRef<HTMLElement>(null);
   const loaderRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     // 1. Counter counts up from 0 to 100 in 600ms
@@ -87,6 +89,56 @@ export default function HomePage() {
     requestAnimationFrame(updateCounter);
   }, []);
 
+  // Signature pointer-directional letter swap animation on hover
+  useEffect(() => {
+    const headline = headlineRef.current;
+    if (!headline || introState !== 'done') return;
+
+    let lastX = 0;
+    let activeChar: HTMLElement | null = null;
+
+    const onPointerMove = (e: PointerEvent) => {
+      const dir = e.clientX >= lastX ? 1 : -1;
+      lastX = e.clientX;
+
+      const target = document
+        .elementFromPoint(e.clientX, e.clientY)
+        ?.closest<HTMLElement>('[data-swap-char]');
+      if (!target || target === activeChar) return;
+      activeChar = target;
+
+      const inner = target.querySelector<HTMLElement>('[data-swap-inner]') || target;
+      gsap.killTweensOf(inner);
+      gsap
+        .timeline()
+        .to(inner, {
+          xPercent: 100 * dir,
+          duration: 0.16,
+          ease: 'power2.in',
+        })
+        .set(inner, {
+          xPercent: -100 * dir,
+        })
+        .to(inner, {
+          xPercent: 0,
+          duration: 0.45,
+          ease: 'back.out(1.6)',
+        });
+    };
+
+    const onPointerLeave = () => {
+      activeChar = null;
+    };
+
+    headline.addEventListener('pointermove', onPointerMove);
+    headline.addEventListener('pointerleave', onPointerLeave);
+
+    return () => {
+      headline.removeEventListener('pointermove', onPointerMove);
+      headline.removeEventListener('pointerleave', onPointerLeave);
+    };
+  }, [introState]);
+
   return (
     <main id="main">
       {/* 1. HERO SECTION */}
@@ -129,6 +181,7 @@ export default function HomePage() {
             </div>
 
             <h1
+              ref={headlineRef}
               className="Hero-module__KTD73a__headline"
               aria-label="We build websites people remember."
               data-split-heading="true"
@@ -238,7 +291,7 @@ export default function HomePage() {
 }
 
 /**
- * Split word into individual animated letter slots with clipping and staggered entrance
+ * Split word into individual animated letter slots with clipping, staggered entrance, and magnetic directional swap
  */
 function renderSplitWord(word: string, isDone: boolean, startDelayIndex: number) {
   return (
@@ -257,15 +310,18 @@ function renderSplitWord(word: string, isDone: boolean, startDelayIndex: number)
         return (
           <div
             key={cIdx}
+            data-swap-char=""
             aria-hidden="true"
             style={{
               position: 'relative',
               display: 'inline-block',
               overflow: 'clip',
               verticalAlign: 'top',
+              cursor: 'default',
             }}
           >
             <div
+              data-swap-inner=""
               aria-hidden="true"
               style={{
                 position: 'relative',
@@ -273,15 +329,6 @@ function renderSplitWord(word: string, isDone: boolean, startDelayIndex: number)
                 transition: `transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) ${delayMs}ms, opacity 0.5s ease ${delayMs}ms`,
                 transform: isDone ? 'translate(0px, 0px)' : `translate(${xOffset}, 0%)`,
                 opacity: isDone ? 1 : 0,
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget;
-                el.style.transform = 'translateY(-14%) rotate(5deg)';
-                el.style.color = 'var(--c-ink, #161d25)';
-                setTimeout(() => {
-                  el.style.transform = 'translate(0px, 0px) rotate(0deg)';
-                  el.style.color = '';
-                }, 300);
               }}
             >
               {char}
