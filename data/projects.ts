@@ -15,6 +15,40 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+  "slug": "condor",
+  "title": "Condor",
+  "intro": "High-performance digital presence and booking experience for private aviation platform Condor.",
+  "services": "Web design · Full-stack development · Motion",
+  "industry": "Aviation & Luxury Travel",
+  "year": "2024",
+  "country": "Switzerland",
+  "siteUrl": "https://condor.aero/",
+  "siteLabel": "www.condor.aero",
+  "images": [
+    {
+      "src": "https://cdn.sanity.io/images/pka0c0l0/production/29e627e935328b317c488a28c3e8567fe673e2ee-2800x1572.jpg",
+      "alt": "Condor hero desktop view"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/pka0c0l0/production/e40e6ea0080cccfbe6767e2164f3ffc0d44a7d3c-2072x1552.jpg",
+      "alt": "Condor fleet interface"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/pka0c0l0/production/cf8452c4ba42d81f32e1a88dbec5dffbac0b1ac5-1453x1935.jpg",
+      "alt": "Condor mobile booking flow"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/pka0c0l0/production/25d60d413463e2ef832deb916bd90e548b3bf33b-1453x1935.jpg",
+      "alt": "Condor flight route selection"
+    },
+    {
+      "src": "https://cdn.sanity.io/images/pka0c0l0/production/7c986ee06c67224d06856e14eef0b5364219809b-2072x1552.jpg",
+      "alt": "Condor VIP concierge dashboard"
+    }
+  ],
+  "nextSlug": "cortland"
+},
+  {
     "slug": "aimplify",
     "title": "Aimplify",
     "intro": "",

@@ -8,8 +8,17 @@ import { PROJECTS } from '@/data/projects';
 
 export const dynamicParams = false;
 
+const PROJECT_ALIASES: Record<string, string> = {
+  'solvo': 'frame',
+  'better-sleep': 'portfolio-ventures',
+};
+
 export function generateStaticParams() {
-  return PROJECTS.map(p => ({ slug: p.slug }));
+  const base = PROJECTS.map(p => ({ slug: p.slug }));
+  Object.keys(PROJECT_ALIASES).forEach(alias => {
+    base.push({ slug: alias });
+  });
+  return base;
 }
 
 export default async function ProjectDetailPage({
@@ -18,7 +27,8 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const projectIndex = PROJECTS.findIndex(p => p.slug === slug);
+  const targetSlug = PROJECT_ALIASES[slug] || slug;
+  const projectIndex = PROJECTS.findIndex(p => p.slug === targetSlug);
   if (projectIndex === -1) {
     notFound();
   }
