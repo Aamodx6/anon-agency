@@ -51,9 +51,9 @@ const FEATURED_CASES = [
     title: 'Manypixels',
     discipline: 'Development',
     baseImg:
-      'https://cdn.sanity.io/images/pka0c0l0/production/04113e313c0ebc1682f6f4faea123ecf5fbe183c-1440x1698.png',
+      'https://cdn.sanity.io/images/pka0c0l0/production/73a5abc6bbeacc8a8380ce43b2fa889b256ebde6-1080x1320.jpg',
     hoverImg:
-      'https://cdn.sanity.io/images/pka0c0l0/production/b2ca12534f311df90e3d2319c5c2fc93297a7d45-2400x1306.png',
+      'https://cdn.sanity.io/images/pka0c0l0/production/fdd04734314f16dcd5c06b4d002a64b81d93d18e-1080x1320.jpg',
     x: '57.0833vw',
     y: '85.9028vw',
     parallax: -16,

@@ -34,7 +34,7 @@ export function initHeroCoins({
   renderer.setSize(width, height);
   renderer.setPixelRatio(clampDPR(2));
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.15;
   renderer.domElement.style.position = 'absolute';
@@ -368,8 +368,8 @@ export function initHeroCoins({
       faceMat.dispose();
       rimMat.dispose();
       shadowMat.dispose();
-      if (renderer.domElement.parentElement) {
-        renderer.domElement.parentElement.removeChild(renderer.domElement.parentElement);
+      if (renderer.domElement) {
+        renderer.domElement.remove();
       }
     },
     toss() {
