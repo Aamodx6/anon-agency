@@ -10,6 +10,7 @@ import { ScrollRibbon } from '@/components/ScrollRibbon';
 import { BandScribble } from '@/components/BandScribble';
 import { GooeyThumb } from '@/components/GooeyThumb';
 import { HeroCoins } from '@/components/HeroCoins';
+import { Statement } from '@/components/Statement';
 
 export default function HomePage() {
   const [counter, setCounter] = useState(0);
@@ -194,28 +195,7 @@ export default function HomePage() {
       </div>
 
       {/* 2. STATEMENT SECTION */}
-      <section
-        className="Statement-module__6Nrrla__statement"
-        id="about"
-        data-node-id="1:130"
-      >
-        <ScrollRibbon figure="statement" />
-        <h2 className="sr-only">
-          We design and build websites, brand systems, and digital products that work as
-          hard as they look. Whether you&apos;re launching a product, rebuilding a brand, or
-          replacing a tired site, one team takes it from sketch to live build.
-        </h2>
-        <div className="Statement-module__6Nrrla__stack" aria-hidden="true">
-          <p className="Statement-module__6Nrrla__text" data-node-id="1:134">
-            We design and build websites, brand systems, and digital products that work as
-            hard as they look.
-          </p>
-          <p className="Statement-module__6Nrrla__text" data-node-id="1:134">
-            Whether you&apos;re launching a product, rebuilding a brand, or replacing a tired
-            site, one team takes it from sketch to live build.
-          </p>
-        </div>
-      </section>
+      <Statement />
 
       {/* 3. CASEGRID SECTION */}
       <section
