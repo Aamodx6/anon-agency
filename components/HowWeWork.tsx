@@ -3,7 +3,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollRibbon } from '@/components/ScrollRibbon';
+import { ARCH_RIBBONS } from '@/data/howWeWorkRibbons';
 import { registerGsap, prefersReducedMotion } from '@/src/animations/tokens';
 
 if (typeof window !== 'undefined') {
@@ -25,31 +25,59 @@ const DEFAULT_STEPS: ProcessStep[] = [
   {
     number: '01',
     title: 'Discovery call',
-    body: '30 free minutes to scope your goals, system architecture, and timeline.',
+    body: '30 free minutes to scope your goals and timeline.',
   },
   {
     number: '02',
-    title: 'Architecture & Design',
-    body: 'System blueprints, wireframes, data flows, and interactive prototypes.',
+    title: 'Design',
+    body: 'Concepts, wireframes and a design that tells your story.',
   },
   {
     number: '03',
-    title: 'Build & Integration',
-    body: 'Production code, API integrations, agent pipelines, test coverage, and responsive polish.',
+    title: 'Build',
+    body: 'Webflow build with animations, CMS and responsive polish.',
   },
   {
     number: '04',
-    title: 'Launch & Scaling',
-    body: 'Go-live, cloud configuration, CI/CD, team handover, and ongoing monitoring.',
+    title: 'Launch',
+    body: 'Go-live, training and support when you need it.',
   },
 ];
 
-// Fanned coordinates calibrated so all 4 cards overlap and stay comfortably inside the container boundaries
-const CARD_TIERS = [
-  { rotate: -4.82, xPercent: -86, y: 22, zIndex: 1 },
-  { rotate: -0.7, xPercent: -28, y: 0, zIndex: 4 },
-  { rotate: 2.8, xPercent: 28, y: 26, zIndex: 3 },
-  { rotate: 6.2, xPercent: 86, y: 14, zIndex: 2 },
+// Exact Awake card transform tiers calibrated to fit within container boundaries
+const CARD_CONFIG = [
+  {
+    number: '01',
+    xPercent: -126,
+    y: 28,
+    rotate: -4.82,
+    bg: '#fafafa',
+    zIndex: 1,
+  },
+  {
+    number: '02',
+    xPercent: -42,
+    y: 0,
+    rotate: -0.7,
+    bg: '#f1f1f3',
+    zIndex: 4,
+  },
+  {
+    number: '03',
+    xPercent: 42,
+    y: 44,
+    rotate: 3.78,
+    bg: '#e8e9eb',
+    zIndex: 3,
+  },
+  {
+    number: '04',
+    xPercent: 126,
+    y: 16,
+    rotate: 7.83,
+    bg: '#dbdcde',
+    zIndex: 2,
+  },
 ];
 
 export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: HowWeWorkProps) {
@@ -70,54 +98,60 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
 
     const mm = gsap.matchMedia();
 
-    // Desktop: Smooth fan out from center stack as section enters view
+    // Desktop: Pin section and smoothly fan out cards as user scrolls through the 1600px range
     mm.add('(min-width: 1024px)', () => {
-      // Calculate responsive scaling so cards never overflow on any viewport
-      const containerW = section.clientWidth || 1200;
-      const cardW = cards[0]?.offsetWidth || 250;
-      const totalSpan = cardW * 2.72; // span from -86% to +86%
-      const maxAvailable = containerW - 120;
-      const scaleFactor = Math.min(1, maxAvailable / Math.max(totalSpan, 1));
-
       // Initial state: cards start in neat center stack
       cards.forEach((card, idx) => {
+        const cfg = CARD_CONFIG[idx % CARD_CONFIG.length];
         gsap.set(card, {
           xPercent: 0,
           y: idx === 1 ? 0 : 32,
           rotate: 0,
-          opacity: idx === 1 ? 1 : 0.2,
-          scale: 0.94,
+          opacity: 1,
+          scale: 0.96,
         });
         if (items[idx]) {
-          items[idx].style.zIndex = String(CARD_TIERS[idx]?.zIndex || idx + 1);
+          items[idx].style.zIndex = String(cfg?.zIndex || idx + 1);
         }
       });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top 75%',
-          end: 'top 20%',
-          scrub: 0.7,
+          pin: true,
+          start: 'top top',
+          end: '+=1600',
+          scrub: 0.8,
+          anticipatePin: 1,
           invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            cards.forEach((_, idx) => {
+              const threshold = 0.2 + idx * 0.18;
+              if (self.progress >= threshold) {
+                items[idx]?.setAttribute('data-landed', '');
+              } else {
+                items[idx]?.removeAttribute('data-landed');
+              }
+            });
+          },
         },
       });
 
-      // Fan out cards into their exact resting positions inside the container
+      // Fan out cards sequentially into their resting positions
       cards.forEach((card, idx) => {
-        const tier = CARD_TIERS[idx % CARD_TIERS.length];
+        const cfg = CARD_CONFIG[idx % CARD_CONFIG.length];
         tl.to(
           card,
           {
-            xPercent: tier.xPercent * scaleFactor,
-            y: tier.y,
-            rotate: tier.rotate,
+            xPercent: cfg.xPercent,
+            y: cfg.y,
+            rotate: cfg.rotate,
             opacity: 1,
             scale: 1,
             duration: 1,
             ease: 'power2.out',
           },
-          idx * 0.15
+          idx * 0.22
         );
       });
 
@@ -125,14 +159,14 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
       const cleanups: (() => void)[] = [];
       cards.forEach((card, idx) => {
         const item = items[idx];
-        const tier = CARD_TIERS[idx % CARD_TIERS.length];
+        const cfg = CARD_CONFIG[idx % CARD_CONFIG.length];
 
         const onEnter = () => {
           gsap.to(card, {
-            y: tier.y - 16,
+            y: cfg.y - 18,
             scale: 1.03,
-            rotate: tier.rotate * 0.75,
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+            rotate: cfg.rotate * 0.75,
+            boxShadow: '0 24px 48px rgba(0, 0, 0, 0.45)',
             duration: 0.3,
             ease: 'power2.out',
             overwrite: 'auto',
@@ -142,15 +176,15 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
 
         const onLeave = () => {
           gsap.to(card, {
-            y: tier.y,
+            y: cfg.y,
             scale: 1,
-            rotate: tier.rotate,
+            rotate: cfg.rotate,
             boxShadow: 'none',
             duration: 0.35,
             ease: 'power2.out',
             overwrite: 'auto',
           });
-          if (item) item.style.zIndex = String(tier.zIndex);
+          if (item) item.style.zIndex = String(cfg.zIndex);
         };
 
         card.addEventListener('mouseenter', onEnter);
@@ -169,7 +203,7 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
       };
     });
 
-    // Tablet & Mobile
+    // Tablet & Mobile: sequential entrance without pinning
     mm.add('(max-width: 1023px)', () => {
       cards.forEach((card, idx) => {
         const dir = idx % 2 === 0 ? -1 : 1;
@@ -213,34 +247,57 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
     >
       <h2 className="HowWeWork-module__kq1Iga__heading">{heading}</h2>
       <ol className="HowWeWork-module__kq1Iga__list">
-        {steps.map((step, index) => (
-          <li
-            key={step.number}
-            className="HowWeWork-module__kq1Iga__item"
-            ref={(el) => {
-              itemsRef.current[index] = el;
-            }}
-          >
-            <div className="HowWeWork-module__kq1Iga__dragLayer">
+        {steps.map((step, index) => {
+          const cfg = CARD_CONFIG[index % CARD_CONFIG.length];
+          return (
+            <li
+              key={step.number}
+              className="HowWeWork-module__kq1Iga__item"
+              ref={(el) => {
+                itemsRef.current[index] = el;
+              }}
+              style={{
+                pointerEvents: 'none',
+                zIndex: cfg.zIndex,
+              }}
+            >
               <div
-                className="HowWeWork-module__kq1Iga__card"
-                data-stack-card=""
-                ref={(el) => {
-                  cardsRef.current[index] = el;
+                className="HowWeWork-module__kq1Iga__dragLayer"
+                style={{
+                  touchAction: 'none',
+                  cursor: 'grab',
+                  userSelect: 'none',
                 }}
               >
-                <ScrollRibbon
-                  stage={['brief', 'sketch', 'build', 'launch'][index % 4]}
-                />
-                <span className="HowWeWork-module__kq1Iga__number">{step.number}</span>
-                <div className="HowWeWork-module__kq1Iga__end">
-                  <h3 className="HowWeWork-module__kq1Iga__title">{step.title}</h3>
-                  <p className="HowWeWork-module__kq1Iga__body">{step.body}</p>
+                <div
+                  className="HowWeWork-module__kq1Iga__card"
+                  data-stack-card=""
+                  ref={(el) => {
+                    cardsRef.current[index] = el;
+                  }}
+                  style={{
+                    backgroundColor: cfg.bg,
+                    pointerEvents: 'auto',
+                    touchAction: 'none',
+                    opacity: 1,
+                  }}
+                >
+                  <div
+                    className="HowWeWork-module__kq1Iga__ribbonHost"
+                    dangerouslySetInnerHTML={{
+                      __html: ARCH_RIBBONS[index % ARCH_RIBBONS.length] || '',
+                    }}
+                  />
+                  <span className="HowWeWork-module__kq1Iga__number">{step.number}</span>
+                  <div className="HowWeWork-module__kq1Iga__end">
+                    <h3 className="HowWeWork-module__kq1Iga__title">{step.title}</h3>
+                    <p className="HowWeWork-module__kq1Iga__body">{step.body}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ol>
     </section>
   );
