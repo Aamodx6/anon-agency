@@ -47,8 +47,8 @@ export const SERVICES: Service[] = [
     number: '01',
     tabLabel: 'Web & Mobile',
     title: 'Web & Mobile Development',
-    heroIntro: 'From responsive WebGL web experiences and bespoke Next.js platforms to native-feel mobile applications, we engineer high-performance digital products built to stand out and scale effortlessly.',
-    summary: 'Custom web platforms, mobile apps, responsive design systems, and WebGL animations built with modern tech stacks.',
+    heroIntro: 'We build responsive websites, modern web applications, and high-performance mobile apps tailored to your business needs. From seamless user experiences to scalable digital platforms, we turn ideas into powerful products.',
+    summary: 'We build responsive websites, modern web applications, and high-performance mobile apps tailored to your business needs. From seamless user experiences to scalable digital platforms, we turn ideas into powerful products.',
     leftCase: {
       slug: 'frame',
       title: 'Frame',
@@ -112,8 +112,8 @@ export const SERVICES: Service[] = [
     number: '02',
     tabLabel: 'Custom Software',
     title: 'Custom Software & System Integration',
-    heroIntro: 'We architect bespoke software systems, microservices, and unified API ecosystems that eliminate operational silos and connect disparate business infrastructure into a cohesive engine.',
-    summary: 'Tailored enterprise web applications, legacy modernization, microservices, and multi-system API synchronizations.',
+    heroIntro: 'We develop custom software solutions, APIs, and integrated systems that streamline operations and connect your business tools. Our solutions are designed to improve efficiency, simplify workflows, and scale with your growth.',
+    summary: 'We develop custom software solutions, APIs, and integrated systems that streamline operations and connect your business tools. Our solutions are designed to improve efficiency, simplify workflows, and scale with your growth.',
     leftCase: {
       slug: 'portfolio-ventures',
       title: 'Portfolio Ventures',
@@ -177,8 +177,8 @@ export const SERVICES: Service[] = [
     number: '03',
     tabLabel: 'AI & Agents',
     title: 'AI Solutions & Intelligent Agents',
-    heroIntro: 'We design and deploy autonomous AI agents, retrieval-augmented generation (RAG) engines, and fine-tuned LLM workflows that transform raw enterprise data into actionable intelligence.',
-    summary: 'Autonomous multi-agent workflows, contextual RAG search, LLM fine-tuning, and production-grade AI guardrails.',
+    heroIntro: 'We build AI-powered agents, intelligent chatbots, and custom AI workflows that automate tasks, enhance decision-making, and transform business data into actionable insights.',
+    summary: 'We build AI-powered agents, intelligent chatbots, and custom AI workflows that automate tasks, enhance decision-making, and transform business data into actionable insights.',
     leftCase: {
       slug: 'aimplify',
       title: 'Aimplify',
@@ -242,8 +242,8 @@ export const SERVICES: Service[] = [
     number: '04',
     tabLabel: 'Automation',
     title: 'Business Process Automation',
-    heroIntro: 'Free your team from repetitive manual labor. We build intelligent workflow automations that orchestrate cross-departmental operations, accelerate approvals, and eliminate human error.',
-    summary: 'End-to-end workflow orchestration, intelligent document extraction, automated customer onboarding, and live SLA dashboards.',
+    heroIntro: 'We automate repetitive tasks and complex business workflows to save time, reduce manual errors, and improve productivity. From lead management to customer support, we help your business operate smarter and faster.',
+    summary: 'We automate repetitive tasks and complex business workflows to save time, reduce manual errors, and improve productivity. From lead management to customer support, we help your business operate smarter and faster.',
     leftCase: {
       slug: 'condor',
       title: 'Condor',

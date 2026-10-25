@@ -261,13 +261,19 @@
   line-height: 1.1;
 }
 
-.stack {
+.stackPosition {
   position: absolute;
   z-index: 4;
   top: 48%;
   left: 50%;
   width: min(620px, 46vw);
-  transform: translate(-50%, -50%) rotate(-3deg);
+  translate: -50% -50%;
+}
+
+.stack {
+  position: relative;
+  width: 100%;
+  transform: rotate(-3deg);
   transform-origin: center;
 }
 
@@ -432,7 +438,7 @@
     right: 28px;
   }
 
-  .stack {
+  .stackPosition {
     width: min(560px, 54vw);
   }
 }
@@ -496,7 +502,7 @@
     opacity: 0.48;
   }
 
-  .stack {
+  .stackPosition {
     top: 48%;
     width: min(440px, calc(100% - 44px));
   }

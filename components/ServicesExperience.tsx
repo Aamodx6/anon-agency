@@ -457,34 +457,36 @@ export function ServicesExperience() {
         ))}
       </div>
 
-      <div className={styles.stack} ref={stackRef}>
-        <div className={styles.stackFloat} ref={stackFloatRef}>
-          <div className={`${styles.stackBack} ${styles.stackBackOne}`} aria-hidden="true" />
-          <div className={`${styles.stackBack} ${styles.stackBackTwo}`} aria-hidden="true" />
-          {services.map((service, index) => {
-            const isCurrent = index === activeIndex;
-            const isOutgoing = index === outgoingIndex;
-            if (!isCurrent && !isOutgoing) return null;
-            return (
-              <article
-                key={service.slug}
-                className={`${styles.card} ${isCurrent ? styles.cardCurrent : styles.cardOutgoing}`}
-                data-service-card={index}
-                role="tabpanel"
-                id={`service-panel-${service.slug}`}
-                aria-labelledby={`service-tab-${service.slug}`}
-                aria-hidden={!isCurrent}
-              >
-                <div className={styles.cardCopy}>
-                  <h2>{service.title}</h2>
-                  <p>{service.copy}</p>
-                  <Link className={styles.moreButton} href={`/services/${service.slug}`}>
-                    more information
-                  </Link>
-                </div>
-              </article>
-            );
-          })}
+      <div className={styles.stackPosition}>
+        <div className={styles.stack} ref={stackRef}>
+          <div className={styles.stackFloat} ref={stackFloatRef}>
+            <div className={`${styles.stackBack} ${styles.stackBackOne}`} aria-hidden="true" />
+            <div className={`${styles.stackBack} ${styles.stackBackTwo}`} aria-hidden="true" />
+            {services.map((service, index) => {
+              const isCurrent = index === activeIndex;
+              const isOutgoing = index === outgoingIndex;
+              if (!isCurrent && !isOutgoing) return null;
+              return (
+                <article
+                  key={service.slug}
+                  className={`${styles.card} ${isCurrent ? styles.cardCurrent : styles.cardOutgoing}`}
+                  data-service-card={index}
+                  role="tabpanel"
+                  id={`service-panel-${service.slug}`}
+                  aria-labelledby={`service-tab-${service.slug}`}
+                  aria-hidden={!isCurrent}
+                >
+                  <div className={styles.cardCopy}>
+                    <h2>{service.title}</h2>
+                    <p>{service.copy}</p>
+                    <Link className={styles.moreButton} href={`/services/${service.slug}`}>
+                      more information
+                    </Link>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
 
