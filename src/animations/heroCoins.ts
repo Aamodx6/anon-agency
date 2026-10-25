@@ -47,9 +47,6 @@ interface LetterInfo {
   element: HTMLElement;
   slotElement: HTMLElement;
   home: { x: number; y: number };
-  wobbleX: number;
-  wobbleY: number;
-  hitUntil: number;
 }
 
 export function initHeroCoins({
@@ -203,9 +200,6 @@ export function initHeroCoins({
         element,
         slotElement,
         home,
-        wobbleX: 0,
-        wobbleY: 0,
-        hitUntil: 0,
       };
 
       letters.push(letterInfo);
@@ -423,15 +417,10 @@ export function initHeroCoins({
   const onCollision = (event: Matter.IEventCollision<Matter.Engine>) => {
     const now = performance.now();
     event.pairs.forEach(({ bodyA, bodyB }) => {
-      // 9a. Collision with hero letters
+      // 9a. Collision with hero letters (letters remain completely still, balls collide and bounce)
       const letter = letters.find((item) => item.body === bodyA || item.body === bodyB);
       const coin = coins.find((item) => item.body === bodyA || item.body === bodyB);
       if (letter && coin && !coin.isRemoving) {
-        if (letter.hitUntil <= now) {
-          letter.hitUntil = now + 90;
-          letter.wobbleY = 10;
-        }
-
         // When the ball strikes any letter from above, give it an energetic HOP toward next heading/floor
         if (coin.body.position.y <= letter.home.y + 16) {
           const hopVx = 3.2 + Math.random() * 2.6;
@@ -536,17 +525,7 @@ export function initHeroCoins({
       element.style.transform = `translate3d(${body.position.x - coinRadius}px, ${body.position.y - coinRadius}px, 0) rotate(${body.angle}rad)`;
     });
 
-    // Animate reactive letter wobble on the slotElement so it never collides with GSAP inner char transforms
-    letters.forEach((letter) => {
-      letter.wobbleY *= 0.85;
-      letter.wobbleX *= 0.85;
-
-      if (Math.abs(letter.wobbleY) > 0.1 || Math.abs(letter.wobbleX) > 0.1) {
-        letter.slotElement.style.transform = `translate3d(${letter.wobbleX}px, ${letter.wobbleY}px, 0)`;
-      } else if (letter.slotElement.style.transform) {
-        letter.slotElement.style.transform = '';
-      }
-    });
+    // Letters remain completely still (no wobble transform) so balls collide with them as rigid obstacles
   };
   animationId = requestAnimationFrame(animate);
 
