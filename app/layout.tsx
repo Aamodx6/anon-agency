@@ -4,6 +4,7 @@ import { MenuProvider } from '@/context/MenuContext';
 import { MenuOverlay } from '@/components/MenuOverlay';
 import { ConsentBanner } from '@/components/ConsentBanner';
 import { SmoothScroll } from '@/components/SmoothScroll';
+import { ProjectTransitionProvider } from '@/components/ProjectTransition';
 
 export const metadata: Metadata = {
   title: 'Anon — We build websites people remember.',
@@ -29,7 +30,7 @@ export default function RootLayout({
         <MenuProvider>
           <SmoothScroll />
           <MenuOverlay />
-          {children}
+          <ProjectTransitionProvider>{children}</ProjectTransitionProvider>
           <ConsentBanner />
         </MenuProvider>
       </body>

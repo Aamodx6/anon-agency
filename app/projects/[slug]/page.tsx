@@ -44,14 +44,21 @@ export default async function ProjectDetailPage({
         </div>
 
         <div className="page-module__y7JjWq__inner">
-          <h1 className="page-module__y7JjWq__title" data-node-id="2233:1401">
+          <h1
+            className="page-module__y7JjWq__title"
+            data-node-id="2233:1401"
+            data-project-transition-title=""
+          >
             {project.title}
             <span className="page-module__y7JjWq__dot">.</span>
           </h1>
 
           <p className="page-module__y7JjWq__intro">{project.intro}</p>
 
-          <dl className="page-module__y7JjWq__metaRow">
+          <dl
+            className="page-module__y7JjWq__metaRow"
+            data-project-transition-meta=""
+          >
             <div className="page-module__y7JjWq__metaItem">
               <dt className="page-module__y7JjWq__metaLabel">Services</dt>
               <dd className="page-module__y7JjWq__metaValue">{project.services}</dd>
@@ -105,6 +112,7 @@ export default async function ProjectDetailPage({
                     <div className="CaseGallery-module__TMT3wW__mediaSlot">
                       <div
                         className="CaseMedia-module__eCldSG__frame"
+                        data-project-transition-hero={idx === 0 ? '' : undefined}
                         style={{ aspectRatio: '1.7811', position: 'relative' }}
                       >
                         <img

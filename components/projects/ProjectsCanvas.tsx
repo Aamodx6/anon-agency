@@ -4,9 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { GRID_PROJECTS } from '@/data/projectsGrid';
+import { useProjectTransition } from '@/components/ProjectTransition';
 import styles from './ProjectsCanvas.module.css';
 
 const DIR = { drag: 1, wheel: 1, hover: 1, keys: 1 } as const;
+const INPUT_SPEED = { drag: 1, wheel: 0.3, hover: 0.08, keys: 1 };
 const COLUMNS = 6;
 const DESKTOP_CELL = 300;
 const DESKTOP_CARD = 180;
@@ -36,6 +38,7 @@ const modulo = (value: number, divisor: number) =>
 const smoothstep = (value: number) => value * value * (3 - 2 * value);
 
 export function ProjectsCanvas() {
+  const projectTransition = useProjectTransition();
   const viewportRef = useRef<HTMLElement>(null);
   const cardStates = useMemo<CardState[]>(
     () =>
@@ -71,6 +74,7 @@ export function ProjectsCanvas() {
   const viewTransition = useRef({ from: 0, to: 0, start: 0 });
   const zoom = useRef({ current: 1, target: 1 });
   const reducedMotion = useRef(false);
+  const transitioning = useRef(false);
   const [view, setView] = useState<'canvas' | 'grid'>('canvas');
   const [zoomLabel, setZoomLabel] = useState(100);
 
@@ -122,14 +126,17 @@ export function ProjectsCanvas() {
       event.preventDefault();
       if (viewProgress.current > 0.5) {
         const wheelX = event.deltaX || event.deltaY;
-        camera.current.targetX += wheelX * DIR.wheel;
-        pointerVelocity.current.x = wheelX * DIR.wheel * 0.12;
+        camera.current.targetX += wheelX * DIR.wheel * INPUT_SPEED.wheel;
+        pointerVelocity.current.x =
+          wheelX * DIR.wheel * INPUT_SPEED.wheel * 0.02;
       } else {
-        camera.current.targetX += event.deltaX * DIR.wheel;
-        camera.current.targetY += event.deltaY * DIR.wheel;
+        camera.current.targetX +=
+          event.deltaX * DIR.wheel * INPUT_SPEED.wheel;
+        camera.current.targetY +=
+          event.deltaY * DIR.wheel * INPUT_SPEED.wheel;
         pointerVelocity.current = {
-          x: event.deltaX * DIR.wheel * 0.12,
-          y: event.deltaY * DIR.wheel * 0.12,
+          x: event.deltaX * DIR.wheel * INPUT_SPEED.wheel * 0.02,
+          y: event.deltaY * DIR.wheel * INPUT_SPEED.wheel * 0.02,
         };
       }
     };
@@ -138,17 +145,28 @@ export function ProjectsCanvas() {
     const onPointerMove = (event: PointerEvent) => {
       if (!dragging.current || event.pointerId !== pointerId.current) {
         if (event.pointerType !== 'mouse') return;
+        const bounds = viewport.getBoundingClientRect();
+        const overViewport =
+          event.clientX >= bounds.left &&
+          event.clientX <= bounds.right &&
+          event.clientY >= bounds.top &&
+          event.clientY <= bounds.bottom;
+        const overInteractiveElement =
+          event.target instanceof Element &&
+          event.target.closest('[data-project-card], button');
+        if (!overViewport || overInteractiveElement) {
+          hoverLast.current = { x: event.clientX, y: event.clientY };
+          pointerVelocity.current = { x: 0, y: 0 };
+          return;
+        }
         const previous = hoverLast.current;
         hoverLast.current = { x: event.clientX, y: event.clientY };
         if (!previous) return;
         const dx = event.clientX - previous.x;
         const dy = event.clientY - previous.y;
-        camera.current.targetX += dx * DIR.hover;
-        camera.current.targetY += dy * DIR.hover;
-        pointerVelocity.current = {
-          x: dx * DIR.hover * 0.45,
-          y: dy * DIR.hover * 0.45,
-        };
+        camera.current.targetX += dx * DIR.hover * INPUT_SPEED.hover;
+        camera.current.targetY += dy * DIR.hover * INPUT_SPEED.hover;
+        pointerVelocity.current = { x: 0, y: 0 };
         return;
       }
       const dx = event.clientX - pointerLast.current.x;
@@ -170,10 +188,12 @@ export function ProjectsCanvas() {
         pointerVelocity.current.y = 0;
       }
       pointerVelocity.current.x =
-        pointerVelocity.current.x * 0.55 + dx * DIR.drag * 0.45;
+        pointerVelocity.current.x * 0.98 +
+        dx * DIR.drag * INPUT_SPEED.drag * 0.02;
       if (viewProgress.current <= 0.5) {
         pointerVelocity.current.y =
-          pointerVelocity.current.y * 0.55 + dy * DIR.drag * 0.45;
+          pointerVelocity.current.y * 0.98 +
+          dy * DIR.drag * INPUT_SPEED.drag * 0.02;
       }
     };
     const onPointerUp = (event: PointerEvent) => {
@@ -231,8 +251,8 @@ export function ProjectsCanvas() {
       const reduced = reducedMotion.current;
       const smoothing = reduced ? 0.25 : 0.08;
 
-      if (!dragging.current) {
-        const inertia = reduced ? 0.75 : 0.94;
+      if (!dragging.current && !transitioning.current) {
+        const inertia = reduced ? 0.75 : 0.88;
         camera.current.targetX += pointerVelocity.current.x * delta;
         if (viewProgress.current <= 0.5) {
           camera.current.targetY += pointerVelocity.current.y * delta;
@@ -420,7 +440,28 @@ export function ProjectsCanvas() {
           event.preventDefault();
           event.stopPropagation();
           moved.current = false;
+          return;
         }
+        const target =
+          event.target instanceof Element
+            ? event.target.closest<HTMLAnchorElement>(
+                'a[data-project-transition]'
+              )
+            : null;
+        const card = target?.closest<HTMLElement>('[data-project-card]');
+        const href = target?.getAttribute('href');
+        if (!card || !href) return;
+        event.preventDefault();
+        event.stopPropagation();
+        transitioning.current = true;
+        dragging.current = false;
+        pointerId.current = null;
+        pointerVelocity.current = { x: 0, y: 0 };
+        viewportRef.current?.setAttribute('data-transitioning', '');
+        if (viewportRef.current) {
+          viewportRef.current.style.pointerEvents = 'none';
+        }
+        projectTransition.start(card, href);
       }}
     >
       <div className={styles.cardLayer}>
@@ -440,6 +481,7 @@ export function ProjectsCanvas() {
           >
             <Link
               href={`/projects/${card.project.slug}`}
+              data-project-transition=""
               className={styles.link}
               aria-label={`${card.project.title}, ${card.project.discipline}`}
               aria-hidden={card.tileX !== 0 || card.tileY !== 0}
@@ -456,6 +498,7 @@ export function ProjectsCanvas() {
                 <span className={styles.image}>
                   <Image
                     src={card.project.baseImg}
+                    data-transition-src={card.project.baseImg}
                     alt={`${card.project.title}, ${card.project.discipline}`}
                     fill
                     sizes="(max-width: 700px) 132px, (max-width: 1100px) 156px, 180px"
@@ -464,6 +507,7 @@ export function ProjectsCanvas() {
                   />
                   <Image
                     src={card.project.hoverImg}
+                    data-transition-src={card.project.hoverImg}
                     alt=""
                     aria-hidden="true"
                     fill
