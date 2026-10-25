@@ -1,0 +1,230 @@
+.viewport {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  background: var(--c-grey-page, #f0f0ef);
+  cursor: grab;
+  touch-action: none;
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.viewport::before {
+  position: absolute;
+  z-index: 0;
+  inset: -44px;
+  content: "";
+  background-image: radial-gradient(#161d2517 1.5px, transparent 1.5px);
+  background-size: 2.75rem 2.75rem;
+  pointer-events: none;
+  transform: translate3d(var(--dots-x, 0px), var(--dots-y, 0px), 0);
+  will-change: transform;
+}
+
+.viewport[data-dragging] {
+  cursor: grabbing;
+}
+
+.cardLayer {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform-origin: center;
+  visibility: hidden;
+  pointer-events: auto;
+}
+
+.link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: inherit;
+}
+
+.content {
+  display: block;
+  transform-origin: center;
+}
+
+.card[data-enter] .content {
+  opacity: 0;
+  animation: contentEnter 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.image {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--aspect, 0.9);
+  overflow: hidden;
+  border-radius: var(--r-card, 0.75rem);
+  background: var(--c-grey-panel, #f1f1f3);
+}
+
+.image img {
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.hoverImage {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 9px;
+  padding: 0 2px;
+  font-family: var(--font-body, inherit);
+}
+
+.category {
+  color: var(--c-grey-text, #5d646b);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.title {
+  color: var(--c-ink, #161d25);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.05;
+  transition: color 250ms ease;
+}
+
+.link:hover .title,
+.link:focus-visible .title {
+  color: var(--c-red-text, #d90033);
+}
+
+.link:hover .hoverImage,
+.link:focus-visible .hoverImage {
+  opacity: 1;
+}
+
+.controls {
+  position: absolute;
+  z-index: 4;
+  right: var(--inset, 1.25rem);
+  bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+
+.zoomGroup,
+.viewGroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 92%);
+  box-shadow: 0 4px 18px rgb(22 29 37 / 10%);
+  backdrop-filter: blur(8px);
+}
+
+.control {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--c-ink, #161d25);
+  cursor: pointer;
+  font: inherit;
+  font-size: 17px;
+  line-height: 1;
+  opacity: 0.58;
+  transition: background 180ms ease, opacity 180ms ease;
+}
+
+.control:hover,
+.control[aria-pressed='true'] {
+  background: var(--c-grey-panel, #f1f1f3);
+  opacity: 1;
+}
+
+.control:focus-visible {
+  outline: 2px solid var(--c-red, #ff003d);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+.control svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+.zoomLabel {
+  min-width: 42px;
+  color: var(--c-grey-text, #5d646b);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+@keyframes contentEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 700px) {
+  .controls {
+    right: 50%;
+    bottom: 1.25rem;
+    transform: translateX(50%);
+  }
+
+  .control {
+    width: 32px;
+    height: 32px;
+  }
+
+  .category {
+    font-size: 9px;
+  }
+
+  .title {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    animation-duration: 1ms;
+    animation-delay: 0ms !important;
+  }
+
+  .content,
+  .hoverImage,
+  .title,
+  .control {
+    transition-duration: 1ms;
+  }
+}
