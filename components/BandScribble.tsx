@@ -1,65 +1,230 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
+import gsap from 'gsap';
+import { registerGsap, prefersReducedMotion } from '@/src/animations/tokens';
 
-interface BandScribbleProps {
+function splineD(points: { x: number; y: number }[]): string {
+  if (points.length < 2) return '';
+  let d = `M${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[i - 1] ?? points[i];
+    const p1 = points[i];
+    const p2 = points[i + 1];
+    const p3 = points[i + 2] ?? p2;
+    const cp1 = { x: p1.x + (p2.x - p0.x) / 6, y: p1.y + (p2.y - p0.y) / 6 };
+    const cp2 = { x: p2.x - (p3.x - p1.x) / 6, y: p2.y - (p3.y - p1.y) / 6 };
+    d += `C${cp1.x.toFixed(1)} ${cp1.y.toFixed(1)} ${cp2.x.toFixed(1)} ${cp2.y.toFixed(1)} ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
+  }
+  return d;
+}
+
+function loopAround(
+  cx: number,
+  cy: number,
+  rx: number,
+  ry: number,
+  startAngle: number,
+  dir = 1,
+  tiltDeg = -6
+) {
+  const points = [];
+  const tiltRad = (tiltDeg * Math.PI) / 180;
+  for (let i = 0; i <= 16; i++) {
+    const angle = startAngle + (i / 16) * dir * 1.1 * Math.PI * 2;
+    const scale = 1 + (i / 16) * 0.07;
+    const x = Math.cos(angle) * rx * scale;
+    const y = Math.sin(angle) * ry * scale;
+    points.push({
+      x: cx + x * Math.cos(tiltRad) - y * Math.sin(tiltRad),
+      y: cy + x * Math.sin(tiltRad) + y * Math.cos(tiltRad),
+    });
+  }
+  return points;
+}
+
+function generateScribblePoints(w: number, h: number) {
+  const rnd = Math.random;
+  const edgePoint = (edge: number) => {
+    const t = 0.15 + 0.7 * rnd();
+    if (edge === 0) return { x: t, y: -0.15 };
+    if (edge === 1) return { x: 1.15, y: t };
+    if (edge === 2) return { x: t, y: 1.15 };
+    return { x: -0.15, y: t };
+  };
+
+  const startEdge = Math.floor(4 * rnd());
+  const endEdge = (startEdge + 1 + Math.floor(3 * rnd())) % 4;
+  const points = [edgePoint(startEdge)];
+  const internalCount = 3 + Math.floor(2 * rnd());
+  const loopIdx = 1 + Math.floor(rnd() * (internalCount - 1));
+  let prev = points[0];
+
+  for (let i = 0; i < internalCount; i++) {
+    const pt = { x: 0.15 + 0.7 * rnd(), y: 0.15 + 0.7 * rnd() };
+    if (i === loopIdx) {
+      const radius = (0.2 + 0.1 * rnd()) * Math.min(w, h);
+      const angle = Math.atan2((prev.y - pt.y) * h, (prev.x - pt.x) * w);
+      const loop = loopAround(
+        0,
+        0,
+        radius,
+        radius * (0.8 + 0.3 * rnd()),
+        angle,
+        rnd() < 0.5 ? 1 : -1,
+        (rnd() - 0.5) * 16
+      );
+      points.push(...loop.map((p) => ({ x: pt.x + p.x / w, y: pt.y + p.y / h })));
+    } else {
+      points.push(pt);
+    }
+    prev = points[points.length - 1];
+  }
+  points.push(edgePoint(endEdge));
+  return points;
+}
+
+export interface BandScribbleProps {
+  mode?: 'beat' | 'scroll' | 'idle';
+  route?: (parent: HTMLElement) => { x: number; y: number }[];
+  durationMs?: number;
+  paused?: boolean;
   tone?: string;
+  width?: number;
+  start?: string;
+  end?: string;
   className?: string;
 }
 
-export function BandScribble({ tone = 'onInk', className = '' }: BandScribbleProps) {
-  const pathRef = useRef<SVGPathElement>(null);
+export function BandScribble({
+  mode = 'scroll',
+  route,
+  durationMs = 4000,
+  paused = false,
+  tone = 'pink',
+  width,
+  start = 'top 85%',
+  end = 'bottom 60%',
+  className = '',
+}: BandScribbleProps) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+  const animRef = useRef<Animation | null>(null);
 
-  useEffect(() => {
-    const path = pathRef.current;
+  useLayoutEffect(() => {
+    const anim = animRef.current;
+    if (anim && mode === 'beat') {
+      if (paused) {
+        anim.pause();
+      } else if (anim.playState === 'paused') {
+        anim.play();
+      }
+    }
+  }, [paused, mode]);
+
+  useLayoutEffect(() => {
     const svg = svgRef.current;
-    if (!path || !svg) return;
+    const path = pathRef.current;
+    const parent = svg?.parentElement;
+    if (!svg || !path || !parent) return;
 
-    const totalLen = 1000;
+    registerGsap();
+    const reduced = prefersReducedMotion();
+    const normPoints = generateScribblePoints(parent.clientWidth || 1, parent.clientHeight || 1);
 
-    const handleScroll = () => {
-      const rect = svg.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+    const updateView = () => {
+      const w = parent.clientWidth;
+      const h = parent.clientHeight;
+      if (!w || !h) return false;
 
-      const start = windowHeight * 0.85;
-      const end = -rect.height * 0.4;
-      const progress = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      path.style.strokeWidth = `${
+        width ??
+        (mode === 'beat'
+          ? Math.min(22, Math.max(10, 0.075 * Math.min(w, h)))
+          : Math.min(40, Math.max(16, (2.2 * window.innerWidth) / 100)))
+      }px`;
 
-      const drawn = progress * totalLen;
-      path.style.strokeDasharray = `${drawn}, 2000`;
-      path.style.strokeDashoffset = '0';
-      path.style.visibility = drawn > 5 ? 'visible' : 'hidden';
-      path.style.strokeWidth = '31.68px';
+      const pts =
+        mode === 'scroll' && route
+          ? route(parent)
+          : normPoints.map((p) => ({ x: p.x * w, y: p.y * h }));
+
+      path.setAttribute('d', splineD(pts));
+      return true;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    if (!updateView()) return;
+    const ro = new ResizeObserver(() => updateView());
+    ro.observe(parent);
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const setProgress = (drawn: number, offset = 0) => {
+      path.style.strokeDasharray = `${Math.max(0, drawn - offset)} 2000`;
+      path.style.strokeDashoffset = String(-offset);
+      path.style.visibility = drawn - offset > 0.5 ? '' : 'hidden';
+    };
+
+    if (reduced) {
+      setProgress(1000);
+      return () => ro.disconnect();
+    }
+
+    let cleanup = () => {};
+
+    if (mode === 'beat') {
+      setProgress(0);
+      path.style.visibility = '';
+      path.style.strokeDasharray = '1000 2000';
+      const anim = path.animate(
+        [{ strokeDashoffset: 1000 }, { strokeDashoffset: 0 }],
+        { duration: durationMs, easing: 'cubic-bezier(0.45, 0, 0.35, 1)', fill: 'forwards' }
+      );
+      animRef.current = anim;
+      if (paused) anim.pause();
+      cleanup = () => anim.cancel();
+    } else if (mode === 'scroll') {
+      const state = { drawn: 0 };
+      setProgress(0);
+      const tween = gsap.to(state, {
+        drawn: 1000,
+        ease: 'none',
+        onUpdate: () => setProgress(state.drawn),
+        scrollTrigger: {
+          trigger: parent,
+          start,
+          end,
+          scrub: 0.8,
+          onRefresh: () => updateView(),
+        },
+      });
+      cleanup = () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
+      document.fonts?.ready?.then(() => updateView());
+    }
+
+    return () => {
+      ro.disconnect();
+      cleanup();
+      animRef.current = null;
+    };
+  }, [mode, durationMs, tone, width, start, end, route, paused]);
 
   return (
     <svg
       ref={svgRef}
-      className={`BandScribble-module__QwOmAG__svg ${className}`}
+      className={`BandScribble-module__QwOmAG__svg ${className}`.trim()}
       data-tone={tone}
       aria-hidden="true"
       focusable="false"
       preserveAspectRatio="none"
-      viewBox="0 0 1400 581"
     >
       <path
         ref={pathRef}
         className="BandScribble-module__QwOmAG__path"
         pathLength={1000}
-        d="M1463.4 24.8C1401.5 29.2 1214.6 42.5 1092.0 51.4C969.4 60.3 756.0 60.9 728.0 78.0C700.0 95.1 924.0 128.7 924.0 154.0C924.0 179.3 728.0 204.7 728.0 230.0C728.0 255.3 924.0 280.7 924.0 306.0C924.0 331.3 798.0 359.8 728.0 382.0C658.0 404.2 602.0 423.9 504.0 439.0C406.0 454.1 202.3 470.5 140.2 472.4C78.0 474.3 135.5 456.7 131.2 450.4C127.0 444.0 121.1 438.1 114.9 434.2C108.7 430.3 101.1 427.7 94.0 427.0C86.9 426.3 79.1 427.4 72.4 430.1C65.8 432.8 59.1 437.5 54.1 443.1C49.2 448.7 44.9 456.2 42.6 463.6C40.2 471.1 39.2 480.0 39.9 488.0C40.5 496.0 43.0 504.7 46.6 511.7C50.2 518.8 55.7 525.6 61.7 530.4C67.6 535.2 75.1 538.9 82.3 540.6C89.5 542.2 97.7 542.2 104.8 540.3C111.9 538.5 119.2 534.5 124.9 529.5C130.6 524.5 135.8 517.4 139.0 510.1C142.3 502.8 144.3 493.9 144.4 485.6C144.6 477.4 143.1 468.2 140.1 460.5C137.1 452.8 128.9 443.0 126.7 439.5"
-        style={{
-          visibility: 'hidden',
-          strokeWidth: '31.68px',
-          strokeDasharray: '0, 2000',
-          strokeDashoffset: '0'
-        }}
+        style={{ visibility: 'hidden' }}
       />
     </svg>
   );

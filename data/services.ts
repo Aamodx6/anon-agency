@@ -366,6 +366,266 @@ export const SERVICES: Service[] = [
     ],
     deliverablesHtml: '',
     howWeWorkHtml: ''
+  },
+  {
+    slug: 'ux-ui-design',
+    number: '06',
+    tabLabel: 'UX/UI design',
+    title: 'UX/UI design',
+    heroIntro: 'Research, architecture, wireframes, and production-ready interfaces engineered with obsessive attention to user flow, clarity, and motion.',
+    summary: 'Stakeholder discovery, user research, wireframing, high-fidelity design systems, and developer-ready Figma libraries.',
+    leftCase: {
+      slug: 'rhinestone',
+      title: 'Rhinestone',
+      type: 'web3 infrastructure',
+      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/3054ee77e7a9f1d81a5c0ec55f51ff7c6e77e8a2-1440x1698.png',
+      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/114029f7089fbdd7a27bb8f42e0aed568ad5a8ba-1440x1698.png',
+      discipline: 'Integration'
+    },
+    rightCase: {
+      slug: 'mihailove',
+      title: 'Mihailove',
+      type: 'jewellery site',
+      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/9395fccaf2a0f50ac5e1f478ebd1be397ddb5268-1440x1698.png',
+      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/bc147e801b9e7a8d05883063a695fb6d9894fc8e-2400x1306.png',
+      discipline: 'Development'
+    },
+    featuredCase: {
+      slug: 'rhinestone',
+      title: 'Rhinestone',
+      discipline: 'Smart Account Infrastructure',
+      image: 'https://cdn.sanity.io/images/pka0c0l0/production/3054ee77e7a9f1d81a5c0ec55f51ff7c6e77e8a2-1440x1698.png',
+      alt: 'Rhinestone modular smart account interface'
+    },
+    deliverables: [
+      {
+        index: '01',
+        stepLabel: 'Stakeholder and user research',
+        cardTitle: 'Stakeholder and user research',
+        readBody: 'We talk to the people who run the product and the people who use it, and write down where the interface gets in the way.'
+      },
+      {
+        index: '02',
+        stepLabel: 'Information architecture',
+        cardTitle: 'Information architecture',
+        readBody: 'The map of the product: what lives where, what it is called, and the shortest route to the things people do daily.'
+      },
+      {
+        index: '03',
+        stepLabel: 'Wireframes and user flows',
+        cardTitle: 'Wireframes and user flows',
+        readBody: 'Every flow drawn end to end and clickable, so decisions happen on structure before they get expensive on visuals.'
+      },
+      {
+        index: '04',
+        stepLabel: 'High-fidelity UI design',
+        cardTitle: 'High-fidelity UI design',
+        readBody: 'The screens at full fidelity, with states, edge cases and motion notes, from the same designers who build our sites.'
+      },
+      {
+        index: '05',
+        stepLabel: 'Component library and handover',
+        cardTitle: 'Component library and handover',
+        readBody: 'A documented component library your developers can build from, so the next screen looks like the last one.'
+      }
+    ],
+    deliverablesHtml: '',
+    howWeWorkHtml: ''
+  },
+  {
+    slug: 'webflow-development',
+    number: '07',
+    tabLabel: 'Webflow development',
+    title: 'Webflow development',
+    heroIntro: 'Production-ready Webflow sites built cleanly with semantic classes, custom code where needed, and lightweight interactions that feel natural.',
+    summary: 'Custom design in Figma, bespoke Webflow builds with smooth micro-interactions, CMS architecture, and team training.',
+    leftCase: {
+      slug: 'frame',
+      title: 'Frame',
+      type: 'product site',
+      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/7f9817871110af85ee68826e2c402c8534b4cc03-1440x1698.png',
+      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/1c4e3567e9d6a865cd5e7cb5fc65379abc00acd5-2400x1306.png',
+      discipline: 'Development'
+    },
+    rightCase: {
+      slug: 'mihailove',
+      title: 'Mihailove',
+      type: 'jewellery site',
+      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/9395fccaf2a0f50ac5e1f478ebd1be397ddb5268-1440x1698.png',
+      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/bc147e801b9e7a8d05883063a695fb6d9894fc8e-2400x1306.png',
+      discipline: 'Development'
+    },
+    featuredCase: {
+      slug: 'mihailove',
+      title: 'Mihailove',
+      discipline: 'E-commerce & Web design',
+      image: 'https://cdn.sanity.io/images/pka0c0l0/production/caaeb8c6de41e353d94f7be63a8471827111eb1d-2073x1553.jpg',
+      alt: 'Mihailove digital experience showcase on laptop'
+    },
+    deliverables: [
+      {
+        index: '01',
+        stepLabel: 'Project discovery & strategy',
+        cardTitle: 'Project discovery & strategy',
+        readBody: 'One call, one document. What the site has to do, who it is for, and what done means, in writing within days.'
+      },
+      {
+        index: '02',
+        stepLabel: 'UX structure and wireframes',
+        cardTitle: 'UX structure and wireframes',
+        readBody: 'Structure first, then look. The page order, the story, and wireframes you can click through before any pixels arrive.'
+      },
+      {
+        index: '03',
+        stepLabel: 'Custom design in Figma',
+        cardTitle: 'Custom design in Figma',
+        readBody: "Every screen drawn for your content rather than a template's, with feedback rounds built into the timeline."
+      },
+      {
+        index: '04',
+        stepLabel: 'Webflow build with animations',
+        cardTitle: 'Webflow build with animations',
+        readBody: 'A pixel-perfect Webflow build with motion where it carries meaning. Tested on real devices before you see it.'
+      },
+      {
+        index: '05',
+        stepLabel: 'CMS setup and team training',
+        cardTitle: 'CMS setup and team training',
+        readBody: 'A CMS your team will actually use, wired so nothing needs a developer after launch, handed over with training.'
+      }
+    ],
+    deliverablesHtml: '',
+    howWeWorkHtml: ''
+  },
+  {
+    slug: 'branding',
+    number: '08',
+    tabLabel: 'Branding',
+    title: 'Branding',
+    heroIntro: 'Distinct visual identities that anchor your product, communicate value clearly, and hold together across every digital and print touchpoint.',
+    summary: 'Brand discovery workshops, core messaging, logos, typography, color palettes, and comprehensive brand guidelines.',
+    leftCase: {
+      slug: 'sotto',
+      title: 'Sotto',
+      type: 'hospitality',
+      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/9395fccaf2a0f50ac5e1f478ebd1be397ddb5268-1440x1698.png',
+      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/bc147e801b9e7a8d05883063a695fb6d9894fc8e-2400x1306.png',
+      discipline: 'Brand Design'
+    },
+    rightCase: {
+      slug: 'charlie-whiskey',
+      title: 'Charlie Whiskey',
+      type: 'spirits brand',
+      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/d542e0740df5e6200eb1b958674f0bc141b83237-1440x1698.png',
+      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/513093ecae0df5f3582a328ade77575913405d26-2400x1306.png',
+      discipline: 'Brand Design'
+    },
+    featuredCase: {
+      slug: 'sotto',
+      title: 'Sotto',
+      discipline: 'Visual Identity & Branding',
+      image: 'https://cdn.sanity.io/images/pka0c0l0/production/9395fccaf2a0f50ac5e1f478ebd1be397ddb5268-1440x1698.png',
+      alt: 'Sotto restaurant identity and packaging system'
+    },
+    deliverables: [
+      {
+        index: '01',
+        stepLabel: 'Brand discovery workshop',
+        cardTitle: 'Brand discovery workshop',
+        readBody: 'One structured session on where the company is going and what it should feel like. The brief writes itself from the answers.'
+      },
+      {
+        index: '02',
+        stepLabel: 'Positioning and messaging',
+        cardTitle: 'Positioning and messaging',
+        readBody: 'What you say, to whom, in which words. The line everything else hangs from.'
+      },
+      {
+        index: '03',
+        stepLabel: 'Logo and visual identity',
+        cardTitle: 'Logo and visual identity',
+        readBody: 'The marks, drawn for the screen first and presented in use on the real product.'
+      },
+      {
+        index: '04',
+        stepLabel: 'Type, colour and imagery system',
+        cardTitle: 'Type, colour and imagery system',
+        readBody: 'The system behind the look: typefaces, palette and imagery rules that keep every next asset on brand.'
+      },
+      {
+        index: '05',
+        stepLabel: 'Brand guidelines',
+        cardTitle: 'Brand guidelines',
+        readBody: 'One document with the whole identity in it, so anyone who touches the brand after us keeps it straight.'
+      }
+    ],
+    deliverablesHtml: '',
+    howWeWorkHtml: ''
+  },
+  {
+    slug: 'webflow-maintains-support',
+    number: '09',
+    tabLabel: 'Webflow maintains & support',
+    title: 'Webflow maintains & support',
+    heroIntro: 'Ongoing optimization, rapid feature updates, uptime monitoring, and priority technical support to keep your site fast, fresh, and reliable.',
+    summary: 'Pre-launch QA, domain handover, CMS training, monthly updates, and direct access to the designers and engineers who built your site.',
+    leftCase: {
+      slug: 'frame',
+      title: 'Frame',
+      type: 'product site',
+      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/7f9817871110af85ee68826e2c402c8534b4cc03-1440x1698.png',
+      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/1c4e3567e9d6a865cd5e7cb5fc65379abc00acd5-2400x1306.png',
+      discipline: 'Development'
+    },
+    rightCase: {
+      slug: 'sotto',
+      title: 'Sotto',
+      type: 'hospitality',
+      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/9395fccaf2a0f50ac5e1f478ebd1be397ddb5268-1440x1698.png',
+      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/bc147e801b9e7a8d05883063a695fb6d9894fc8e-2400x1306.png',
+      discipline: 'Brand Design'
+    },
+    featuredCase: {
+      slug: 'frame',
+      title: 'Frame',
+      discipline: 'Webflow Ongoing Operations',
+      image: 'https://cdn.sanity.io/images/pka0c0l0/production/7f9817871110af85ee68826e2c402c8534b4cc03-1440x1698.png',
+      alt: 'Frame platform ongoing performance monitoring'
+    },
+    deliverables: [
+      {
+        index: '01',
+        stepLabel: 'Pre-launch QA and performance pass',
+        cardTitle: 'Pre-launch QA and performance pass',
+        readBody: 'Every page tested on real devices and checked against Lighthouse before anyone else sees it.'
+      },
+      {
+        index: '02',
+        stepLabel: 'Go-live and DNS handover',
+        cardTitle: 'Go-live and DNS handover',
+        readBody: 'We ship it: domains, redirects, forms and analytics wired, with nothing left pointing at staging.'
+      },
+      {
+        index: '03',
+        stepLabel: 'CMS walkthrough and training',
+        cardTitle: 'CMS walkthrough and training',
+        readBody: 'A recorded walkthrough of your own CMS, so publishing does not depend on us.'
+      },
+      {
+        index: '04',
+        stepLabel: 'Monthly updates and monitoring',
+        cardTitle: 'Monthly updates and monitoring',
+        readBody: 'Pages, updates and experiments after launch. The site keeps earning its place.'
+      },
+      {
+        index: '05',
+        stepLabel: 'Priority support channel',
+        cardTitle: 'Priority support channel',
+        readBody: 'A direct line to the people who built the site, with a response time we actually keep.'
+      }
+    ],
+    deliverablesHtml: '',
+    howWeWorkHtml: ''
   }
 ];
 
@@ -473,9 +733,4 @@ SERVICES.forEach(s => {
 });
 
 // Legacy alias mapping so existing links never break
-export const SERVICE_ALIASES: Record<string, string> = {
-  'webflow-development': 'web-mobile-development',
-  'ux-ui-design': 'custom-software-system-integration',
-  'branding': 'ai-solutions-intelligent-agents',
-  'webflow-maintains-support': 'technical-consulting-ongoing-support',
-};
+export const SERVICE_ALIASES: Record<string, string> = {};
