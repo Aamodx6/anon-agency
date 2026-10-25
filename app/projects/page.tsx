@@ -2,7 +2,10 @@
 
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
-import { ProjectsCanvas } from '@/components/projects/ProjectsCanvas';
+import { Footer } from '@/components/Footer';
+import { CtaBand } from '@/components/CtaBand';
+import { CaseCanvas } from '@/components/CaseCanvas';
+import { GRID_PROJECTS } from '@/data/projectsGrid';
 
 export default function ProjectsPage() {
   return (
@@ -11,7 +14,11 @@ export default function ProjectsPage() {
         <div className="page-module__4ccqhG__navRow">
           <Navbar variant="dev" />
         </div>
-        <ProjectsCanvas />
+
+        <CaseCanvas items={GRID_PROJECTS} />
+
+        <CtaBand spacing="page" />
+        <Footer />
       </div>
     </main>
   );
