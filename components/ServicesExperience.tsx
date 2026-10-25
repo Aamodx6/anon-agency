@@ -6,6 +6,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useMenu } from '@/context/MenuContext';
 import { GRID_PROJECTS, type GridProject } from '@/data/projectsGrid';
+import { SERVICES } from '@/data/services';
 import styles from './ServicesExperience.module.css';
 
 interface ServiceProject extends GridProject {
@@ -14,9 +15,15 @@ interface ServiceProject extends GridProject {
 
 interface ServiceTab {
   slug: string;
+  number: string;
+  tabLabel: string;
   title: string;
   copy: string;
-  detailSlug: string;
+  projects: [ServiceProject, ServiceProject];
+}
+
+interface ServiceShowcase {
+  slug: string;
   projects: [ServiceProject, ServiceProject];
 }
 
@@ -29,36 +36,40 @@ function project(slug: string, year: string): ServiceProject {
   return { ...match, year };
 }
 
-const services: ServiceTab[] = [
+const serviceShowcase: ServiceShowcase[] = [
   {
-    slug: 'webflow',
-    title: 'Webflow development',
-    copy: 'Begin Webflow development with our Project Discovery session, aligning our team with your goals, timeline, and required functionalities. We prioritize understanding your content strategy, feature needs, and desired user experiences.',
-    detailSlug: 'web-mobile-development',
+    slug: 'web-mobile-development',
     projects: [project('frame', '2024'), project('rally', '2025')],
   },
   {
-    slug: 'ui-ux',
-    title: 'UX/UI design',
-    copy: 'We turn complex ideas into clear, considered digital experiences. From early research and wireframes to polished interfaces, every decision is shaped around your audience, your product, and the way people actually use it.',
-    detailSlug: 'custom-software-system-integration',
-    projects: [project('mihailove', '2025'), project('cortland', '2024')],
+    slug: 'custom-software-system-integration',
+    projects: [project('portfolio-ventures', '2025'), project('rhinestone', '2024')],
   },
   {
-    slug: 'branding',
-    title: 'Branding',
-    copy: 'We partner with ambitious teams to build distinctive brand identities with a clear point of view. Together, we shape the strategy, visual language, and digital touchpoints that make your brand feel unmistakably yours.',
-    detailSlug: 'custom-software-system-integration',
-    projects: [project('portfolio-ventures', '2025'), project('squirrelled', '2024')],
+    slug: 'ai-solutions-intelligent-agents',
+    projects: [project('aimplify', '2025'), project('cybercapitalist', '2024')],
   },
   {
-    slug: 'support',
-    title: 'Webflow maintenance & support',
-    copy: 'Your website should keep getting better after launch. We provide thoughtful, ongoing Webflow support—from content updates and performance checks to fixes and new features—so your site stays reliable as you grow.',
-    detailSlug: 'technical-consulting-ongoing-support',
-    projects: [project('manypixels', '2025'), project('trustyfy', '2024')],
+    slug: 'business-process-automation',
+    projects: [project('condor', '2025'), project('cortland', '2024')],
   },
 ];
+
+const services: ServiceTab[] = serviceShowcase.map(({ slug, projects }) => {
+  const service = SERVICES.find((item) => item.slug === slug);
+  if (!service) {
+    throw new Error(`Missing service "${slug}" in the services data.`);
+  }
+
+  return {
+    slug: service.slug,
+    number: service.number,
+    tabLabel: service.tabLabel,
+    title: service.title,
+    copy: service.heroIntro,
+    projects,
+  };
+});
 
 const rotations = [-3, 2, -2, 3];
 
@@ -467,7 +478,7 @@ export function ServicesExperience() {
                 <div className={styles.cardCopy}>
                   <h2>{service.title}</h2>
                   <p>{service.copy}</p>
-                  <Link className={styles.moreButton} href={`/services/${service.detailSlug}`}>
+                  <Link className={styles.moreButton} href={`/services/${service.slug}`}>
                     more information
                   </Link>
                 </div>
@@ -499,7 +510,7 @@ export function ServicesExperience() {
               }}
               onClick={() => selectTab(index)}
             >
-              {service.slug === 'ui-ux' ? 'UI/UX' : service.slug[0].toUpperCase() + service.slug.slice(1)}
+              {service.number}. {service.tabLabel}
             </button>
           );
         })}
