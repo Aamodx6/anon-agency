@@ -10,6 +10,7 @@ import { SERVICES } from '@/data/services';
 gsap.registerPlugin(ScrollTrigger);
 
 const ROTATIONS = [-2.4, -1.1, 0.4, 2.1, 3.8];
+const STACK_SERVICES = SERVICES.slice(0, 4);
 
 export function ServicesStack() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -21,6 +22,9 @@ export function ServicesStack() {
 
     const items = itemsRef.current.filter(Boolean) as HTMLLIElement[];
     if (items.length < 2) return;
+    if (items.length !== STACK_SERVICES.length) {
+      throw new Error('The services stack cards are out of sync with their rendered services.');
+    }
 
     const cards = items
       .map((it) => it.querySelector<HTMLElement>('.ServicesStack-module__QW-zbq__card'))
@@ -29,7 +33,7 @@ export function ServicesStack() {
     const mm = gsap.matchMedia();
 
     mm.add('(min-width: 0px)', () => {
-      const cardCount = items.length;
+      const cardCount = STACK_SERVICES.length;
       const holdPerCard = 0.6;
       const totalScroll = window.innerHeight * holdPerCard * cardCount;
 
@@ -59,7 +63,7 @@ export function ServicesStack() {
       // Cards rise up sequentially to land on the stack
       cards.slice(1).forEach((card, idx) => {
         const targetRot = ROTATIONS[(idx + 1) % ROTATIONS.length];
-        const cardStartTime = (idx + 1) * 0.85;
+        const cardStartTime = (idx + 1) * 1.4;
 
         tl.to(
           card,
@@ -86,10 +90,10 @@ export function ServicesStack() {
             {
               scaleX: 1,
               scaleY: 1,
-              duration: 1.0,
-              ease: 'elastic.out(1, 0.3)',
+              duration: 0.2,
+              ease: 'power2.out',
             },
-            cardStartTime + 1.05
+            cardStartTime + 1.12
           );
       });
 
@@ -112,7 +116,7 @@ export function ServicesStack() {
         Services
       </h2>
       <ul className="ServicesStack-module__QW-zbq__list">
-        {SERVICES.map((service, idx) => (
+        {STACK_SERVICES.map((service, idx) => (
           <li
             key={service.slug}
             ref={(el) => {
