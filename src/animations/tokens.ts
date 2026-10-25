@@ -1,4 +1,17 @@
 import gsap from 'gsap';
+import { CustomEase } from 'gsap/CustomEase';
+
+let registered = false;
+export function registerGsap(): void {
+  if (typeof window === 'undefined' || registered) return;
+  try {
+    gsap.registerPlugin(CustomEase);
+    CustomEase.create('panelFill', '0.45, 0, 0.2, 1');
+  } catch (e) {
+    // fallback
+  }
+  registered = true;
+}
 
 /**
  * Exact motion design tokens reverse-engineered from Awake Agency.
@@ -11,7 +24,7 @@ export const EASE = {
   landing: "elastic.out(1, 0.55)",
   landingSoft: "elastic.out(0.6, 0.8)",
   land: "power3.out",
-  panel: "0.45, 0, 0.2, 1",
+  panel: "panelFill",
   squash: "elastic.out(1, 0.3)",
 } as const;
 

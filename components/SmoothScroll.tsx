@@ -15,6 +15,10 @@ export function SmoothScroll() {
       respectReducedMotion: true,
     });
 
+    if (typeof window !== 'undefined') {
+      (window as any).__lenis = lenis;
+    }
+
     lenis.on('scroll', ScrollTrigger.update);
 
     const tickerCb = (time: number) => {
@@ -27,6 +31,9 @@ export function SmoothScroll() {
     return () => {
       gsap.ticker.remove(tickerCb);
       lenis.destroy();
+      if (typeof window !== 'undefined') {
+        (window as any).__lenis = null;
+      }
     };
   }, []);
 
