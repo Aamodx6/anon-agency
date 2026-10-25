@@ -4,7 +4,7 @@ import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { registerGsap, prefersReducedMotion } from '@/src/animations/tokens';
 
-function splineD(points: { x: number; y: number }[]): string {
+export function splineD(points: { x: number; y: number }[]): string {
   if (points.length < 2) return '';
   let d = `M${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
   for (let i = 0; i < points.length - 1; i++) {
@@ -19,7 +19,7 @@ function splineD(points: { x: number; y: number }[]): string {
   return d;
 }
 
-function loopAround(
+export function loopAround(
   cx: number,
   cy: number,
   rx: number,
