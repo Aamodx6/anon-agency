@@ -51,7 +51,6 @@ const CARD_CONFIG = [
     xPercent: -126,
     y: 28,
     rotate: -4.82,
-    bg: '#fafafa',
     zIndex: 1,
   },
   {
@@ -59,7 +58,6 @@ const CARD_CONFIG = [
     xPercent: -42,
     y: 0,
     rotate: -0.7,
-    bg: '#f1f1f3',
     zIndex: 4,
   },
   {
@@ -67,7 +65,6 @@ const CARD_CONFIG = [
     xPercent: 42,
     y: 44,
     rotate: 3.78,
-    bg: '#e8e9eb',
     zIndex: 3,
   },
   {
@@ -75,7 +72,6 @@ const CARD_CONFIG = [
     xPercent: 126,
     y: 16,
     rotate: 7.83,
-    bg: '#dbdcde',
     zIndex: 2,
   },
 ];
@@ -98,70 +94,190 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
 
     const mm = gsap.matchMedia();
 
-    // Desktop: Pin section and smoothly fan out cards as user scrolls through the 1600px range
+    // Desktop: Pin section and sequentially deal cards out from center stack
     mm.add('(min-width: 1024px)', () => {
-      // Initial state: cards start in neat center stack
-      cards.forEach((card, idx) => {
-        const cfg = CARD_CONFIG[idx % CARD_CONFIG.length];
-        gsap.set(card, {
-          xPercent: 0,
-          y: idx === 1 ? 0 : 32,
-          rotate: 0,
-          opacity: 1,
-          scale: 0.96,
-        });
-        if (items[idx]) {
-          items[idx].style.zIndex = String(cfg?.zIndex || idx + 1);
-        }
+      // 1. Initial State:
+      // Card 01 starts in center deck (unlanded dark state)
+      gsap.set(cards[0], {
+        x: 0,
+        xPercent: 0,
+        y: 0,
+        rotate: 0,
+        scale: 1,
+        autoAlpha: 1,
       });
+      if (items[0]) {
+        items[0].style.zIndex = '10';
+        items[0].removeAttribute('data-landed');
+      }
 
+      // Cards 02, 03, 04 wait in the center stack
+      for (let i = 1; i < cards.length; i++) {
+        gsap.set(cards[i], {
+          x: 0,
+          xPercent: 0,
+          y: 0,
+          rotate: 0,
+          scale: 1,
+          autoAlpha: 0,
+        });
+        if (items[i]) {
+          items[i].style.zIndex = '5';
+          items[i].removeAttribute('data-landed');
+        }
+      }
+
+      // 2. Step-by-Step Deck Dealing Timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           pin: true,
           start: 'top top',
-          end: '+=1600',
-          scrub: 0.8,
+          end: '+=2200',
+          scrub: 0.7,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
-            cards.forEach((_, idx) => {
-              const threshold = 0.2 + idx * 0.18;
-              if (self.progress >= threshold) {
-                items[idx]?.setAttribute('data-landed', '');
+            const p = self.progress;
+
+            // Step 1: Card 01 dealing
+            if (items[0]) {
+              if (p > 0.05) {
+                items[0].setAttribute('data-landed', '');
+                items[0].style.zIndex = '1';
               } else {
-                items[idx]?.removeAttribute('data-landed');
+                items[0].removeAttribute('data-landed');
+                items[0].style.zIndex = '10';
               }
-            });
+            }
+
+            // Step 2: Card 02 in deck -> dealt
+            if (items[1] && cards[1]) {
+              if (p < 0.08) {
+                cards[1].style.opacity = '0';
+                cards[1].style.visibility = 'hidden';
+              } else if (p < 0.35) {
+                cards[1].style.opacity = '1';
+                cards[1].style.visibility = 'visible';
+                items[1].removeAttribute('data-landed');
+                items[1].style.zIndex = '10';
+              } else {
+                cards[1].style.opacity = '1';
+                cards[1].style.visibility = 'visible';
+                items[1].setAttribute('data-landed', '');
+                items[1].style.zIndex = '4';
+              }
+            }
+
+            // Step 3: Card 03 in deck -> dealt
+            if (items[2] && cards[2]) {
+              if (p < 0.33) {
+                cards[2].style.opacity = '0';
+                cards[2].style.visibility = 'hidden';
+              } else if (p < 0.60) {
+                cards[2].style.opacity = '1';
+                cards[2].style.visibility = 'visible';
+                items[2].removeAttribute('data-landed');
+                items[2].style.zIndex = '10';
+              } else {
+                cards[2].style.opacity = '1';
+                cards[2].style.visibility = 'visible';
+                items[2].setAttribute('data-landed', '');
+                items[2].style.zIndex = '3';
+              }
+            }
+
+            // Step 4: Card 04 in deck -> dealt
+            if (items[3] && cards[3]) {
+              if (p < 0.58) {
+                cards[3].style.opacity = '0';
+                cards[3].style.visibility = 'hidden';
+              } else if (p < 0.85) {
+                cards[3].style.opacity = '1';
+                cards[3].style.visibility = 'visible';
+                items[3].removeAttribute('data-landed');
+                items[3].style.zIndex = '10';
+              } else {
+                cards[3].style.opacity = '1';
+                cards[3].style.visibility = 'visible';
+                items[3].setAttribute('data-landed', '');
+                items[3].style.zIndex = '2';
+              }
+            }
           },
         },
       });
 
-      // Fan out cards sequentially into their resting positions
-      cards.forEach((card, idx) => {
-        const cfg = CARD_CONFIG[idx % CARD_CONFIG.length];
-        tl.to(
-          card,
-          {
-            xPercent: cfg.xPercent,
-            y: cfg.y,
-            rotate: cfg.rotate,
-            opacity: 1,
-            scale: 1,
-            duration: 1,
-            ease: 'power2.out',
-          },
-          idx * 0.22
-        );
-      });
+      // Segment 1: Card 01 deals out to the left (-126%, y: 28, rot: -4.82)
+      tl.to(cards[1], { autoAlpha: 1, duration: 0.15 }, 0.08);
+      tl.to(
+        cards[0],
+        {
+          xPercent: CARD_CONFIG[0].xPercent,
+          x: 0,
+          y: CARD_CONFIG[0].y,
+          rotate: CARD_CONFIG[0].rotate,
+          duration: 0.85,
+          ease: 'power1.inOut',
+        },
+        0.05
+      );
 
-      // Interactive hover lift
+      // Segment 2: Card 02 deals out to -42% (y: 0, rot: -0.7)
+      tl.to(cards[2], { autoAlpha: 1, duration: 0.15 }, 1.08);
+      tl.to(
+        cards[1],
+        {
+          xPercent: CARD_CONFIG[1].xPercent,
+          x: 0,
+          y: CARD_CONFIG[1].y,
+          rotate: CARD_CONFIG[1].rotate,
+          duration: 0.85,
+          ease: 'power1.inOut',
+        },
+        1.05
+      );
+
+      // Segment 3: Card 03 deals out to +42% (y: 44, rot: 3.78)
+      tl.to(cards[3], { autoAlpha: 1, duration: 0.15 }, 2.08);
+      tl.to(
+        cards[2],
+        {
+          xPercent: CARD_CONFIG[2].xPercent,
+          x: 0,
+          y: CARD_CONFIG[2].y,
+          rotate: CARD_CONFIG[2].rotate,
+          duration: 0.85,
+          ease: 'power1.inOut',
+        },
+        2.05
+      );
+
+      // Segment 4: Card 04 deals out to +126% (y: 16, rot: 7.83)
+      tl.to(
+        cards[3],
+        {
+          xPercent: CARD_CONFIG[3].xPercent,
+          x: 0,
+          y: CARD_CONFIG[3].y,
+          rotate: CARD_CONFIG[3].rotate,
+          duration: 0.85,
+          ease: 'power1.inOut',
+        },
+        3.05
+      );
+
+      // Settling pause at end of pinned range
+      tl.to({}, { duration: 0.35 });
+
+      // Interactive hover lift for landed cards
       const cleanups: (() => void)[] = [];
       cards.forEach((card, idx) => {
         const item = items[idx];
         const cfg = CARD_CONFIG[idx % CARD_CONFIG.length];
 
         const onEnter = () => {
+          if (!item?.hasAttribute('data-landed')) return;
           gsap.to(card, {
             y: cfg.y - 18,
             scale: 1.03,
@@ -175,6 +291,7 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
         };
 
         const onLeave = () => {
+          if (!item?.hasAttribute('data-landed')) return;
           gsap.to(card, {
             y: cfg.y,
             scale: 1,
@@ -205,6 +322,7 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
 
     // Tablet & Mobile: sequential entrance without pinning
     mm.add('(max-width: 1023px)', () => {
+      items.forEach((item) => item?.setAttribute('data-landed', ''));
       cards.forEach((card, idx) => {
         const dir = idx % 2 === 0 ? -1 : 1;
         gsap.fromTo(
@@ -272,14 +390,13 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
                 <div
                   className="HowWeWork-module__kq1Iga__card"
                   data-stack-card=""
+                  data-index={index}
                   ref={(el) => {
                     cardsRef.current[index] = el;
                   }}
                   style={{
-                    backgroundColor: cfg.bg,
                     pointerEvents: 'auto',
                     touchAction: 'none',
-                    opacity: 1,
                   }}
                 >
                   <div
