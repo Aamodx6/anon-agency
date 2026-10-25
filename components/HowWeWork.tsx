@@ -1,12 +1,27 @@
 'use client';
 
-import { useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React, { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollRibbon } from '@/components/ScrollRibbon';
+import { registerGsap, prefersReducedMotion } from '@/src/animations/tokens';
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
-const steps = [
+export interface ProcessStep {
+  number: string;
+  title: string;
+  body: string;
+}
+
+export interface HowWeWorkProps {
+  steps?: ProcessStep[];
+  heading?: string;
+}
+
+const DEFAULT_STEPS: ProcessStep[] = [
   {
     number: '01',
     title: 'Discovery call',
@@ -29,61 +44,163 @@ const steps = [
   },
 ];
 
-export function HowWeWork() {
+const CARD_TIERS = [
+  { rotate: -4.82, xPercent: -126, y: 28 },
+  { rotate: -0.7, xPercent: -42, y: 0 },
+  { rotate: 3.78, xPercent: 42, y: 44 },
+  { rotate: 7.83, xPercent: 126, y: 16 },
+];
+
+export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: HowWeWorkProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const itemsRef = useRef<(HTMLLIElement | null)[]>([]);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const layers = Array.from(
-      section.querySelectorAll<HTMLElement>('.HowWeWork-module__kq1Iga__dragLayer'),
-    );
-    if (layers.length !== steps.length) return;
+    registerGsap();
+    if (prefersReducedMotion()) return;
 
-    const media = gsap.matchMedia();
-    media.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
-      gsap.set(layers, {
-        autoAlpha: 0,
-        y: () => window.innerHeight * 0.72,
-        scale: 0.96,
+    const cards = cardsRef.current.filter(Boolean) as HTMLElement[];
+    const items = itemsRef.current.filter(Boolean) as HTMLElement[];
+    if (cards.length < 2) return;
+
+    const mm = gsap.matchMedia();
+
+    // Desktop: Pin and smoothly fan out cards as user scrolls through the section
+    mm.add('(min-width: 1024px)', () => {
+      // 1. Initial gathered state in center stack
+      cards.forEach((card, idx) => {
+        gsap.set(card, {
+          xPercent: 0,
+          y: idx === 0 ? 0 : 36,
+          rotate: 0,
+          opacity: idx === 0 ? 1 : 0,
+          scale: idx === 0 ? 1 : 0.94,
+        });
+        if (items[idx]) {
+          items[idx].style.zIndex = String(idx + 1);
+        }
       });
 
-      const timeline = gsap.timeline({
+      const holdPerCard = 0.45;
+      const totalScroll = window.innerHeight * holdPerCard * cards.length;
+
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top top',
-          end: () => `+=${window.innerHeight * 1.45}`,
+          start: 'top top+=20px',
+          end: `+=${totalScroll}`,
           pin: true,
-          scrub: 0.65,
+          scrub: 0.8,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
 
-      layers.forEach((layer, index) => {
-        timeline.to(
-          layer,
+      // 2. Sequential fan out
+      cards.forEach((card, idx) => {
+        const tier = CARD_TIERS[idx % CARD_TIERS.length];
+        tl.to(
+          card,
           {
-            autoAlpha: 1,
-            y: 0,
+            xPercent: tier.xPercent,
+            y: tier.y,
+            rotate: tier.rotate,
+            opacity: 1,
             scale: 1,
-            duration: 0.8,
-            ease: 'power3.out',
+            duration: 1,
+            ease: 'power2.out',
           },
-          index * 0.55,
+          idx * 0.45
+        );
+      });
+
+      // 3. Interactive hover reaction once fanned
+      const cleanups: (() => void)[] = [];
+      cards.forEach((card, idx) => {
+        const item = items[idx];
+        const tier = CARD_TIERS[idx % CARD_TIERS.length];
+
+        const onEnter = () => {
+          gsap.to(card, {
+            y: tier.y - 18,
+            scale: 1.03,
+            rotate: tier.rotate * 0.7,
+            boxShadow: '0 24px 48px rgba(0, 0, 0, 0.45)',
+            duration: 0.35,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+          if (item) item.style.zIndex = '90';
+        };
+
+        const onLeave = () => {
+          gsap.to(card, {
+            y: tier.y,
+            scale: 1,
+            rotate: tier.rotate,
+            boxShadow: 'none',
+            duration: 0.4,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+          if (item) item.style.zIndex = String(idx + 1);
+        };
+
+        card.addEventListener('mouseenter', onEnter);
+        card.addEventListener('mouseleave', onLeave);
+        cleanups.push(() => {
+          card.removeEventListener('mouseenter', onEnter);
+          card.removeEventListener('mouseleave', onLeave);
+        });
+      });
+
+      return () => {
+        tl.scrollTrigger?.kill();
+        tl.kill();
+        cleanups.forEach((c) => c());
+        cards.forEach((card) => gsap.set(card, { clearProps: 'all' }));
+      };
+    });
+
+    // Tablet & Mobile: sequential rise on scroll
+    mm.add('(max-width: 1023px)', () => {
+      cards.forEach((card, idx) => {
+        const dir = idx % 2 === 0 ? -1 : 1;
+        gsap.fromTo(
+          card,
+          {
+            xPercent: 18 * dir,
+            rotate: 2 * dir,
+            autoAlpha: 0,
+          },
+          {
+            xPercent: 0,
+            rotate: 0,
+            autoAlpha: 1,
+            duration: 0.85,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              once: true,
+            },
+          }
         );
       });
 
       return () => {
-        gsap.set(layers, { clearProps: 'all' });
+        cards.forEach((card) => gsap.set(card, { clearProps: 'all' }));
       };
     });
 
     return () => {
-      media.revert();
+      mm.revert();
     };
-  }, []);
+  }, [steps]);
 
   return (
     <section
@@ -91,18 +208,26 @@ export function HowWeWork() {
       className="HowWeWork-module__kq1Iga__section"
       data-node-id="43:276"
     >
-      <h2 className="HowWeWork-module__kq1Iga__heading">How we work</h2>
+      <h2 className="HowWeWork-module__kq1Iga__heading">{heading}</h2>
       <ol className="HowWeWork-module__kq1Iga__list">
-        {steps.map((step) => (
-          <li className="HowWeWork-module__kq1Iga__item" key={step.number}>
+        {steps.map((step, index) => (
+          <li
+            key={step.number}
+            className="HowWeWork-module__kq1Iga__item"
+            ref={(el) => {
+              itemsRef.current[index] = el;
+            }}
+          >
             <div className="HowWeWork-module__kq1Iga__dragLayer">
-              <div className="HowWeWork-module__kq1Iga__card" data-stack-card="">
-                <svg
-                  className="ScrollRibbon-module__wSfOTW__svg"
-                  aria-hidden="true"
-                  focusable="false"
-                  preserveAspectRatio="none"
-                  data-ribbon=""
+              <div
+                className="HowWeWork-module__kq1Iga__card"
+                data-stack-card=""
+                ref={(el) => {
+                  cardsRef.current[index] = el;
+                }}
+              >
+                <ScrollRibbon
+                  stage={['brief', 'sketch', 'build', 'launch'][index % 4]}
                 />
                 <span className="HowWeWork-module__kq1Iga__number">{step.number}</span>
                 <div className="HowWeWork-module__kq1Iga__end">

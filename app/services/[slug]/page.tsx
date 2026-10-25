@@ -5,6 +5,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { CtaBand } from '@/components/CtaBand';
 import { DeliverablesTabs } from '@/components/DeliverablesTabs';
+import { HowWeWork } from '@/components/HowWeWork';
 import { SERVICES, SERVICE_ALIASES } from '@/data/services';
 
 export const dynamicParams = false;
@@ -68,9 +69,9 @@ export default async function ServiceDetailPage({
       <DeliverablesTabs deliverables={service.deliverables} />
 
       {/* How We Work Process Section */}
-      {service.howWeWorkHtml && (
-        <div dangerouslySetInnerHTML={{ __html: service.howWeWorkHtml }} />
-      )}
+      <div className="page-module__Oub5RG__process">
+        <HowWeWork />
+      </div>
 
       {/* Featured Case Section */}
       {service.featuredCase && (
