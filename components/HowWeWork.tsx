@@ -44,11 +44,12 @@ const DEFAULT_STEPS: ProcessStep[] = [
   },
 ];
 
+// Fanned coordinates calibrated so all 4 cards overlap and stay comfortably inside the container boundaries
 const CARD_TIERS = [
-  { rotate: -4.82, xPercent: -126, y: 28 },
-  { rotate: -0.7, xPercent: -42, y: 0 },
-  { rotate: 3.78, xPercent: 42, y: 44 },
-  { rotate: 7.83, xPercent: 126, y: 16 },
+  { rotate: -4.82, xPercent: -86, y: 22, zIndex: 1 },
+  { rotate: -0.7, xPercent: -28, y: 0, zIndex: 4 },
+  { rotate: 2.8, xPercent: 28, y: 26, zIndex: 3 },
+  { rotate: 6.2, xPercent: 86, y: 14, zIndex: 2 },
 ];
 
 export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: HowWeWorkProps) {
@@ -69,44 +70,46 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
 
     const mm = gsap.matchMedia();
 
-    // Desktop: Pin and smoothly fan out cards as user scrolls through the section
+    // Desktop: Smooth fan out from center stack as section enters view
     mm.add('(min-width: 1024px)', () => {
-      // 1. Initial gathered state in center stack
+      // Calculate responsive scaling so cards never overflow on any viewport
+      const containerW = section.clientWidth || 1200;
+      const cardW = cards[0]?.offsetWidth || 250;
+      const totalSpan = cardW * 2.72; // span from -86% to +86%
+      const maxAvailable = containerW - 120;
+      const scaleFactor = Math.min(1, maxAvailable / Math.max(totalSpan, 1));
+
+      // Initial state: cards start in neat center stack
       cards.forEach((card, idx) => {
         gsap.set(card, {
           xPercent: 0,
-          y: idx === 0 ? 0 : 36,
+          y: idx === 1 ? 0 : 32,
           rotate: 0,
-          opacity: idx === 0 ? 1 : 0,
-          scale: idx === 0 ? 1 : 0.94,
+          opacity: idx === 1 ? 1 : 0.2,
+          scale: 0.94,
         });
         if (items[idx]) {
-          items[idx].style.zIndex = String(idx + 1);
+          items[idx].style.zIndex = String(CARD_TIERS[idx]?.zIndex || idx + 1);
         }
       });
-
-      const holdPerCard = 0.45;
-      const totalScroll = window.innerHeight * holdPerCard * cards.length;
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top top+=20px',
-          end: `+=${totalScroll}`,
-          pin: true,
-          scrub: 0.8,
-          anticipatePin: 1,
+          start: 'top 75%',
+          end: 'top 20%',
+          scrub: 0.7,
           invalidateOnRefresh: true,
         },
       });
 
-      // 2. Sequential fan out
+      // Fan out cards into their exact resting positions inside the container
       cards.forEach((card, idx) => {
         const tier = CARD_TIERS[idx % CARD_TIERS.length];
         tl.to(
           card,
           {
-            xPercent: tier.xPercent,
+            xPercent: tier.xPercent * scaleFactor,
             y: tier.y,
             rotate: tier.rotate,
             opacity: 1,
@@ -114,11 +117,11 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
             duration: 1,
             ease: 'power2.out',
           },
-          idx * 0.45
+          idx * 0.15
         );
       });
 
-      // 3. Interactive hover reaction once fanned
+      // Interactive hover lift
       const cleanups: (() => void)[] = [];
       cards.forEach((card, idx) => {
         const item = items[idx];
@@ -126,11 +129,11 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
 
         const onEnter = () => {
           gsap.to(card, {
-            y: tier.y - 18,
+            y: tier.y - 16,
             scale: 1.03,
-            rotate: tier.rotate * 0.7,
-            boxShadow: '0 24px 48px rgba(0, 0, 0, 0.45)',
-            duration: 0.35,
+            rotate: tier.rotate * 0.75,
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+            duration: 0.3,
             ease: 'power2.out',
             overwrite: 'auto',
           });
@@ -143,11 +146,11 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
             scale: 1,
             rotate: tier.rotate,
             boxShadow: 'none',
-            duration: 0.4,
+            duration: 0.35,
             ease: 'power2.out',
             overwrite: 'auto',
           });
-          if (item) item.style.zIndex = String(idx + 1);
+          if (item) item.style.zIndex = String(tier.zIndex);
         };
 
         card.addEventListener('mouseenter', onEnter);
@@ -166,14 +169,14 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
       };
     });
 
-    // Tablet & Mobile: sequential rise on scroll
+    // Tablet & Mobile
     mm.add('(max-width: 1023px)', () => {
       cards.forEach((card, idx) => {
         const dir = idx % 2 === 0 ? -1 : 1;
         gsap.fromTo(
           card,
           {
-            xPercent: 18 * dir,
+            xPercent: 16 * dir,
             rotate: 2 * dir,
             autoAlpha: 0,
           },
@@ -181,7 +184,7 @@ export function HowWeWork({ steps = DEFAULT_STEPS, heading = 'How we work' }: Ho
             xPercent: 0,
             rotate: 0,
             autoAlpha: 1,
-            duration: 0.85,
+            duration: 0.75,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: card,
