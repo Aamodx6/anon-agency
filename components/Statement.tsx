@@ -18,10 +18,11 @@ const STATEMENT_DATA = [
   },
   {
     lines: [
-      "Whether you're launching a",
-      'product, rebuilding a brand, or',
-      'replacing a tired site, one team',
-      'takes it from sketch to live build.',
+      "Whether you're launching",
+      'a product, rebuilding a',
+      'brand, or replacing a tired',
+      'site, one team takes it',
+      'from sketch to live build.',
     ],
   },
 ];

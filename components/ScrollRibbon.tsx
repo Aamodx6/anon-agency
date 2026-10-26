@@ -223,7 +223,7 @@ export function ScrollRibbon({
       try {
         boxLen = outlineBox.getTotalLength() || 1455;
       } catch {}
-      animPaths.push({ node: outlineBox, kind: 'loop', len: boxLen, from: boxLen * 0.4, draw: STAGE_CONFIG.outline, retract: STAGE_CONFIG.retract });
+      animPaths.push({ node: outlineBox, kind: 'loop', len: boxLen, from: boxLen * 0.4, draw: STAGE_CONFIG.outline });
 
       const outlineCircle = createSvgElem('path', {
         d: `M${circleCx.toFixed(2)} ${(circleCy - circleR).toFixed(2)}C${(circleCx + circleR * 0.5523).toFixed(2)} ${(circleCy - circleR).toFixed(2)} ${(circleCx + circleR).toFixed(2)} ${(circleCy - circleR * 0.5523).toFixed(2)} ${(circleCx + circleR).toFixed(2)} ${circleCy.toFixed(2)}C${(circleCx + circleR).toFixed(2)} ${(circleCy + circleR * 0.5523).toFixed(2)} ${(circleCx + circleR * 0.5523).toFixed(2)} ${(circleCy + circleR).toFixed(2)} ${circleCx.toFixed(2)} ${(circleCy + circleR).toFixed(2)}C${(circleCx - circleR * 0.5523).toFixed(2)} ${(circleCy + circleR).toFixed(2)} ${(circleCx - circleR).toFixed(2)} ${(circleCy + circleR * 0.5523).toFixed(2)} ${(circleCx - circleR).toFixed(2)} ${circleCy.toFixed(2)}C${(circleCx - circleR).toFixed(2)} ${(circleCy - circleR * 0.5523).toFixed(2)} ${(circleCx - circleR * 0.5523).toFixed(2)} ${(circleCy - circleR).toFixed(2)} ${circleCx.toFixed(2)} ${(circleCy - circleR).toFixed(2)}Z`,
@@ -240,13 +240,13 @@ export function ScrollRibbon({
       inkBox.style.strokeWidth = `${(rectX1 - rectX0) * 1.04}px`;
       inkBox.style.strokeLinecap = 'butt';
       gInk.append(inkBox);
-      animPaths.push({ node: inkBox, kind: 'loop', len: boxLen, from: 0, draw: STAGE_CONFIG.ink, retract: STAGE_CONFIG.retract });
+      animPaths.push({ node: inkBox, kind: 'loop', len: boxLen, from: 0, draw: STAGE_CONFIG.ink });
 
       const inkCirc = outlineCircle.cloneNode(true) as SVGPathElement;
       inkCirc.style.strokeWidth = `${circleR * 2 * 1.04}px`;
       inkCirc.style.strokeLinecap = 'butt';
       gInk.append(inkCirc);
-      animPaths.push({ node: inkCirc, kind: 'loop', len: circOutlineLen, from: 0, draw: STAGE_CONFIG.ink, retract: STAGE_CONFIG.retract });
+      animPaths.push({ node: inkCirc, kind: 'loop', len: circOutlineLen, from: 0, draw: STAGE_CONFIG.ink });
 
       // 6. Bezier Handles & Circle control points
       // 8 points around circle
