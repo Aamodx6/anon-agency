@@ -70,8 +70,9 @@ export default async function ServiceDetailPage({
     '@type': 'Service',
     name: service.title,
     description: service.description,
-    serviceType: service.title,
+    serviceType: 'Web and mobile app development',
     url: `https://www.awakeagency.dev/services/${service.slug}`,
+    areaServed: 'Worldwide',
     provider: {
       '@type': 'Organization',
       name: 'Anon',

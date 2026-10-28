@@ -50,22 +50,22 @@ export const SERVICES: Service[] = [
     number: '01',
     tabLabel: 'Web & Mobile Apps',
     title: 'Web & Mobile Application Development',
-    metaTitle: 'Web & Mobile App Development | Anon',
-    metaDescription: 'Anon builds websites, web applications, and mobile apps that make customer journeys simpler and business operations easier.',
+    metaTitle: 'Web & Mobile App Development Company | Anon, Warsaw',
+    metaDescription: 'Custom web and mobile app development from Warsaw. We design, build, and launch fast, scalable web, iOS, and Android apps for startups and global teams.',
     heroIntro: 'We create websites, web applications, and mobile apps shaped around how your business and customers work. Each product is designed to be easy to use, dependable, and ready to grow.',
     summary: 'Websites and mobile apps that make it easier for customers to use your service and for your team to run it.',
-    description: 'From a clear marketing website to a feature-rich product or mobile app, we design and build the full experience. Your team gets a maintainable platform, and your customers get a simpler path to what they need.',
+    description: 'From a clear marketing website to a feature rich product or mobile app, we design and build the full experience. Your team gets a maintainable platform, and your customers get a simpler path to what they need.',
     benefits: [
-      'Give customers a clear, consistent experience across desktop and mobile.',
-      'Reduce friction in key journeys such as sign-up, booking, and purchase.',
-      'Make routine content and product updates easier for your team.',
-      'Build on a maintainable foundation that can grow with demand.',
+      'Deliver a fast, consistent experience on every desktop and mobile device.',
+      'Cut friction in sign up, booking, and checkout to turn more visitors into customers.',
+      'Update content and product features yourself, without waiting on a developer.',
+      'Scale on a clean, secure codebase that grows with your business.',
     ],
     process: [
-      { number: '01', title: 'Set the direction', body: 'We map your users, business goals, core features, and launch needs into a practical product brief.' },
-      { number: '02', title: 'Shape the experience', body: 'We define the key journeys and interface, then review a prototype with your team before development.' },
-      { number: '03', title: 'Build and validate', body: 'We develop the product, connect required services, and test it across devices and real workflows.' },
-      { number: '04', title: 'Launch with confidence', body: 'We prepare deployment, check the live experience, and hand over the tools your team needs to manage it.' },
+      { number: '01', title: 'Set the direction', body: 'We turn your goals, users, and must have features into a clear scope, timeline, and budget.' },
+      { number: '02', title: 'Shape the experience', body: 'We design the key user journeys and a clickable prototype, and refine it with you before any code is written.' },
+      { number: '03', title: 'Build and validate', body: 'We build in short sprints, connect your services, and test on real devices, with regular demos along the way.' },
+      { number: '04', title: 'Launch with confidence', body: 'We handle deployment and final checks, then hand over the documentation and tools your team needs to run it.' },
     ],
     leftCase: {
       slug: 'frame',
@@ -88,7 +88,7 @@ export const SERVICES: Service[] = [
       title: 'Mihailove',
       discipline: 'E-commerce development',
       image: 'https://cdn.sanity.io/images/pka0c0l0/production/caaeb8c6de41e353d94f7be63a8471827111eb1d-2073x1553.jpg',
-      alt: 'Mihailove digital experience showcase on laptop'
+      alt: 'Web and mobile app development for the Mihailove e-commerce experience'
     },
     deliverables: [],
   },
@@ -425,11 +425,11 @@ export const SERVICES: Service[] = [
 
 const SERVICE_DELIVERABLE_COPY: Record<string, Array<[string, string]>> = {
   'web-mobile-application-development': [
-    ['Product and page architecture', 'A clear map of pages, screens, user journeys, and the content or product features each one needs.'],
-    ['Responsive interface design', 'A production-ready interface for desktop and mobile, with key states and interaction details covered.'],
-    ['Web application or mobile app', 'A working product built around your priority user tasks, with the right foundation for future features.'],
-    ['Backend and service connections', 'The APIs, content tools, payments, or third-party services needed to support real product use.'],
-    ['Testing and launch handover', 'Device and workflow checks, deployment preparation, and practical guidance for your team.'],
+    ['Product and UX architecture', 'Sitemaps, user flows, and feature priorities mapped before design starts, so every screen has a purpose and nothing gets built twice.'],
+    ['Responsive UI/UX design', 'Sharp interfaces for desktop, tablet, and mobile, with every state, edge case, and interaction designed and ready for development.'],
+    ['Custom web or mobile app', "A fast, secure product for web, iOS, and Android, built around your users' key tasks and structured to grow with new features."],
+    ['Backend, APIs and integrations', 'Secure APIs, databases, payments, CMS, and third party tools that power real product use, from first login to final checkout.'],
+    ['Testing, launch and support', 'Cross device testing, performance checks, deployment, and clear documentation, with a smooth handover and optional ongoing support.'],
   ],
   'ai-workflow-automation-integrations': [
     ['Workflow and handoff map', 'A documented view of triggers, decisions, systems, exceptions, and the people involved.'],
