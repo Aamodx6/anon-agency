@@ -89,6 +89,10 @@ const services: ServiceTab[] = serviceShowcase.map(({ slug, projects }) => {
         ? service.summary
         : service.slug === 'ai-document-processing-data-intelligence'
         ? service.summary
+        : service.slug === 'ai-lead-generation-sales-automation'
+        ? service.summary
+        : service.slug === 'ai-data-analytics-business-intelligence'
+        ? service.summary
         : service.description,
     projects,
   };

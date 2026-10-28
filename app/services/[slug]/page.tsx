@@ -73,6 +73,10 @@ export default async function ServiceDetailPage({
         ? 'AI Customer Support and Voice Agents'
         : service.slug === 'ai-document-processing-data-intelligence'
         ? 'AI Document Processing and Data Intelligence'
+        : service.slug === 'ai-lead-generation-sales-automation'
+        ? 'AI Lead Generation and Sales Automation'
+        : service.slug === 'ai-data-analytics-business-intelligence'
+        ? 'AI Data Analytics and Business Intelligence'
         : service.title,
     description: service.description,
     serviceType:
@@ -84,6 +88,10 @@ export default async function ServiceDetailPage({
         ? 'AI customer support and voice agent development'
         : service.slug === 'ai-document-processing-data-intelligence'
         ? 'AI document processing and data extraction'
+        : service.slug === 'ai-lead-generation-sales-automation'
+        ? 'AI lead generation and sales automation'
+        : service.slug === 'ai-data-analytics-business-intelligence'
+        ? 'AI data analytics and business intelligence'
         : service.slug === 'ai-saas-custom-software-development'
         ? 'SaaS and custom software development'
         : 'Web and mobile app development',
