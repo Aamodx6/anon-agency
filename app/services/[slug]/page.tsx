@@ -68,13 +68,22 @@ export default async function ServiceDetailPage({
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: service.title,
+    name:
+      service.slug === 'ai-customer-support-voice-agents'
+        ? 'AI Customer Support and Voice Agents'
+        : service.slug === 'ai-document-processing-data-intelligence'
+        ? 'AI Document Processing and Data Intelligence'
+        : service.title,
     description: service.description,
     serviceType:
       service.slug === 'ai-workflow-automation-integrations'
         ? 'AI workflow automation and system integration'
         : service.slug === 'custom-ai-agents-internal-copilots'
         ? 'AI agent and copilot development'
+        : service.slug === 'ai-customer-support-voice-agents'
+        ? 'AI customer support and voice agent development'
+        : service.slug === 'ai-document-processing-data-intelligence'
+        ? 'AI document processing and data extraction'
         : service.slug === 'ai-saas-custom-software-development'
         ? 'SaaS and custom software development'
         : 'Web and mobile app development',

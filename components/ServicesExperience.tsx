@@ -85,6 +85,10 @@ const services: ServiceTab[] = serviceShowcase.map(({ slug, projects }) => {
     copy:
       service.slug === 'ai-saas-custom-software-development'
         ? 'We design and build AI powered SaaS products and custom software, from a focused first version to a platform ready to grow.'
+        : service.slug === 'ai-customer-support-voice-agents'
+        ? service.summary
+        : service.slug === 'ai-document-processing-data-intelligence'
+        ? service.summary
         : service.description,
     projects,
   };
