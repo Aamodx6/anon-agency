@@ -82,7 +82,10 @@ const services: ServiceTab[] = serviceShowcase.map(({ slug, projects }) => {
     number: service.number,
     tabLabel: service.tabLabel,
     title: service.title,
-    copy: service.description,
+    copy:
+      service.slug === 'ai-saas-custom-software-development'
+        ? 'We design and build AI powered SaaS products and custom software, from a focused first version to a platform ready to grow.'
+        : service.description,
     projects,
   };
 });

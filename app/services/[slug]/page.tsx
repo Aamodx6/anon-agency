@@ -73,6 +73,10 @@ export default async function ServiceDetailPage({
     serviceType:
       service.slug === 'ai-workflow-automation-integrations'
         ? 'AI workflow automation and system integration'
+        : service.slug === 'custom-ai-agents-internal-copilots'
+        ? 'AI agent and copilot development'
+        : service.slug === 'ai-saas-custom-software-development'
+        ? 'SaaS and custom software development'
         : 'Web and mobile app development',
     url: `https://www.awakeagency.dev/services/${service.slug}`,
     areaServed: 'Worldwide',
