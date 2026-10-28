@@ -124,11 +124,14 @@ export function ServicesStack() {
               itemsRef.current[idx] = el;
             }}
             className="ServicesStack-module__QW-zbq__item"
-            style={{ zIndex: idx + 1 }}
+            style={{ zIndex: idx + 1, pointerEvents: 'none' }}
           >
             <article
               className="ServicesStack-module__QW-zbq__card"
-              style={idx >= 4 ? { backgroundColor: CARD_BACKGROUNDS[idx % CARD_BACKGROUNDS.length] } : undefined}
+              style={{
+                pointerEvents: 'auto',
+                ...(idx >= 4 ? { backgroundColor: CARD_BACKGROUNDS[idx % CARD_BACKGROUNDS.length] } : {}),
+              }}
             >
               <ScrollRibbon figure={service.number} />
               <span className="ServicesStack-module__QW-zbq__number">

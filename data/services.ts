@@ -53,8 +53,8 @@ export const SERVICES: Service[] = [
     metaTitle: 'Web & Mobile App Development Company | Anon, Warsaw',
     metaDescription: 'Custom web and mobile app development from Warsaw. We design, build, and launch fast, scalable web, iOS, and Android apps for startups and global teams.',
     heroIntro: 'We create websites, web applications, and mobile apps shaped around how your business and customers work. Each product is designed to be easy to use, dependable, and ready to grow.',
-    summary: 'Websites and mobile apps that make it easier for customers to use your service and for your team to run it.',
-    description: 'From a clear marketing website to a feature rich product or mobile app, we design and build the full experience. Your team gets a maintainable platform, and your customers get a simpler path to what they need.',
+    summary: 'We design and build the full experience, from a clear marketing website to a feature rich product or mobile app. Your team gets a maintainable platform, and your customers get a simpler path to what they need.',
+    description: 'We design and build the full experience, from a clear marketing website to a feature rich product or mobile app. Your team gets a maintainable platform, and your customers get a simpler path to what they need.',
     benefits: [
       'Deliver a fast, consistent experience on every desktop and mobile device.',
       'Cut friction in sign up, booking, and checkout to turn more visitors into customers.',
@@ -100,7 +100,7 @@ export const SERVICES: Service[] = [
     metaTitle: 'AI SaaS and Custom Software Development by Anon',
     metaDescription: 'We design and build AI powered SaaS products and custom software from Warsaw. From MVP to scale, we deliver secure, reliable software for global teams.',
     heroIntro: 'As a Warsaw software development company, we turn your product idea into reliable AI powered software. From a focused first version to a platform ready to grow, one team designs, builds, and launches it with you.',
-    summary: 'Custom platforms and AI-enabled SaaS products built around your product goals and day-to-day operations.',
+    summary: 'We design and build AI powered SaaS products and custom software, from a focused first version to a platform ready to grow.',
     description: 'We design and build AI powered SaaS products and custom software, from a focused first version to a platform ready to grow.',
     benefits: [
       'Launch a working first version fast and learn from real users early.',
@@ -147,7 +147,7 @@ export const SERVICES: Service[] = [
     metaTitle: 'Custom AI Agents and Internal Copilots by Anon, Warsaw',
     metaDescription: 'We build custom AI agents and internal copilots that answer questions, use your tools, and automate tasks. AI development from Warsaw for global teams.',
     heroIntro: 'We build AI agents and copilots that know your business, use your tools, and take action for you. Your team gets a tireless AI assistant. Your customers get faster, smarter answers.',
-    summary: 'AI assistants that help your team find trusted answers and move routine work forward inside existing tools.',
+    summary: 'We build AI agents and copilots that know your business, use your tools, and take action for you. Your team gets a tireless AI assistant. Your customers get faster, smarter answers.',
     description: 'We build AI agents and copilots that know your business, use your tools, and take action for you. Your team gets a tireless AI assistant. Your customers get faster, smarter answers.',
     benefits: [
       'Give every employee instant answers from your company knowledge.',
@@ -194,7 +194,7 @@ export const SERVICES: Service[] = [
     metaTitle: 'AI Workflow Automation Services by Anon, Warsaw',
     metaDescription: 'Custom AI workflow automation and system integrations from Warsaw. We connect your tools, automate repetitive tasks, and save your team hours every week.',
     heroIntro: 'We connect your apps, data, and teams with smart AI workflows that run on their own. Less manual work, fewer errors, and more time for the work that grows your business.',
-    summary: 'Connected workflows that cut manual handoffs and keep information in sync across your business tools.',
+    summary: 'We connect your apps, data, and teams with smart AI workflows that run on their own. Less manual work, fewer errors, and more time for the work that grows your business.',
     description: 'We connect your apps, data, and teams with smart AI workflows that run on their own. Less manual work, fewer errors, and more time for the work that grows your business.',
     benefits: [
       'Save hours every week by removing repetitive manual tasks.',
