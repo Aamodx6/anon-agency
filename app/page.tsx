@@ -11,8 +11,18 @@ import { ArchiveSection } from '@/components/ArchiveSection';
 import { ServicesStack } from '@/components/ServicesStack';
 import { StickyNav } from '@/components/StickyNav';
 import { initHeroText } from '@/src/animations/heroText';
+import { SERVICES } from '@/data/services';
 
 export default function HomePage() {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Anon',
+    url: 'https://www.awakeagency.dev',
+    description:
+      'Anon builds websites, mobile apps, custom software, AI agents, and connected workflows to help businesses serve customers and get work done.',
+    knowsAbout: SERVICES.map(service => service.title),
+  };
   const heroRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const ruleRef = useRef<HTMLSpanElement>(null);
@@ -41,6 +51,12 @@ export default function HomePage() {
 
   return (
     <main id="main">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
+      />
       {/* 1. HERO SECTION */}
       <div className="Hero-module__KTD73a__frame">
         <section
@@ -60,22 +76,22 @@ export default function HomePage() {
             <h1
               ref={headlineRef}
               className="Hero-module__KTD73a__headline"
-              aria-label="We build websites people remember."
+              aria-label="Websites. Apps. AI that works."
               data-split-heading="true"
               data-split-active="true"
               data-node-id="1:137"
               data-coins-above=""
             >
               <span data-split-line="justify" aria-hidden="true">
-                {renderSplitWord('We')}
-                {renderSplitWord('build')}
+                {renderSplitWord('Websites.')}
+                {renderSplitWord('Apps.')}
               </span>
               <span data-split-line="justify" aria-hidden="true">
-                {renderSplitWord('websites')}
-                {renderSplitWord('people')}
+                {renderSplitWord('AI')}
+                {renderSplitWord('that')}
               </span>
               <span data-split-line="start" aria-hidden="true">
-                {renderSplitWord('remember.')}
+                {renderSplitWord('works.')}
               </span>
             </h1>
 
@@ -85,9 +101,9 @@ export default function HomePage() {
               data-node-id="1:147"
               data-coins-above=""
             >
-              Anon is a creative digital studio in Warsaw. We design and build premium
-              websites and web products for founders and product teams who need to stand
-              out.
+              We build websites, mobile apps, and AI-powered systems for businesses—from
+              custom software and internal agents to connected workflows. Practical
+              digital products that help customers and teams get things done.
             </p>
 
             <div className="Hero-module__KTD73a__meta" data-coins-floor="">

@@ -1,9 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Services · Awake',
+  title: 'Services — Web, mobile & AI | Anon',
   description:
-    'Our services: Webflow development, UX/UI design, Branding, and Maintenance & Support.',
+    'Explore web and mobile applications, AI automation, custom agents, software, support, document processing, sales automation, and analytics.',
+  openGraph: {
+    title: 'Services — Web, mobile & AI | Anon',
+    description:
+      'Explore web and mobile applications, AI automation, custom agents, software, support, document processing, sales automation, and analytics.',
+    siteName: 'Anon',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Services — Web, mobile & AI | Anon',
+    description:
+      'Explore web and mobile applications, AI automation, custom agents, software, support, document processing, sales automation, and analytics.',
+  },
 };
 
 export default function ServicesLayout({

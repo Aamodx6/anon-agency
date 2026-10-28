@@ -35,7 +35,7 @@ const DEFAULT_STEPS: ProcessStep[] = [
   {
     number: '03',
     title: 'Build',
-    body: 'Webflow build with animations, CMS and responsive polish.',
+    body: 'Build, integrations, and testing for the workflows your business depends on.',
   },
   {
     number: '04',

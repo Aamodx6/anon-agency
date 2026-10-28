@@ -165,10 +165,14 @@
   color: rgba(20, 24, 31, 0.18);
 }
 
-.decoration[data-decoration='web-mobile-development'] .webflowArt,
-.decoration[data-decoration='custom-software-system-integration'] .uxArt,
-.decoration[data-decoration='ai-solutions-intelligent-agents'] .brandingArt,
-.decoration[data-decoration='business-process-automation'] .supportArt {
+.decoration[data-decoration='web-mobile-application-development'] .webflowArt,
+.decoration[data-decoration='ai-saas-custom-software-development'] .uxArt,
+.decoration[data-decoration='custom-ai-agents-internal-copilots'] .brandingArt,
+.decoration[data-decoration='ai-workflow-automation-integrations'] .supportArt,
+.decoration[data-decoration='ai-customer-support-voice-agents'] .supportArt,
+.decoration[data-decoration='ai-document-processing-data-intelligence'] .uxArt,
+.decoration[data-decoration='ai-lead-generation-sales-automation'] .webflowArt,
+.decoration[data-decoration='ai-data-analytics-business-intelligence'] .brandingArt {
   opacity: 1;
   filter: blur(0);
   transform: scale(1);

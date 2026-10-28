@@ -25,11 +25,14 @@ export interface Service {
   number: string;
   tabLabel: string;
   title: string;
+  metaTitle: string;
+  metaDescription: string;
   heroIntro: string;
   summary: string;
+  description: string;
+  benefits: string[];
+  process: ServiceProcessStep[];
   deliverables: ServiceDeliverable[];
-  deliverablesHtml: string;
-  howWeWorkHtml: string;
   leftCase: ServiceCase;
   rightCase: ServiceCase;
   featuredCase?: {
@@ -43,12 +46,27 @@ export interface Service {
 
 export const SERVICES: Service[] = [
   {
-    slug: 'web-mobile-development',
+    slug: 'web-mobile-application-development',
     number: '01',
-    tabLabel: 'Web & Mobile',
-    title: 'Web & Mobile Development',
-    heroIntro: 'We build responsive websites, modern web applications, and high-performance mobile apps tailored to your business needs. From seamless user experiences to scalable digital platforms, we turn ideas into powerful products.',
-    summary: 'We build responsive websites, modern web applications, and high-performance mobile apps tailored to your business needs. From seamless user experiences to scalable digital platforms, we turn ideas into powerful products.',
+    tabLabel: 'Web & Mobile Apps',
+    title: 'Web & Mobile Application Development',
+    metaTitle: 'Web & Mobile App Development | Anon',
+    metaDescription: 'Anon builds websites, web applications, and mobile apps that make customer journeys simpler and business operations easier.',
+    heroIntro: 'We create websites, web applications, and mobile apps shaped around how your business and customers work. Each product is designed to be easy to use, dependable, and ready to grow.',
+    summary: 'Websites and mobile apps that make it easier for customers to use your service and for your team to run it.',
+    description: 'From a clear marketing website to a feature-rich product or mobile app, we design and build the full experience. Your team gets a maintainable platform, and your customers get a simpler path to what they need.',
+    benefits: [
+      'Give customers a clear, consistent experience across desktop and mobile.',
+      'Reduce friction in key journeys such as sign-up, booking, and purchase.',
+      'Make routine content and product updates easier for your team.',
+      'Build on a maintainable foundation that can grow with demand.',
+    ],
+    process: [
+      { number: '01', title: 'Set the direction', body: 'We map your users, business goals, core features, and launch needs into a practical product brief.' },
+      { number: '02', title: 'Shape the experience', body: 'We define the key journeys and interface, then review a prototype with your team before development.' },
+      { number: '03', title: 'Build and validate', body: 'We develop the product, connect required services, and test it across devices and real workflows.' },
+      { number: '04', title: 'Launch with confidence', body: 'We prepare deployment, check the live experience, and hand over the tools your team needs to manage it.' },
+    ],
     leftCase: {
       slug: 'frame',
       title: 'Frame',
@@ -68,52 +86,34 @@ export const SERVICES: Service[] = [
     featuredCase: {
       slug: 'mihailove',
       title: 'Mihailove',
-      discipline: 'E-commerce & Web design',
+      discipline: 'E-commerce development',
       image: 'https://cdn.sanity.io/images/pka0c0l0/production/caaeb8c6de41e353d94f7be63a8471827111eb1d-2073x1553.jpg',
       alt: 'Mihailove digital experience showcase on laptop'
     },
-    deliverables: [
-      {
-        index: '01',
-        stepLabel: 'Full-stack architecture & foundations',
-        cardTitle: 'Full-stack architecture & foundations',
-        readBody: 'Next.js 15, TypeScript, Tailwind CSS, and cloud-native backends structured for sub-second page loads, SEO dominance, and modular growth.'
-      },
-      {
-        index: '02',
-        stepLabel: 'Interactive UI & 60fps motion design',
-        cardTitle: 'Interactive UI & 60fps motion design',
-        readBody: 'Bespoke design tokens, GSAP scroll triggers, interactive 3D physics, and fluid micro-interactions engineered without layout shift.'
-      },
-      {
-        index: '03',
-        stepLabel: 'Cross-platform mobile applications',
-        cardTitle: 'Cross-platform mobile applications',
-        readBody: 'High-performance React Native and Progressive Web Apps sharing core business logic while delivering 100% native feel on iOS and Android.'
-      },
-      {
-        index: '04',
-        stepLabel: 'Headless CMS & API integrations',
-        cardTitle: 'Headless CMS & API integrations',
-        readBody: 'Sanity, Strapi, or Shopify headless architectures allowing your non-technical team to publish content instantly without breaking layout integrity.'
-      },
-      {
-        index: '05',
-        stepLabel: 'Lighthouse 95+ pass & edge caching',
-        cardTitle: 'Lighthouse 95+ pass & edge caching',
-        readBody: 'Strict performance audits across real device matrices, image optimization pipelines, and global CDN caching before deployment.'
-      }
-    ],
-    deliverablesHtml: '',
-    howWeWorkHtml: ''
+    deliverables: [],
   },
   {
-    slug: 'custom-software-system-integration',
-    number: '02',
-    tabLabel: 'Custom Software',
-    title: 'Custom Software & System Integration',
-    heroIntro: 'We develop custom software solutions, APIs, and integrated systems that streamline operations and connect your business tools. Our solutions are designed to improve efficiency, simplify workflows, and scale with your growth.',
-    summary: 'We develop custom software solutions, APIs, and integrated systems that streamline operations and connect your business tools. Our solutions are designed to improve efficiency, simplify workflows, and scale with your growth.',
+    slug: 'ai-saas-custom-software-development',
+    number: '04',
+    tabLabel: 'AI SaaS & Software',
+    title: 'AI SaaS & Custom Software Development',
+    metaTitle: 'AI SaaS & Custom Software Development | Anon',
+    metaDescription: 'Build an AI-enabled SaaS product or custom platform around your workflows, users, and business goals with Anon.',
+    heroIntro: 'We turn product ideas and operational needs into custom software, AI-enabled SaaS products, and connected systems. The result is software built around your business rather than the limits of an off-the-shelf tool.',
+    summary: 'Custom platforms and AI-enabled SaaS products built around your product goals and day-to-day operations.',
+    description: 'We shape the product, build its application and backend, and connect the tools it depends on. You get a reliable foundation that supports real users today and can evolve as the business grows.',
+    benefits: [
+      'Give your product a workflow that fits how customers and staff actually work.',
+      'Connect business tools without repeated copying between systems.',
+      'Keep permissions, data flows, and operational needs in view from the start.',
+      'Extend features without rebuilding around the limits of generic software.',
+    ],
+    process: [
+      { number: '01', title: 'Clarify the product', body: 'We align on users, essential workflows, integrations, and what the first useful release must do.' },
+      { number: '02', title: 'Design the foundation', body: 'We plan the application, data model, access rules, and technical approach before committing to a build.' },
+      { number: '03', title: 'Develop in increments', body: 'We build core features, connect services, and review working software with your team as it takes shape.' },
+      { number: '04', title: 'Release and improve', body: 'We prepare the production launch, share operating guidance, and identify the next improvements from use.' },
+    ],
     leftCase: {
       slug: 'portfolio-ventures',
       title: 'Portfolio Ventures',
@@ -137,48 +137,30 @@ export const SERVICES: Service[] = [
       image: 'https://cdn.sanity.io/images/pka0c0l0/production/3054ee77e7a9f1d81a5c0ec55f51ff7c6e77e8a2-1440x1698.png',
       alt: 'Rhinestone modular smart account interface'
     },
-    deliverables: [
-      {
-        index: '01',
-        stepLabel: 'Domain modeling & system blueprint',
-        cardTitle: 'Domain modeling & system blueprint',
-        readBody: 'Deep architectural discovery, database entity-relationship modeling, and event-driven communication protocols tailored to your operational constraints.'
-      },
-      {
-        index: '02',
-        stepLabel: 'Bespoke web applications & portals',
-        cardTitle: 'Bespoke web applications & portals',
-        readBody: 'Custom administrative dashboards, real-time customer portals, and internal tooling engineered with role-based access control (RBAC).'
-      },
-      {
-        index: '03',
-        stepLabel: 'Legacy refactoring & cloud migration',
-        cardTitle: 'Legacy refactoring & cloud migration',
-        readBody: 'Deconstructing brittle monolithic services into resilient, containerized microservices running on scalable AWS or GCP infrastructure.'
-      },
-      {
-        index: '04',
-        stepLabel: 'Bidirectional API pipelines',
-        cardTitle: 'Bidirectional API pipelines',
-        readBody: 'Robust, webhook-driven synchronizations between ERPs (SAP, NetSuite), CRMs (HubSpot, Salesforce), and fintech payment rails (Stripe).'
-      },
-      {
-        index: '05',
-        stepLabel: 'Enterprise security & compliance',
-        cardTitle: 'Enterprise security & compliance',
-        readBody: 'SOC2-ready encryption standards, OAuth2/SAML SSO integrations, and automated penetration testing suites baked into CI/CD.'
-      }
-    ],
-    deliverablesHtml: '',
-    howWeWorkHtml: ''
+    deliverables: [],
   },
   {
-    slug: 'ai-solutions-intelligent-agents',
+    slug: 'custom-ai-agents-internal-copilots',
     number: '03',
-    tabLabel: 'AI & Agents',
-    title: 'AI Solutions & Intelligent Agents',
-    heroIntro: 'We build AI-powered agents, intelligent chatbots, and custom AI workflows that automate tasks, enhance decision-making, and transform business data into actionable insights.',
-    summary: 'We build AI-powered agents, intelligent chatbots, and custom AI workflows that automate tasks, enhance decision-making, and transform business data into actionable insights.',
+    tabLabel: 'AI Agents & Copilots',
+    title: 'Custom AI Agents & Internal Copilots',
+    metaTitle: 'Custom AI Agents & Internal Copilots | Anon',
+    metaDescription: 'Anon builds internal AI agents and copilots that help teams find trusted information and complete routine work.',
+    heroIntro: 'We build focused AI agents and internal copilots that help employees find information, complete routine work, and use business systems. They fit your team’s tools and include clear limits for when a person should take over.',
+    summary: 'AI assistants that help your team find trusted answers and move routine work forward inside existing tools.',
+    description: 'We connect AI agents to the knowledge and systems your staff already use, then shape how they answer, act, and hand off work. Teams spend less time searching and repeating tasks while retaining control over important decisions.',
+    benefits: [
+      'Find approved answers without searching across scattered files and tools.',
+      'Give staff a faster starting point for routine research and admin tasks.',
+      'Reduce repeated data entry by connecting assistants to chosen systems.',
+      'Keep people in control with permissions, review, and escalation paths.',
+    ],
+    process: [
+      { number: '01', title: 'Choose a useful task', body: 'We identify a focused team workflow and agree on trusted sources, boundaries, and success criteria.' },
+      { number: '02', title: 'Connect knowledge and tools', body: 'We prepare relevant content and define what the assistant may read, suggest, or update.' },
+      { number: '03', title: 'Test with the team', body: 'We check answers against real examples, refine handoffs, and invite users to validate the workflow.' },
+      { number: '04', title: 'Deploy with oversight', body: 'We roll out access, monitoring, and feedback routes so the copilot can be improved responsibly.' },
+    ],
     leftCase: {
       slug: 'aimplify',
       title: 'Aimplify',
@@ -202,48 +184,30 @@ export const SERVICES: Service[] = [
       image: 'https://cdn.sanity.io/images/pka0c0l0/production/73a5abc6bbeacc8a8380ce43b2fa889b256ebde6-1080x1320.jpg',
       alt: 'Aimplify intelligent AI agent workflows'
     },
-    deliverables: [
-      {
-        index: '01',
-        stepLabel: 'AI feasibility audit & readiness roadmap',
-        cardTitle: 'AI feasibility audit & readiness roadmap',
-        readBody: 'Evaluating proprietary business data, identifying high-leverage agent workflows, and calculating model ROI and inference costs upfront.'
-      },
-      {
-        index: '02',
-        stepLabel: 'Autonomous agentic workflow systems',
-        cardTitle: 'Autonomous agentic workflow systems',
-        readBody: 'Building goal-driven agents with tool calling, memory retention, and validation loops that autonomously execute complex business operations.'
-      },
-      {
-        index: '03',
-        stepLabel: 'Enterprise RAG & semantic vector search',
-        cardTitle: 'Enterprise RAG & semantic vector search',
-        readBody: 'Connecting internal documentation, databases, and unstructured PDFs to vector search indices for accurate citations without hallucination.'
-      },
-      {
-        index: '04',
-        stepLabel: 'Domain fine-tuning & model distillation',
-        cardTitle: 'Domain fine-tuning & model distillation',
-        readBody: 'Fine-tuning specialized smaller models to achieve proprietary accuracy, lower inference latency, and reduce API token consumption by up to 70%.'
-      },
-      {
-        index: '05',
-        stepLabel: 'Production guardrails & observability',
-        cardTitle: 'Production guardrails & observability',
-        readBody: 'Real-time telemetry, prompt injection defenses, automated PII masking, and deterministic fallbacks ensure safe production operation.'
-      }
-    ],
-    deliverablesHtml: '',
-    howWeWorkHtml: ''
+    deliverables: [],
   },
   {
-    slug: 'business-process-automation',
-    number: '04',
-    tabLabel: 'Automation',
-    title: 'Business Process Automation',
-    heroIntro: 'We automate repetitive tasks and complex business workflows to save time, reduce manual errors, and improve productivity. From lead management to customer support, we help your business operate smarter and faster.',
-    summary: 'We automate repetitive tasks and complex business workflows to save time, reduce manual errors, and improve productivity. From lead management to customer support, we help your business operate smarter and faster.',
+    slug: 'ai-workflow-automation-integrations',
+    number: '02',
+    tabLabel: 'AI Workflow Automation',
+    title: 'AI Workflow Automation & Integrations',
+    metaTitle: 'AI Workflow Automation & Integrations | Anon',
+    metaDescription: 'Connect business tools and automate repetitive handoffs with practical AI workflows built by Anon.',
+    heroIntro: 'We connect your business tools and automate repetitive handoffs with workflows that can use AI where it adds value. Your team spends less time on manual updates and more time on work that needs judgment.',
+    summary: 'Connected workflows that cut manual handoffs and keep information in sync across your business tools.',
+    description: 'We map how work moves between people and platforms, then build integrations and automations to handle routine steps. AI is used for tasks such as sorting requests or extracting details, with checks and human review where they matter.',
+    benefits: [
+      'Spend less staff time moving information between systems.',
+      'Reduce missed handoffs with clear ownership and status updates.',
+      'Cut avoidable entry mistakes through validation at each step.',
+      'See where processes stall and make focused improvements.',
+    ],
+    process: [
+      { number: '01', title: 'Map the workflow', body: 'We document triggers, decisions, systems, exceptions, and the people responsible at each handoff.' },
+      { number: '02', title: 'Set the rules', body: 'We agree what can run automatically, where AI may help, and when a person must review.' },
+      { number: '03', title: 'Connect and test', body: 'We build the integrations, test normal and exception cases, and check that failures are visible.' },
+      { number: '04', title: 'Go live in stages', body: 'We release the workflow with monitoring and practical guidance for the people who use it.' },
+    ],
     leftCase: {
       slug: 'condor',
       title: 'Condor',
@@ -267,48 +231,30 @@ export const SERVICES: Service[] = [
       image: 'https://cdn.sanity.io/images/pka0c0l0/production/29e627e935328b317c488a28c3e8567fe673e2ee-2800x1572.jpg',
       alt: 'Condor automated flight route allocation'
     },
-    deliverables: [
-      {
-        index: '01',
-        stepLabel: 'Operational bottleneck & friction mapping',
-        cardTitle: 'Operational bottleneck & friction mapping',
-        readBody: 'Analyzing current operational handoffs, duplicate data entries, and manual approval delays to design lean, automated paths.'
-      },
-      {
-        index: '02',
-        stepLabel: 'Multi-platform workflow orchestration',
-        cardTitle: 'Multi-platform workflow orchestration',
-        readBody: 'Custom serverless workers, event streams, and reliable message queues linking your databases, communications, and external partners.'
-      },
-      {
-        index: '03',
-        stepLabel: 'Intelligent document & invoice parsing',
-        cardTitle: 'Intelligent document & invoice parsing',
-        readBody: 'Automated ingestion of receipts, vendor invoices, contracts, and forms using vision models and structured JSON schemas.'
-      },
-      {
-        index: '04',
-        stepLabel: 'Automated KYC & customer onboarding',
-        cardTitle: 'Automated KYC & customer onboarding',
-        readBody: 'Instant identity verification, document validation, account provisioning, and welcome sequences without human gatekeepers.'
-      },
-      {
-        index: '05',
-        stepLabel: 'Real-time telemetry & failure alerts',
-        cardTitle: 'Real-time telemetry & failure alerts',
-        readBody: 'Live dashboard displaying active execution logs, queue health, retry mechanisms, and instant Slack/Teams alerting on anomalies.'
-      }
-    ],
-    deliverablesHtml: '',
-    howWeWorkHtml: ''
+    deliverables: [],
   },
   {
-    slug: 'technical-consulting-ongoing-support',
+    slug: 'ai-customer-support-voice-agents',
     number: '05',
-    tabLabel: 'Consulting & Support',
-    title: 'Technical Consulting & Ongoing Support',
-    heroIntro: 'Fractional CTO leadership, dedicated DevOps infrastructure management, and priority technical support to keep your mission-critical applications resilient, updated, and lightning-fast.',
-    summary: 'Architecture audits, fractional engineering leadership, automated CI/CD pipelines, 24/7 uptime monitoring, and continuous iteration sprints.',
+    tabLabel: 'AI Support & Voice',
+    title: 'AI Customer Support & Voice Agents',
+    metaTitle: 'AI Customer Support & Voice Agents | Anon',
+    metaDescription: 'Help customers get answers sooner with chat and voice agents grounded in your support knowledge and policies.',
+    heroIntro: 'We build support assistants for chat and voice that answer common questions, collect useful details, and route complex cases to your team. They use your approved information and connect with your existing support tools.',
+    summary: 'Chat and voice assistants that handle common questions and pass complex cases to the right person.',
+    description: 'We design customer-facing AI support around your service policies, knowledge, and escalation paths. Customers can get help sooner on routine requests, while your team sees the context needed to resolve harder issues.',
+    benefits: [
+      'Answer common questions outside the limits of staff availability.',
+      'Collect relevant details before a support agent takes over.',
+      'Keep replies aligned with your current service information and policies.',
+      'Route sensitive or unusual requests to people with useful context.',
+    ],
+    process: [
+      { number: '01', title: 'Review support needs', body: 'We identify common questions, service channels, response boundaries, and the cases that need a person.' },
+      { number: '02', title: 'Prepare approved answers', body: 'We organize support information and set up tone, identity checks, and escalation rules.' },
+      { number: '03', title: 'Test real conversations', body: 'We validate chat and voice flows against representative requests, edge cases, and handoffs.' },
+      { number: '04', title: 'Connect and monitor', body: 'We integrate with your support tools and review conversation feedback to guide refinements.' },
+    ],
     leftCase: {
       slug: 'korelabs',
       title: 'Korelabs',
@@ -332,48 +278,30 @@ export const SERVICES: Service[] = [
       image: 'https://cdn.sanity.io/images/pka0c0l0/production/835f207df3063191fc45abf54a20d4947ae0c9ae-1440x1698.png',
       alt: 'Korelabs technical architecture and deployment management'
     },
-    deliverables: [
-      {
-        index: '01',
-        stepLabel: 'Architecture audit & cost optimization',
-        cardTitle: 'Architecture audit & cost optimization',
-        readBody: 'Full code review, database query profiling, cloud infrastructure waste elimination, and security vulnerability remediations.'
-      },
-      {
-        index: '02',
-        stepLabel: 'Fractional CTO advisory for founders',
-        cardTitle: 'Fractional CTO advisory for founders',
-        readBody: 'High-level strategic guidance on technical roadmaps, engineering team hiring evaluations, and technology vendor selections.'
-      },
-      {
-        index: '03',
-        stepLabel: 'Automated CI/CD & zero-downtime deploys',
-        cardTitle: 'Automated CI/CD & zero-downtime deploys',
-        readBody: 'GitHub Actions, automated test suites, staging environments, and blue-green zero-downtime deployment pipelines.'
-      },
-      {
-        index: '04',
-        stepLabel: '24/7 uptime monitoring & incident SLA',
-        cardTitle: '24/7 uptime monitoring & incident SLA',
-        readBody: 'Continuous APM telemetry via Datadog and Sentry, automated self-healing restart triggers, and guaranteed response SLAs.'
-      },
-      {
-        index: '05',
-        stepLabel: 'Monthly roadmap iteration sprints',
-        cardTitle: 'Monthly roadmap iteration sprints',
-        readBody: 'Dedicated engineering hours every month for feature additions, dependency updates, performance tuning, and UX enhancements.'
-      }
-    ],
-    deliverablesHtml: '',
-    howWeWorkHtml: ''
+    deliverables: [],
   },
   {
-    slug: 'ux-ui-design',
+    slug: 'ai-document-processing-data-intelligence',
     number: '06',
-    tabLabel: 'UX/UI design',
-    title: 'UX/UI design',
-    heroIntro: 'Research, architecture, wireframes, and production-ready interfaces engineered with obsessive attention to user flow, clarity, and motion.',
-    summary: 'Stakeholder discovery, user research, wireframing, high-fidelity design systems, and developer-ready Figma libraries.',
+    tabLabel: 'Document Processing',
+    title: 'AI Document Processing & Data Intelligence',
+    metaTitle: 'AI Document Processing & Data Intelligence | Anon',
+    metaDescription: 'Turn invoices, forms, and business documents into structured, searchable data with review built into the process.',
+    heroIntro: 'We turn documents and unstructured business information into usable, searchable data. Extraction, classification, and review workflows help teams handle paperwork with fewer repetitive steps.',
+    summary: 'Extract, organize, and review information from documents so teams can act on it without repeated manual entry.',
+    description: 'We build document workflows that capture key fields, classify incoming files, and send uncertain results for review. The structured information can then flow into your business systems, making records easier to search and use.',
+    benefits: [
+      'Spend less time typing details from forms, invoices, and other records.',
+      'Make document information easier to search and compare.',
+      'Catch uncertain or incomplete extractions before they reach core systems.',
+      'Move verified data into the tools where teams already work.',
+    ],
+    process: [
+      { number: '01', title: 'Inspect the documents', body: 'We review file types, fields, volumes, and the decisions your team makes from each document.' },
+      { number: '02', title: 'Define extraction and review', body: 'We set the output structure, confidence checks, and the cases that should go to a person.' },
+      { number: '03', title: 'Build the data flow', body: 'We configure intake, extraction, validation, and delivery into your chosen business systems.' },
+      { number: '04', title: 'Verify against examples', body: 'We test representative files, tune the review path, and give your team a way to resolve exceptions.' },
+    ],
     leftCase: {
       slug: 'rhinestone',
       title: 'Rhinestone',
@@ -397,48 +325,30 @@ export const SERVICES: Service[] = [
       image: 'https://cdn.sanity.io/images/pka0c0l0/production/3054ee77e7a9f1d81a5c0ec55f51ff7c6e77e8a2-1440x1698.png',
       alt: 'Rhinestone modular smart account interface'
     },
-    deliverables: [
-      {
-        index: '01',
-        stepLabel: 'Stakeholder and user research',
-        cardTitle: 'Stakeholder and user research',
-        readBody: 'We talk to the people who run the product and the people who use it, and write down where the interface gets in the way.'
-      },
-      {
-        index: '02',
-        stepLabel: 'Information architecture',
-        cardTitle: 'Information architecture',
-        readBody: 'The map of the product: what lives where, what it is called, and the shortest route to the things people do daily.'
-      },
-      {
-        index: '03',
-        stepLabel: 'Wireframes and user flows',
-        cardTitle: 'Wireframes and user flows',
-        readBody: 'Every flow drawn end to end and clickable, so decisions happen on structure before they get expensive on visuals.'
-      },
-      {
-        index: '04',
-        stepLabel: 'High-fidelity UI design',
-        cardTitle: 'High-fidelity UI design',
-        readBody: 'The screens at full fidelity, with states, edge cases and motion notes, from the same designers who build our sites.'
-      },
-      {
-        index: '05',
-        stepLabel: 'Component library and handover',
-        cardTitle: 'Component library and handover',
-        readBody: 'A documented component library your developers can build from, so the next screen looks like the last one.'
-      }
-    ],
-    deliverablesHtml: '',
-    howWeWorkHtml: ''
+    deliverables: [],
   },
   {
-    slug: 'webflow-development',
+    slug: 'ai-lead-generation-sales-automation',
     number: '07',
-    tabLabel: 'Webflow development',
-    title: 'Webflow development',
-    heroIntro: 'Production-ready Webflow sites built cleanly with semantic classes, custom code where needed, and lightweight interactions that feel natural.',
-    summary: 'Custom design in Figma, bespoke Webflow builds with smooth micro-interactions, CMS architecture, and team training.',
+    tabLabel: 'Lead & Sales Automation',
+    title: 'AI Lead Generation & Sales Automation',
+    metaTitle: 'AI Lead Generation & Sales Automation | Anon',
+    metaDescription: 'Connect lead sources to your CRM, qualify enquiries, and support timely follow-up with sales automation from Anon.',
+    heroIntro: 'We help sales teams capture and qualify inbound interest, keep prospect records current, and follow up at the right time. Practical AI and CRM workflows reduce missed handoffs without making outreach feel robotic.',
+    summary: 'Lead capture, qualification, and follow-up workflows that help sales teams spend more time with good-fit prospects.',
+    description: 'We connect lead sources to your CRM, organize incoming prospects, and automate timely next steps for the sales team. Clear qualification rules and human review keep outreach relevant and records dependable.',
+    benefits: [
+      'Reduce delays between a prospect’s enquiry and the first useful response.',
+      'Give sales staff cleaner records and clearer next actions.',
+      'Spend less time sorting leads that do not match your criteria.',
+      'Keep follow-ups consistent without removing personal judgment.',
+    ],
+    process: [
+      { number: '01', title: 'Understand the sales path', body: 'We review your lead sources, qualification criteria, CRM, and current follow-up process.' },
+      { number: '02', title: 'Design the handoffs', body: 'We define routing, data checks, timing, and where a salesperson should review or respond.' },
+      { number: '03', title: 'Connect the workflow', body: 'We link capture forms and channels to the CRM, then configure useful alerts and follow-up steps.' },
+      { number: '04', title: 'Review lead quality', body: 'We test with sample enquiries and adjust the rules based on feedback from the sales team.' },
+    ],
     leftCase: {
       slug: 'frame',
       title: 'Frame',
@@ -458,52 +368,34 @@ export const SERVICES: Service[] = [
     featuredCase: {
       slug: 'mihailove',
       title: 'Mihailove',
-      discipline: 'E-commerce & Web design',
+      discipline: 'E-commerce development',
       image: 'https://cdn.sanity.io/images/pka0c0l0/production/caaeb8c6de41e353d94f7be63a8471827111eb1d-2073x1553.jpg',
       alt: 'Mihailove digital experience showcase on laptop'
     },
-    deliverables: [
-      {
-        index: '01',
-        stepLabel: 'Project discovery & strategy',
-        cardTitle: 'Project discovery & strategy',
-        readBody: 'One call, one document. What the site has to do, who it is for, and what done means, in writing within days.'
-      },
-      {
-        index: '02',
-        stepLabel: 'UX structure and wireframes',
-        cardTitle: 'UX structure and wireframes',
-        readBody: 'Structure first, then look. The page order, the story, and wireframes you can click through before any pixels arrive.'
-      },
-      {
-        index: '03',
-        stepLabel: 'Custom design in Figma',
-        cardTitle: 'Custom design in Figma',
-        readBody: "Every screen drawn for your content rather than a template's, with feedback rounds built into the timeline."
-      },
-      {
-        index: '04',
-        stepLabel: 'Webflow build with animations',
-        cardTitle: 'Webflow build with animations',
-        readBody: 'A pixel-perfect Webflow build with motion where it carries meaning. Tested on real devices before you see it.'
-      },
-      {
-        index: '05',
-        stepLabel: 'CMS setup and team training',
-        cardTitle: 'CMS setup and team training',
-        readBody: 'A CMS your team will actually use, wired so nothing needs a developer after launch, handed over with training.'
-      }
-    ],
-    deliverablesHtml: '',
-    howWeWorkHtml: ''
+    deliverables: [],
   },
   {
-    slug: 'branding',
+    slug: 'ai-data-analytics-business-intelligence',
     number: '08',
-    tabLabel: 'Branding',
-    title: 'Branding',
-    heroIntro: 'Distinct visual identities that anchor your product, communicate value clearly, and hold together across every digital and print touchpoint.',
-    summary: 'Brand discovery workshops, core messaging, logos, typography, color palettes, and comprehensive brand guidelines.',
+    tabLabel: 'Data Analytics',
+    title: 'AI Data Analytics & Business Intelligence',
+    metaTitle: 'AI Data Analytics & Business Intelligence | Anon',
+    metaDescription: 'Bring business data into clear dashboards and grounded analysis that help teams make informed decisions.',
+    heroIntro: 'We bring business data into clear dashboards and analysis tools that help leaders understand performance and spot changes. AI-assisted exploration can make useful answers easier to find without hiding how the numbers are defined.',
+    summary: 'Clear dashboards and trusted analysis that help teams spot trends and make informed business decisions.',
+    description: 'We connect relevant data sources, define the measures that matter, and present them in dashboards your team can use. Where appropriate, natural-language exploration helps people ask questions while keeping answers grounded in the underlying data.',
+    benefits: [
+      'Bring key performance measures into one shared view.',
+      'Reduce time spent reconciling numbers across separate reports.',
+      'Give teams a clearer way to investigate changes in performance.',
+      'Make decisions using consistent definitions and traceable data.',
+    ],
+    process: [
+      { number: '01', title: 'Agree on the questions', body: 'We identify the decisions, audiences, and business measures the reporting should support.' },
+      { number: '02', title: 'Check the data', body: 'We review source systems, definitions, access, and gaps before designing the reporting layer.' },
+      { number: '03', title: 'Build the insight view', body: 'We connect selected data, create dashboards, and validate calculations with your team.' },
+      { number: '04', title: 'Put it to work', body: 'We hand over clear usage guidance and refine the views as your questions and data evolve.' },
+    ],
     leftCase: {
       slug: 'sotto',
       title: 'Sotto',
@@ -521,216 +413,92 @@ export const SERVICES: Service[] = [
       discipline: 'Brand Design'
     },
     featuredCase: {
-      slug: 'sotto',
-      title: 'Sotto',
-      discipline: 'Visual Identity & Branding',
-      image: 'https://cdn.sanity.io/images/pka0c0l0/production/9395fccaf2a0f50ac5e1f478ebd1be397ddb5268-1440x1698.png',
-      alt: 'Sotto restaurant identity and packaging system'
+      slug: 'cybercapitalist',
+      title: 'CyberCapitalist',
+      discipline: 'Market intelligence',
+      image: 'https://cdn.sanity.io/images/pka0c0l0/production/89a53e62a840a7ecb28160f628cfd826cfbbd2ca-1440x1698.png',
+      alt: 'CyberCapitalist market intelligence interface'
     },
-    deliverables: [
-      {
-        index: '01',
-        stepLabel: 'Brand discovery workshop',
-        cardTitle: 'Brand discovery workshop',
-        readBody: 'One structured session on where the company is going and what it should feel like. The brief writes itself from the answers.'
-      },
-      {
-        index: '02',
-        stepLabel: 'Positioning and messaging',
-        cardTitle: 'Positioning and messaging',
-        readBody: 'What you say, to whom, in which words. The line everything else hangs from.'
-      },
-      {
-        index: '03',
-        stepLabel: 'Logo and visual identity',
-        cardTitle: 'Logo and visual identity',
-        readBody: 'The marks, drawn for the screen first and presented in use on the real product.'
-      },
-      {
-        index: '04',
-        stepLabel: 'Type, colour and imagery system',
-        cardTitle: 'Type, colour and imagery system',
-        readBody: 'The system behind the look: typefaces, palette and imagery rules that keep every next asset on brand.'
-      },
-      {
-        index: '05',
-        stepLabel: 'Brand guidelines',
-        cardTitle: 'Brand guidelines',
-        readBody: 'One document with the whole identity in it, so anyone who touches the brand after us keeps it straight.'
-      }
-    ],
-    deliverablesHtml: '',
-    howWeWorkHtml: ''
-  },
-  {
-    slug: 'webflow-maintains-support',
-    number: '09',
-    tabLabel: 'Webflow maintains & support',
-    title: 'Webflow maintains & support',
-    heroIntro: 'Ongoing optimization, rapid feature updates, uptime monitoring, and priority technical support to keep your site fast, fresh, and reliable.',
-    summary: 'Pre-launch QA, domain handover, CMS training, monthly updates, and direct access to the designers and engineers who built your site.',
-    leftCase: {
-      slug: 'frame',
-      title: 'Frame',
-      type: 'product site',
-      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/7f9817871110af85ee68826e2c402c8534b4cc03-1440x1698.png',
-      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/1c4e3567e9d6a865cd5e7cb5fc65379abc00acd5-2400x1306.png',
-      discipline: 'Development'
-    },
-    rightCase: {
-      slug: 'sotto',
-      title: 'Sotto',
-      type: 'hospitality',
-      baseImg: 'https://cdn.sanity.io/images/pka0c0l0/production/9395fccaf2a0f50ac5e1f478ebd1be397ddb5268-1440x1698.png',
-      hoverImg: 'https://cdn.sanity.io/images/pka0c0l0/production/bc147e801b9e7a8d05883063a695fb6d9894fc8e-2400x1306.png',
-      discipline: 'Brand Design'
-    },
-    featuredCase: {
-      slug: 'frame',
-      title: 'Frame',
-      discipline: 'Webflow Ongoing Operations',
-      image: 'https://cdn.sanity.io/images/pka0c0l0/production/7f9817871110af85ee68826e2c402c8534b4cc03-1440x1698.png',
-      alt: 'Frame platform ongoing performance monitoring'
-    },
-    deliverables: [
-      {
-        index: '01',
-        stepLabel: 'Pre-launch QA and performance pass',
-        cardTitle: 'Pre-launch QA and performance pass',
-        readBody: 'Every page tested on real devices and checked against Lighthouse before anyone else sees it.'
-      },
-      {
-        index: '02',
-        stepLabel: 'Go-live and DNS handover',
-        cardTitle: 'Go-live and DNS handover',
-        readBody: 'We ship it: domains, redirects, forms and analytics wired, with nothing left pointing at staging.'
-      },
-      {
-        index: '03',
-        stepLabel: 'CMS walkthrough and training',
-        cardTitle: 'CMS walkthrough and training',
-        readBody: 'A recorded walkthrough of your own CMS, so publishing does not depend on us.'
-      },
-      {
-        index: '04',
-        stepLabel: 'Monthly updates and monitoring',
-        cardTitle: 'Monthly updates and monitoring',
-        readBody: 'Pages, updates and experiments after launch. The site keeps earning its place.'
-      },
-      {
-        index: '05',
-        stepLabel: 'Priority support channel',
-        cardTitle: 'Priority support channel',
-        readBody: 'A direct line to the people who built the site, with a response time we actually keep.'
-      }
-    ],
-    deliverablesHtml: '',
-    howWeWorkHtml: ''
+    deliverables: [],
   }
-];
+].sort((left, right) => left.number.localeCompare(right.number));
 
-// Helper to generate the exact HTML markup for deliverables matching Awake
-function generateDeliverablesMarkup(service: Service): string {
-  const items = service.deliverables.map((d, i) => `
-    <button type="button" role="tab" aria-selected="${i === 0 ? 'true' : 'false'}" tabindex="${i === 0 ? '0' : '-1'}" class="Deliverables-module__rs733q__item" data-active="${i === 0 ? 'true' : 'false'}">
-      <span class="Deliverables-module__rs733q__collapsed" aria-hidden="${i === 0 ? 'true' : 'false'}">
-        <span class="Deliverables-module__rs733q__index">${d.index}</span>
-        <span class="Deliverables-module__rs733q__mark" aria-hidden="true"></span>
-        <span class="Deliverables-module__rs733q__stepLabel">${d.stepLabel}</span>
-      </span>
-      <span class="Deliverables-module__rs733q__expanded" aria-hidden="${i === 0 ? 'false' : 'true'}">
-        <svg class="Deliverables-module__rs733q__ring" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-          <circle class="Deliverables-module__rs733q__ringTrack" cx="16" cy="16" r="13"></circle>
-          <circle class="Deliverables-module__rs733q__ringFill" cx="16" cy="16" r="13" stroke-dasharray="81.6814" stroke-dashoffset="0"></circle>
-        </svg>
-        <span class="Deliverables-module__rs733q__cardTitle">${d.cardTitle}</span>
-      </span>
-    </button>
-  `).join('');
+const SERVICE_DELIVERABLE_COPY: Record<string, Array<[string, string]>> = {
+  'web-mobile-application-development': [
+    ['Product and page architecture', 'A clear map of pages, screens, user journeys, and the content or product features each one needs.'],
+    ['Responsive interface design', 'A production-ready interface for desktop and mobile, with key states and interaction details covered.'],
+    ['Web application or mobile app', 'A working product built around your priority user tasks, with the right foundation for future features.'],
+    ['Backend and service connections', 'The APIs, content tools, payments, or third-party services needed to support real product use.'],
+    ['Testing and launch handover', 'Device and workflow checks, deployment preparation, and practical guidance for your team.'],
+  ],
+  'ai-workflow-automation-integrations': [
+    ['Workflow and handoff map', 'A documented view of triggers, decisions, systems, exceptions, and the people involved.'],
+    ['Tool and API connections', 'Reliable links between the business platforms your process depends on.'],
+    ['Automated task sequences', 'Rules to route requests, update records, send alerts, or create follow-up tasks.'],
+    ['AI-assisted sorting or extraction', 'Optional classification or data capture with validation and human review for uncertain results.'],
+    ['Monitoring and exception handling', 'Visible run status, useful failure alerts, and a clear path to resolve work that cannot complete.'],
+  ],
+  'custom-ai-agents-internal-copilots': [
+    ['Internal knowledge assistant', 'A focused interface that answers staff questions from approved company information.'],
+    ['Searchable knowledge connections', 'Relevant documents and data sources organized for useful, source-grounded retrieval.'],
+    ['Tool and system actions', 'Carefully scoped actions such as preparing records or drafting updates in selected systems.'],
+    ['Permissions and human handoffs', 'Access rules and escalation paths for sensitive requests, uncertain answers, or decisions.'],
+    ['Evaluation and usage monitoring', 'Test cases and feedback signals to help your team assess quality and improve the assistant.'],
+  ],
+  'ai-saas-custom-software-development': [
+    ['Product scope and system blueprint', 'A defined first release, application structure, data model, and integration plan.'],
+    ['Customer-facing SaaS application', 'A tailored product interface for the core tasks your customers need to complete.'],
+    ['Accounts and access controls', 'User onboarding, roles, and permissions appropriate to your service and operating model.'],
+    ['Backend, APIs, and data storage', 'The services and data structures that support product features and connected systems.'],
+    ['AI feature integration', 'A specific AI capability integrated where it serves the product, with review and fallback behavior.'],
+  ],
+  'ai-customer-support-voice-agents': [
+    ['Support knowledge setup', 'Approved answers and service information organized for customer-facing use.'],
+    ['Chat support assistant', 'A conversational flow for common questions, service guidance, and gathering case details.'],
+    ['Voice agent call flows', 'A voice experience for handling routine calls and directing callers to the right next step.'],
+    ['Support platform integration', 'Connections that pass relevant conversation details into your existing support process.'],
+    ['Escalation and quality checks', 'Clear boundaries, identity checks where needed, human handoff rules, and conversation testing.'],
+  ],
+  'ai-document-processing-data-intelligence': [
+    ['Document intake workflow', 'A controlled route for receiving and sorting the file types your team handles.'],
+    ['Field extraction and classification', 'Structured details captured from forms, invoices, and other recurring documents.'],
+    ['Validation and review queue', 'Checks for missing or uncertain fields, with a clear human review path before use.'],
+    ['Searchable structured records', 'Organized document data that staff can find and filter without opening every file.'],
+    ['Business system delivery', 'Verified information sent to the relevant database, CRM, finance tool, or internal application.'],
+  ],
+  'ai-lead-generation-sales-automation': [
+    ['Lead source connections', 'Inbound forms and selected channels linked to the systems your sales team uses.'],
+    ['Qualification and routing rules', 'Criteria that organize new enquiries and send them to the right owner or queue.'],
+    ['CRM data enrichment', 'Consistent fields and useful context added to prospect records from approved sources.'],
+    ['Follow-up prompts and sequences', 'Timely reminders or messages that support the team’s process without replacing personal judgment.'],
+    ['Sales pipeline visibility', 'A clear view of lead status, ownership, and next actions for the people managing opportunities.'],
+  ],
+  'ai-data-analytics-business-intelligence': [
+    ['Data source and metric map', 'A shared definition of the systems and business measures included in reporting.'],
+    ['Data preparation and connections', 'Reliable flows that bring relevant information together for analysis.'],
+    ['Business dashboards', 'Focused views of performance indicators for the decisions your team needs to make.'],
+    ['Trend and variance analysis', 'Ways to investigate changes over time and compare performance across relevant segments.'],
+    ['Grounded natural-language exploration', 'An optional way to ask questions of approved data, with answers tied to defined measures.'],
+  ],
+};
 
-  const first = service.deliverables[0];
-
-  return `
-    <section class="Deliverables-module__rs733q__section" aria-label="What you get">
-      <div class="Deliverables-module__rs733q__strip" role="tablist" aria-label="Deliverables">
-        ${items}
-      </div>
-      <div class="Deliverables-module__rs733q__reading">
-        <h2 class="Deliverables-module__rs733q__readTitle">
-          <span class="Deliverables-module__rs733q__readTitleLine" data-arriving="">${first.cardTitle}</span>
-        </h2>
-        <div class="Deliverables-module__rs733q__readBodyStack">
-          <p class="Deliverables-module__rs733q__readBody" data-arriving="">${first.readBody}</p>
-        </div>
-      </div>
-    </section>
-  `;
-}
-
-// Helper to generate the exact HTML markup for How We Work
-function generateHowWeWorkMarkup(): string {
-  return `
-    <section class="HowWeWork-module__kq1Iga__section" data-node-id="43:276">
-      <h2 class="HowWeWork-module__kq1Iga__heading">How we work</h2>
-      <ol class="HowWeWork-module__kq1Iga__list">
-        <li class="HowWeWork-module__kq1Iga__item">
-          <div class="HowWeWork-module__kq1Iga__dragLayer">
-            <div class="HowWeWork-module__kq1Iga__card" data-stack-card="">
-              <svg class="ScrollRibbon-module__wSfOTW__svg" aria-hidden="true" focusable="false" preserveAspectRatio="none" data-ribbon=""></svg>
-              <span class="HowWeWork-module__kq1Iga__number">01</span>
-              <div class="HowWeWork-module__kq1Iga__end">
-                <h3 class="HowWeWork-module__kq1Iga__title">Discovery call</h3>
-                <p class="HowWeWork-module__kq1Iga__body">30 free minutes to scope your goals, system architecture, and timeline.</p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="HowWeWork-module__kq1Iga__item">
-          <div class="HowWeWork-module__kq1Iga__dragLayer">
-            <div class="HowWeWork-module__kq1Iga__card" data-stack-card="">
-              <svg class="ScrollRibbon-module__wSfOTW__svg" aria-hidden="true" focusable="false" preserveAspectRatio="none" data-ribbon=""></svg>
-              <span class="HowWeWork-module__kq1Iga__number">02</span>
-              <div class="HowWeWork-module__kq1Iga__end">
-                <h3 class="HowWeWork-module__kq1Iga__title">Architecture & Design</h3>
-                <p class="HowWeWork-module__kq1Iga__body">System blueprints, wireframes, data flows, and interactive prototypes.</p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="HowWeWork-module__kq1Iga__item">
-          <div class="HowWeWork-module__kq1Iga__dragLayer">
-            <div class="HowWeWork-module__kq1Iga__card" data-stack-card="">
-              <svg class="ScrollRibbon-module__wSfOTW__svg" aria-hidden="true" focusable="false" preserveAspectRatio="none" data-ribbon=""></svg>
-              <span class="HowWeWork-module__kq1Iga__number">03</span>
-              <div class="HowWeWork-module__kq1Iga__end">
-                <h3 class="HowWeWork-module__kq1Iga__title">Build & Integration</h3>
-                <p class="HowWeWork-module__kq1Iga__body">Production code, API integrations, agent pipelines, test coverage, and responsive polish.</p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="HowWeWork-module__kq1Iga__item">
-          <div class="HowWeWork-module__kq1Iga__dragLayer">
-            <div class="HowWeWork-module__kq1Iga__card" data-stack-card="">
-              <svg class="ScrollRibbon-module__wSfOTW__svg" aria-hidden="true" focusable="false" preserveAspectRatio="none" data-ribbon=""></svg>
-              <span class="HowWeWork-module__kq1Iga__number">04</span>
-              <div class="HowWeWork-module__kq1Iga__end">
-                <h3 class="HowWeWork-module__kq1Iga__title">Launch & Scaling</h3>
-                <p class="HowWeWork-module__kq1Iga__body">Go-live, cloud configuration, CI/CD, team handover, and ongoing monitoring.</p>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ol>
-    </section>
-  `;
-}
-
-// Populate HTML markups
-SERVICES.forEach(s => {
-  s.deliverablesHtml = generateDeliverablesMarkup(s);
-  s.howWeWorkHtml = generateHowWeWorkMarkup();
+// Build interactive deliverable content for the service detail template.
+SERVICES.forEach(service => {
+  const deliverableCopy = SERVICE_DELIVERABLE_COPY[service.slug];
+  if (!deliverableCopy) {
+    throw new Error(`Missing deliverables for service "${service.slug}".`);
+  }
+  service.deliverables = deliverableCopy.map(([title, readBody], index) => ({
+    index: String(index + 1).padStart(2, '0'),
+    stepLabel: title,
+    cardTitle: title,
+    readBody,
+  }));
 });
-
 // Legacy alias mapping so existing links never break
-export const SERVICE_ALIASES: Record<string, string> = {};
+export const SERVICE_ALIASES: Record<string, string> = {
+  'web-mobile-development': 'web-mobile-application-development',
+  'custom-software-system-integration': 'ai-saas-custom-software-development',
+  'ai-solutions-intelligent-agents': 'custom-ai-agents-internal-copilots',
+  'business-process-automation': 'ai-workflow-automation-integrations',
+};

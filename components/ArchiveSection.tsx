@@ -18,7 +18,7 @@ const ARCHIVE_ITEMS = [
   {
     title: 'Cortland',
     slug: 'cortland',
-    discipline: 'Web design',
+    discipline: 'Web & mobile development',
     year: '2026',
     image:
       'https://cdn.sanity.io/images/pka0c0l0/production/3054ee77e7a9f1d81a5c0ec55f51ff7c6e77e8a2-1440x1698.png',

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
@@ -18,6 +19,39 @@ export function generateStaticParams() {
   return base;
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const targetSlug = SERVICE_ALIASES[slug] || slug;
+  const service = SERVICES.find(item => item.slug === targetSlug);
+
+  if (!service) {
+    notFound();
+  }
+
+  const canonicalPath = `/services/${service.slug}`;
+  return {
+    title: service.metaTitle,
+    description: service.metaDescription,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      title: service.metaTitle,
+      description: service.metaDescription,
+      siteName: 'Anon',
+      type: 'website',
+      url: canonicalPath,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: service.metaTitle,
+      description: service.metaDescription,
+    },
+  };
+}
+
 export default async function ServiceDetailPage({
   params
 }: {
@@ -31,8 +65,27 @@ export default async function ServiceDetailPage({
     notFound();
   }
 
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.title,
+    description: service.description,
+    serviceType: service.title,
+    url: `https://www.awakeagency.dev/services/${service.slug}`,
+    provider: {
+      '@type': 'Organization',
+      name: 'Anon',
+    },
+  };
+
   return (
     <main id="main">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
+      />
       <div className="page-module__dZxIWa__navRow">
         <Navbar variant="dev" />
       </div>
@@ -61,16 +114,42 @@ export default async function ServiceDetailPage({
           {service.title}
         </h1>
         {service.heroIntro && (
-          <p className="PageHero-module__3JSMhW__lead">{service.heroIntro}</p>
+          <p className="PageHero-module__3JSMhW__lead">{service.description}</p>
         )}
       </section>
 
       {/* Interactive Deliverables Tabs */}
+      <h2
+        className="HowWeWork-module__kq1Iga__heading"
+        style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem 1.25rem 0' }}
+      >
+        What we build
+      </h2>
       <DeliverablesTabs deliverables={service.deliverables} />
+
+      <section
+        aria-labelledby="service-benefits-heading"
+        style={{ maxWidth: '1400px', margin: '0 auto', padding: '4rem 1.25rem' }}
+      >
+        <h2
+          id="service-benefits-heading"
+          className="HowWeWork-module__kq1Iga__heading"
+          style={{ marginBottom: '1.5rem' }}
+        >
+          How it helps your business
+        </h2>
+        <ul style={{ display: 'grid', gap: '0.75rem', maxWidth: '760px' }}>
+          {service.benefits.map((benefit) => (
+            <li key={benefit} className="PageHero-module__3JSMhW__lead">
+              {benefit}
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {/* How We Work Process Section */}
       <div className="page-module__Oub5RG__process">
-        <HowWeWork />
+        <HowWeWork steps={service.process} />
       </div>
 
       {/* Featured Case Section */}
@@ -158,6 +237,13 @@ export default async function ServiceDetailPage({
         </div>
       )}
 
+      <p
+        className="PageHero-module__3JSMhW__lead"
+        style={{ maxWidth: '1400px', margin: '0 auto', padding: '1rem 1.25rem 3rem' }}
+      >
+        Have a project in mind?{' '}
+        <Link href="/contacts">Tell us what you need and let’s talk.</Link>
+      </p>
       <CtaBand spacing="page" />
       <Footer />
     </main>

@@ -8,9 +8,24 @@ import { SmoothScroll } from '@/components/SmoothScroll';
 import { ProjectTransitionProvider } from '@/components/ProjectTransition';
 
 export const metadata: Metadata = {
-  title: 'Anon — We build websites people remember.',
+  metadataBase: new URL('https://www.awakeagency.dev'),
+  title: 'Anon — Websites, apps & AI systems',
   description:
-    'Anon is a digital design and development studio based in Warsaw. We craft websites, brand systems, and digital products that work as hard as they look.',
+    'Anon builds websites, mobile apps, custom software, AI agents, and connected workflows to help businesses serve customers and get work done.',
+  openGraph: {
+    title: 'Anon — Websites, apps & AI systems',
+    description:
+      'Anon builds websites, mobile apps, custom software, AI agents, and connected workflows to help businesses serve customers and get work done.',
+    siteName: 'Anon',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Anon — Websites, apps & AI systems',
+    description:
+      'Anon builds websites, mobile apps, custom software, AI agents, and connected workflows to help businesses serve customers and get work done.',
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },

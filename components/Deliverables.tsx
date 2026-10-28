@@ -12,8 +12,6 @@ export const DELIVERABLE_DESCRIPTIONS: Record<string, string> = {
     'Structure first, then look. The page order, the story, and wireframes you can click through before any pixels arrive.',
   'Custom design in Figma':
     "Every screen drawn for your content rather than a template's, with feedback rounds built into the timeline.",
-  'Webflow build with animations':
-    'A pixel-perfect Webflow build with motion where it carries meaning. Tested on real devices before you see it.',
   'CMS setup and team training':
     'A CMS your team will actually use, wired so nothing needs a developer after launch, handed over with training.',
   'Stakeholder and user research':
@@ -26,26 +24,12 @@ export const DELIVERABLE_DESCRIPTIONS: Record<string, string> = {
     'The screens at full fidelity, with states, edge cases and motion notes, from the same designers who build our sites.',
   'Component library and handover':
     'A documented component library your developers can build from, so the next screen looks like the last one.',
-  'Brand discovery workshop':
-    'One structured session on where the company is going and what it should feel like. The brief writes itself from the answers.',
-  'Positioning and messaging':
-    'What you say, to whom, in which words. The line everything else hangs from.',
-  'Logo and visual identity':
-    'The marks, drawn for the screen first and presented in use on the real product.',
-  'Type, colour and imagery system':
-    'The system behind the look: typefaces, palette and imagery rules that keep every next asset on brand.',
-  'Brand guidelines':
-    'One document with the whole identity in it, so anyone who touches the brand after us keeps it straight.',
   'Pre-launch QA and performance pass':
     'Every page tested on real devices and checked against Lighthouse before anyone else sees it.',
   'Go-live and DNS handover':
     'We ship it: domains, redirects, forms and analytics wired, with nothing left pointing at staging.',
   'CMS walkthrough and training':
     'A recorded walkthrough of your own CMS, so publishing does not depend on us.',
-  'Monthly updates and monitoring':
-    'Pages, updates and experiments after launch. The site keeps earning its place.',
-  'Priority support channel':
-    'A direct line to the people who built the site, with a response time we actually keep.',
   // Fallbacks for custom software / AI / automation titles
   'Full-stack architecture & foundations':
     'Next.js 15, TypeScript, Tailwind CSS, and cloud-native backends structured for sub-second page loads, SEO dominance, and modular growth.',

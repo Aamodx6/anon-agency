@@ -13,7 +13,7 @@ const FEATURED_CASES = [
   {
     slug: 'mihailove',
     title: 'Mihailove',
-    discipline: 'E-commerce & Web design',
+    discipline: 'E-commerce development',
     baseImg:
       'https://cdn.sanity.io/images/pka0c0l0/production/9395fccaf2a0f50ac5e1f478ebd1be397ddb5268-1440x1698.png',
     hoverImg:
@@ -25,7 +25,7 @@ const FEATURED_CASES = [
   {
     slug: 'frame',
     title: 'Frame',
-    discipline: 'Development & Web design',
+    discipline: 'Web & mobile development',
     baseImg:
       'https://cdn.sanity.io/images/pka0c0l0/production/7f9817871110af85ee68826e2c402c8534b4cc03-1440x1698.png',
     hoverImg:
@@ -37,7 +37,7 @@ const FEATURED_CASES = [
   {
     slug: 'portfolio-ventures',
     title: 'Portfolio Ventures',
-    discipline: 'Web design & Development',
+    discipline: 'Web & mobile development',
     baseImg:
       'https://cdn.sanity.io/images/pka0c0l0/production/d542e0740df5e6200eb1b958674f0bc141b83237-1440x1698.png',
     hoverImg:

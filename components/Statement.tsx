@@ -10,19 +10,18 @@ gsap.registerPlugin(ScrollTrigger);
 const STATEMENT_DATA = [
   {
     lines: [
-      'We design and build',
-      'websites, brand systems,',
-      'and digital products that',
-      'work as hard as they look.',
+      'We build websites,',
+      'mobile apps, and',
+      'AI-powered software',
+      'for real businesses.',
     ],
   },
   {
     lines: [
-      "Whether you're launching",
-      'a product, rebuilding a',
-      'brand, or replacing a tired',
-      'site, one team takes it',
-      'from sketch to live build.',
+      'From internal agents',
+      'and connected workflows',
+      'to smarter support and',
+      'clearer business data.',
     ],
   },
 ];
@@ -124,9 +123,9 @@ export function Statement() {
     >
       <ScrollRibbon figure="form" stage="full" avoid="soft" start="top 85%" end="+=150%" />
       <h2 className="sr-only">
-        We design and build websites, brand systems, and digital products that work as
-        hard as they look. Whether you&apos;re launching a product, rebuilding a brand, or
-        replacing a tired site, one team takes it from sketch to live build.
+        We build websites, mobile apps, and AI-powered software for real businesses.
+        From internal agents and connected workflows to smarter support and clearer
+        business data.
       </h2>
       <div className="Statement-module__6Nrrla__stack" aria-hidden="true">
         <div
@@ -134,7 +133,7 @@ export function Statement() {
           role="paragraph"
           className="Statement-module__6Nrrla__text"
           data-node-id="1:134"
-          aria-label="We design and build websites, brand systems, and digital products that work as hard as they look."
+          aria-label="We build websites, mobile apps, and AI-powered software for real businesses."
           style={{ opacity: 1 }}
         >
           {STATEMENT_DATA[0].lines.map((line, lIdx) => (
@@ -159,7 +158,7 @@ export function Statement() {
           role="paragraph"
           className="Statement-module__6Nrrla__text"
           data-node-id="1:134"
-          aria-label="Whether you're launching a product, rebuilding a brand, or replacing a tired site, one team takes it from sketch to live build."
+          aria-label="From internal agents and connected workflows to smarter support and clearer business data."
           style={{ opacity: 1 }}
         >
           {STATEMENT_DATA[1].lines.map((line, lIdx) => (

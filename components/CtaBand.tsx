@@ -7,14 +7,23 @@ interface CtaBandProps {
   spacing?: 'home' | 'page';
 }
 
-const NEEDS = ['development', 'web design', 'branding'];
+const NEEDS = [
+  'Web & Mobile App',
+  'AI Automation',
+  'AI Agents',
+  'Custom Software',
+  'AI Support & Voice',
+  'Document Processing',
+  'Lead Generation',
+  'Data Analytics',
+];
 const REEL_COPIES = 7;
 const REEL_MIDDLE_START = Math.floor(REEL_COPIES / 2) * NEEDS.length;
 
 export function CtaBand({ spacing = 'home' }: CtaBandProps) {
   const router = useRouter();
   const [step, setStep] = useState<1 | 2>(1);
-  const [need, setNeed] = useState<string>('development');
+  const [need, setNeed] = useState<string>(NEEDS[0]);
   const [activeIndex, setActiveIndex] = useState(REEL_MIDDLE_START);
   const [isJumping, setIsJumping] = useState(false);
   const [name, setName] = useState<string>('');

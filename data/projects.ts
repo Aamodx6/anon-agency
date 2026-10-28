@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
   "slug": "condor",
   "title": "Condor",
   "intro": "High-performance digital presence and booking experience for private aviation platform Condor.",
-  "services": "Web design · Full-stack development · Motion",
+  "services": "Web & Mobile Application Development · Full-stack development · Motion",
   "industry": "Aviation & Luxury Travel",
   "year": "2024",
   "country": "Switzerland",
@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
     "slug": "aimplify",
     "title": "Aimplify",
     "intro": "",
-    "services": "UI/UX design · Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "IT consultancy",
     "year": "2023",
     "country": "Japan",
@@ -89,11 +89,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -106,12 +106,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -124,7 +126,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -136,7 +138,7 @@ export const PROJECTS: Project[] = [
     "slug": "auxility",
     "title": "Auxility",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Fintech",
     "year": "2023",
     "country": "Canada",
@@ -157,11 +159,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -174,12 +176,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -192,7 +196,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -204,7 +208,7 @@ export const PROJECTS: Project[] = [
     "slug": "aviatize",
     "title": "Aviatize",
     "intro": "",
-    "services": "UI/UX design · Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "",
     "year": "2023",
     "country": "",
@@ -225,11 +229,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -242,12 +246,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -260,7 +266,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -272,7 +278,7 @@ export const PROJECTS: Project[] = [
     "slug": "bro-traffic",
     "title": "Bro Traffic",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Consultancy",
     "year": "2022",
     "country": "Ukraine",
@@ -293,11 +299,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -310,12 +316,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -328,7 +336,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -340,7 +348,7 @@ export const PROJECTS: Project[] = [
     "slug": "cortland",
     "title": "Cortland",
     "intro": "Cortland Capital backs senior recruiters who are ready to run their own firm. We designed and built the site that has to convince them to leave.",
-    "services": "UI/UX design · Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Recruitment ventures",
     "year": "2026",
     "country": "United Kingdom",
@@ -393,11 +401,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -410,12 +418,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -428,7 +438,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -440,7 +450,7 @@ export const PROJECTS: Project[] = [
     "slug": "covalent",
     "title": "Covalent",
     "intro": "The first workforce operations platform built for complex manufacturing, out of a Harvard research project. The site had to explain capability management to a line operator and a plant executive in the same breath.",
-    "services": "UI/UX design · Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Industrial SaaS",
     "year": "2025",
     "country": "United States",
@@ -461,11 +471,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -478,12 +488,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -496,7 +508,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -508,7 +520,7 @@ export const PROJECTS: Project[] = [
     "slug": "cybercapitalist",
     "title": "CyberCapitalist",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Crypto",
     "year": "2023",
     "country": "Ukraine",
@@ -529,11 +541,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -546,12 +558,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -564,7 +578,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -576,7 +590,7 @@ export const PROJECTS: Project[] = [
     "slug": "ezra",
     "title": "Ezra",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Creator tools",
     "year": "2024",
     "country": "Australia",
@@ -597,11 +611,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -614,12 +628,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -632,7 +648,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -644,7 +660,7 @@ export const PROJECTS: Project[] = [
     "slug": "frame",
     "title": "Frame",
     "intro": "A pre-seed productivity startup with a waitlist page that couldn&#x27;t show what the product did. We built the site, the motion, and two working AI demos running on the page itself.",
-    "services": "Webflow development · Motion · AI demos",
+    "services": "Web & Mobile Application Development · Motion · AI demos",
     "industry": "",
     "year": "2024",
     "country": "United States",
@@ -693,11 +709,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -710,12 +726,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -728,7 +746,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -740,7 +758,7 @@ export const PROJECTS: Project[] = [
     "slug": "hamlet-gardens",
     "title": "Hamlet Gardens",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Residential property rentals",
     "year": "2024",
     "country": "United Kingdom",
@@ -761,11 +779,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -778,12 +796,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -796,7 +816,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -808,7 +828,7 @@ export const PROJECTS: Project[] = [
     "slug": "korelabs",
     "title": "Korelabs",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Fintech",
     "year": "2026",
     "country": "United Kingdom",
@@ -829,11 +849,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -846,12 +866,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -864,7 +886,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -876,7 +898,7 @@ export const PROJECTS: Project[] = [
     "slug": "manypixels",
     "title": "Manypixels",
     "intro": "A design-services company that came to us to get off WordPress. Three years and two websites later, we are still working together.",
-    "services": "Webflow development · JavaScript · GSAP · Swiper",
+    "services": "Web & Mobile Application Development · JavaScript · GSAP · Swiper",
     "industry": "Design services",
     "year": "2023–2026",
     "country": "Singapore",
@@ -925,11 +947,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -942,12 +964,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -960,7 +984,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -972,7 +996,7 @@ export const PROJECTS: Project[] = [
     "slug": "mihailove",
     "title": "Mihailove",
     "intro": "A Zurich jewellery studio where every piece is bespoke and every commission is a collaboration. The site had to feel handled rather than browsed.",
-    "services": "Webflow development · Motion · WebGL",
+    "services": "Web & Mobile Application Development · Motion · WebGL",
     "industry": "Luxury goods",
     "year": "2025",
     "country": "Switzerland",
@@ -1021,11 +1045,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1038,12 +1062,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1056,7 +1082,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1068,7 +1094,7 @@ export const PROJECTS: Project[] = [
     "slug": "nomee",
     "title": "Nomee",
     "intro": "POS terminals and sales software for restaurants. The old site was clunky where the product was effortless. The redesign made the site as easy to use as the thing it sells.",
-    "services": "UX/UI design · Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Hospitality tech",
     "year": "2024",
     "country": "Poland",
@@ -1089,11 +1115,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1106,12 +1132,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1124,7 +1152,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1136,7 +1164,7 @@ export const PROJECTS: Project[] = [
     "slug": "ot-playground",
     "title": "OT Playground",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "EdTech and healthcare",
     "year": "2024",
     "country": "Australia",
@@ -1157,11 +1185,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1174,12 +1202,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1192,7 +1222,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1204,7 +1234,7 @@ export const PROJECTS: Project[] = [
     "slug": "portfolio-ventures",
     "title": "Portfolio Ventures",
     "intro": "An angel fund that had raised over £80 million for 240+ early-stage companies, wearing a brand that showed none of it. We rebuilt the identity and the site around the thing that actually makes PV work: the people in its network.",
-    "services": "Brand refresh · UI/UX design · Webflow build",
+    "services": "Web & Mobile Application Development",
     "industry": "Venture capital",
     "year": "2025",
     "country": "United Kingdom",
@@ -1253,11 +1283,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1270,12 +1300,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1288,7 +1320,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1300,7 +1332,7 @@ export const PROJECTS: Project[] = [
     "slug": "rally",
     "title": "Rally",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Fleet management",
     "year": "2025",
     "country": "Netherlands",
@@ -1321,11 +1353,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1338,12 +1370,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1356,7 +1390,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1368,7 +1402,7 @@ export const PROJECTS: Project[] = [
     "slug": "reach-industries",
     "title": "Reach Industries",
     "intro": "",
-    "services": "UI/UX design · Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Lab automation",
     "year": "2025",
     "country": "United Kingdom",
@@ -1389,11 +1423,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1406,12 +1440,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1424,7 +1460,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1436,7 +1472,7 @@ export const PROJECTS: Project[] = [
     "slug": "rhinestone",
     "title": "Rhinestone",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Crypto",
     "year": "2025",
     "country": "United States",
@@ -1457,11 +1493,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1474,12 +1510,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1492,7 +1530,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1504,7 +1542,7 @@ export const PROJECTS: Project[] = [
     "slug": "riverlight",
     "title": "Riverlight",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "",
     "year": "2026",
     "country": "United Kingdom",
@@ -1525,11 +1563,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1542,12 +1580,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1560,7 +1600,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1572,7 +1612,7 @@ export const PROJECTS: Project[] = [
     "slug": "sib",
     "title": "SIB",
     "intro": "",
-    "services": "UI/UX design · Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Business consulting",
     "year": "2025",
     "country": "United States",
@@ -1593,11 +1633,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1610,12 +1650,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1628,7 +1670,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1640,7 +1682,7 @@ export const PROJECTS: Project[] = [
     "slug": "squirrelled",
     "title": "Squirrelled",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "EdTech",
     "year": "2025",
     "country": "United Kingdom",
@@ -1661,11 +1703,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1678,12 +1720,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1696,7 +1740,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"
@@ -1708,7 +1752,7 @@ export const PROJECTS: Project[] = [
     "slug": "trustyfy",
     "title": "Trustyfy",
     "intro": "",
-    "services": "Webflow development",
+    "services": "Web & Mobile Application Development",
     "industry": "Crypto",
     "year": "2025",
     "country": "Poland",
@@ -1729,11 +1773,11 @@ export const PROJECTS: Project[] = [
         "name": "Awake",
         "alternateName": "Awake Agency",
         "url": "https://www.awakeagency.dev",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "email": "contact@awakeagency.dev",
         "image": "https://www.awakeagency.dev/og.jpg",
         "logo": "https://www.awakeagency.dev/apple-icon.png",
-        "slogan": "Creative digital studio in Warsaw. Premium websites and web products",
+        "slogan": "Web, mobile, and AI systems built around your business.",
         "founder": {
           "@type": "Person",
           "name": "Mykyta Kashcheiev"
@@ -1746,12 +1790,14 @@ export const PROJECTS: Project[] = [
         },
         "areaServed": "Worldwide",
         "knowsAbout": [
-          "Web design",
-          "Webflow development",
-          "Next.js development",
-          "Branding",
-          "Motion design",
-          "WebGL"
+          "Web & Mobile Application Development",
+          "AI Workflow Automation & Integrations",
+          "Custom AI Agents & Internal Copilots",
+          "AI SaaS & Custom Software Development",
+          "AI Customer Support & Voice Agents",
+          "AI Document Processing & Data Intelligence",
+          "AI Lead Generation & Sales Automation",
+          "AI Data Analytics & Business Intelligence"
         ],
         "sameAs": [
           "https://www.linkedin.com/company/awakeagency/",
@@ -1764,7 +1810,7 @@ export const PROJECTS: Project[] = [
         "@id": "https://www.awakeagency.dev/#website",
         "url": "https://www.awakeagency.dev",
         "name": "Awake",
-        "description": "We design and build websites, storefronts and web product front ends for founders and product teams who need to stand out. Webflow, Next.js, Shopify, motion and WebGL. 60+ projects shipped.",
+        "description": "We build websites, mobile apps, custom software, AI agents, and connected workflows that help businesses get work done.",
         "inLanguage": "en",
         "publisher": {
           "@id": "https://www.awakeagency.dev/#studio"

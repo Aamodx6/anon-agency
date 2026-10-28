@@ -38,20 +38,36 @@ function project(slug: string, year: string): ServiceProject {
 
 const serviceShowcase: ServiceShowcase[] = [
   {
-    slug: 'web-mobile-development',
+    slug: 'web-mobile-application-development',
     projects: [project('frame', '2024'), project('rally', '2025')],
   },
   {
-    slug: 'custom-software-system-integration',
-    projects: [project('portfolio-ventures', '2025'), project('rhinestone', '2024')],
+    slug: 'ai-workflow-automation-integrations',
+    projects: [project('condor', '2025'), project('cortland', '2024')],
   },
   {
-    slug: 'ai-solutions-intelligent-agents',
+    slug: 'custom-ai-agents-internal-copilots',
     projects: [project('aimplify', '2025'), project('cybercapitalist', '2024')],
   },
   {
-    slug: 'business-process-automation',
-    projects: [project('condor', '2025'), project('cortland', '2024')],
+    slug: 'ai-saas-custom-software-development',
+    projects: [project('portfolio-ventures', '2025'), project('rhinestone', '2024')],
+  },
+  {
+    slug: 'ai-customer-support-voice-agents',
+    projects: [project('ezra', '2025'), project('trustyfy', '2024')],
+  },
+  {
+    slug: 'ai-document-processing-data-intelligence',
+    projects: [project('manypixels', '2025'), project('condor', '2024')],
+  },
+  {
+    slug: 'ai-lead-generation-sales-automation',
+    projects: [project('reach-industries', '2025'), project('rally', '2024')],
+  },
+  {
+    slug: 'ai-data-analytics-business-intelligence',
+    projects: [project('cybercapitalist', '2025'), project('nomee', '2024')],
   },
 ];
 
@@ -66,12 +82,13 @@ const services: ServiceTab[] = serviceShowcase.map(({ slug, projects }) => {
     number: service.number,
     tabLabel: service.tabLabel,
     title: service.title,
-    copy: service.heroIntro,
+    copy: service.description,
     projects,
   };
 });
 
 const rotations = [-3, 2, -2, 3];
+const rotationForIndex = (index: number) => rotations[index % rotations.length];
 
 export function ServicesExperience() {
   const { isOpen, toggle } = useMenu();
@@ -149,7 +166,7 @@ export function ServicesExperience() {
       if (currentCard) gsap.set(currentCard, { autoAlpha: 1, filter: 'none', x: 0 });
       if (previousProjects) gsap.set(previousProjects, { autoAlpha: 0 });
       if (currentProjects) gsap.set(currentProjects, { autoAlpha: 1, filter: 'none' });
-      if (stack) gsap.set(stack, { rotation: rotations[activeIndex], y: 0, scale: 1 });
+      if (stack) gsap.set(stack, { rotation: rotationForIndex(activeIndex), y: 0, scale: 1 });
       setOutgoingIndex(null);
       return;
     }
@@ -258,14 +275,14 @@ export function ServicesExperience() {
     timeline
       .to(stack, {
         y: 13,
-        rotation: rotations[activeIndex] + 1.5,
+        rotation: rotationForIndex(activeIndex) + 1.5,
         scale: 0.985,
         duration: 0.22,
         ease: 'power2.in',
       }, 0)
       .to(stack, {
         y: 0,
-        rotation: rotations[activeIndex],
+        rotation: rotationForIndex(activeIndex),
         scale: 1,
         duration: 0.65,
         ease: 'elastic.out(1, 0.68)',
@@ -371,7 +388,7 @@ export function ServicesExperience() {
         </div>
       </header>
 
-      <h1 className={styles.srOnly}>Our services</h1>
+      <h1 className={styles.srOnly}>Web, mobile, and AI services for business</h1>
       <svg
         ref={decorationRef}
         className={styles.decoration}

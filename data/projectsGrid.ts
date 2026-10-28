@@ -24,7 +24,7 @@ export const GRID_PROJECTS: GridProject[] = [
   {
     "slug": "portfolio-ventures",
     "title": "Portfolio Ventures",
-    "discipline": "Branding",
+    "discipline": "Web & Mobile Apps",
     "baseImg": "https://cdn.sanity.io/images/pka0c0l0/production/d542e0740df5e6200eb1b958674f0bc141b83237-1440x1698.png",
     "hoverImg": "https://cdn.sanity.io/images/pka0c0l0/production/513093ecae0df5f3582a328ade77575913405d26-2400x1306.png"
   },
@@ -45,7 +45,7 @@ export const GRID_PROJECTS: GridProject[] = [
   {
     "slug": "cortland",
     "title": "Cortland",
-    "discipline": "Web design",
+    "discipline": "Web & Mobile Apps",
     "baseImg": "https://cdn.sanity.io/images/pka0c0l0/production/3054ee77e7a9f1d81a5c0ec55f51ff7c6e77e8a2-1440x1698.png",
     "hoverImg": "https://cdn.sanity.io/images/pka0c0l0/production/9d24fee5984f4b3709e99ca11152a49929397a82-2400x1306.png"
   },
@@ -94,14 +94,14 @@ export const GRID_PROJECTS: GridProject[] = [
   {
     "slug": "sib",
     "title": "SIB",
-    "discipline": "Web design",
+    "discipline": "Web & Mobile Apps",
     "baseImg": "https://cdn.sanity.io/images/pka0c0l0/production/00e74dddb9c3d0b5a637f08e6a8e905d747185c2-1440x1698.png",
     "hoverImg": "https://cdn.sanity.io/images/pka0c0l0/production/7de08854701d2c73c3eec120eb3a398de28c737f-2400x1306.png"
   },
   {
     "slug": "reach-industries",
     "title": "Reach Industries",
-    "discipline": "Web design",
+    "discipline": "Web & Mobile Apps",
     "baseImg": "https://cdn.sanity.io/images/pka0c0l0/production/95b79ddcdb17e7fc049a7fb7d60cb60d0d8b8d68-1440x1698.png",
     "hoverImg": "https://cdn.sanity.io/images/pka0c0l0/production/f9f782796e62e0b4bdea88505f68af64ac4440f8-2400x1306.png"
   },
@@ -129,7 +129,7 @@ export const GRID_PROJECTS: GridProject[] = [
   {
     "slug": "aimplify",
     "title": "Aimplify",
-    "discipline": "Web design",
+    "discipline": "Web & Mobile Apps",
     "baseImg": "https://cdn.sanity.io/images/pka0c0l0/production/56a6efa7566fc124c54ef7ee970f32f8e000a792-1440x1698.png",
     "hoverImg": "https://cdn.sanity.io/images/pka0c0l0/production/e316bd41a51e9a91a514a7224614877e09118613-2400x1306.png"
   },
@@ -150,7 +150,7 @@ export const GRID_PROJECTS: GridProject[] = [
   {
     "slug": "aviatize",
     "title": "Aviatize",
-    "discipline": "Web design",
+    "discipline": "Web & Mobile Apps",
     "baseImg": "https://cdn.sanity.io/images/pka0c0l0/production/6a4521c5ece467988444625cdbd0c1e4bb835911-1440x1698.png",
     "hoverImg": "https://cdn.sanity.io/images/pka0c0l0/production/a28a90178aaff4e1e12bc4a8ee7b4715f0f733a5-2400x1306.png"
   },
@@ -164,14 +164,14 @@ export const GRID_PROJECTS: GridProject[] = [
   {
     "slug": "covalent",
     "title": "Covalent",
-    "discipline": "Web design",
+    "discipline": "Web & Mobile Apps",
     "baseImg": "https://cdn.sanity.io/images/pka0c0l0/production/368649a7cf1047b4b32d8a8d684b6bf865e56f41-1440x1698.png",
     "hoverImg": "https://cdn.sanity.io/images/pka0c0l0/production/b3b60da66faa8cdd5f4a854588843d67d2747fa7-2400x1306.png"
   },
   {
     "slug": "nomee",
     "title": "Nomee",
-    "discipline": "Web design",
+    "discipline": "Web & Mobile Apps",
     "baseImg": "https://cdn.sanity.io/images/pka0c0l0/production/6bb0952390c81ad8977f02753c3401e9b6e5070d-1440x1698.png",
     "hoverImg": "https://cdn.sanity.io/images/pka0c0l0/production/38e415e3606d0c5fa41e6bc492434a3beccb30af-2400x1306.png"
   }

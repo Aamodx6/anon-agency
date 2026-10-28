@@ -10,7 +10,8 @@ import { SERVICES } from '@/data/services';
 gsap.registerPlugin(ScrollTrigger);
 
 const ROTATIONS = [-2.4, -1.1, 0.4, 2.1, 3.8];
-const STACK_SERVICES = SERVICES.slice(0, 4);
+const STACK_SERVICES = SERVICES;
+const CARD_BACKGROUNDS = ['var(--c-white)', '#f1f1f3', '#e8e9eb', '#dbdcde'];
 
 export function ServicesStack() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -123,9 +124,13 @@ export function ServicesStack() {
               itemsRef.current[idx] = el;
             }}
             className="ServicesStack-module__QW-zbq__item"
+            style={{ zIndex: idx + 1 }}
           >
-            <article className="ServicesStack-module__QW-zbq__card">
-              <ScrollRibbon figure={`0${idx + 1}`} />
+            <article
+              className="ServicesStack-module__QW-zbq__card"
+              style={idx >= 4 ? { backgroundColor: CARD_BACKGROUNDS[idx % CARD_BACKGROUNDS.length] } : undefined}
+            >
+              <ScrollRibbon figure={service.number} />
               <span className="ServicesStack-module__QW-zbq__number">
                 {service.number}
               </span>
