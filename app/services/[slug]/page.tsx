@@ -70,7 +70,10 @@ export default async function ServiceDetailPage({
     '@type': 'Service',
     name: service.title,
     description: service.description,
-    serviceType: 'Web and mobile app development',
+    serviceType:
+      service.slug === 'ai-workflow-automation-integrations'
+        ? 'AI workflow automation and system integration'
+        : 'Web and mobile app development',
     url: `https://www.awakeagency.dev/services/${service.slug}`,
     areaServed: 'Worldwide',
     provider: {
